@@ -1,0 +1,53 @@
+@import "./config";
+
+html, body, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  max-width: 640px;
+  margin: auto;
+  font-size: 13px;
+  background: #fff;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  outline: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $font;
+}
+
+.testDiv {
+  color: #42b983;
+  width: 100px;
+  height: 100px;
+  background: yellow;
+}
+// symbol 图标配置
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
