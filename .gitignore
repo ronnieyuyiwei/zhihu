@@ -40,5 +40,6 @@ jspm_packages
 # Optional npm_modules
 /npm_modules/*
 
-#.idea
+# .idea
 /.idea
+
