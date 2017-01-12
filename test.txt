@@ -1,2 +1,0 @@
-This file is built to test whether git works.
-This is the content.
