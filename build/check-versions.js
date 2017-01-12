@@ -1,4 +1,4 @@
-     var semver = require('semver')
+var semver = require('semver')
 var chalk = require('chalk')
 var packageConfig = require('../package.json')
 var exec = function (cmd) {
