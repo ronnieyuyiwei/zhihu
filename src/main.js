@@ -10,4 +10,4 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
-/* eslint-ensable no-new */
+/* eslint-enable no-new */
