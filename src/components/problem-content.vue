@@ -25,46 +25,47 @@
   </div>
 </template>
 <style lang="scss">
-@import "../scss/config";
-  .content-section{
+  @import "../scss/config";
+
+  .content-section {
     margin-bottom: 8px;
     border-top: 1px solid #E7E7E7;
     border-bottom: 1px solid #E7E7E7;
-    .info{
+    .info {
       height: 40px;
       width: 100%;
       display: inline-flex;
       align-items: center;
       font-size: 14px;
       color: $sm-font;
-      .topic{
+      .topic {
         flex: 1;
         text-align: center;
 
-        img{
+        img {
           width: 20px;
           height: 20px;
           border-radius: 100px;
         }
       }
-      .brief-intro{
+      .brief-intro {
         flex: 9;
       }
     }
-    .title{
+    .title {
       width: 100%;
       max-height: 65px;
       font-family: Hei;
       font-size: 16px;
       font-weight: 800;
       color: #2F2F2F;
-      p{
+      p {
         -webkit-margin-before: 0;
         -webkit-margin-after: 0;
-        padding:0 8px 0 8px;
+        padding: 0 8px 0 8px;
       }
     }
-    .content{
+    .content {
       width: 100%;
       color: #464646;
       display: -webkit-box;
@@ -74,32 +75,33 @@
       -moz-box-orient: vertical;
       -moz-line-clamp: 3;
       overflow: hidden;
-      p{
+      p {
         -webkit-margin-before: 7px;
         -webkit-margin-after: 0;
-        padding:0 8px 0 8px;
+        padding: 0 8px 0 8px;
         font-size: 15px;
       }
     }
-    .operate{
+    .operate {
       background: white;
       width: 100%;
       height: 30px;
       padding-top: 8px;
       color: $sm-font;
       font-size: 15px;
-      span{
+      span {
         margin-left: 5px;
         margin-right: 7px;
       }
-      span:first-child{
+      span:first-child {
         margin-left: 8px;
       }
     }
   }
 </style>
 <script>
-    export default{
-        name: 'problem-content'
-    }
+export default{
+  name: 'problem-content'
+}
+
 </script>

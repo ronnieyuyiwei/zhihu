@@ -35,8 +35,6 @@
    <ProblemContent></ProblemContent>
    <ProblemContent></ProblemContent>
    <ProblemContent></ProblemContent>
-   <ProblemContent></ProblemContent>
-   <ProblemContent></ProblemContent>
 </div>
     <FootMenu></FootMenu>
   </div>
@@ -106,6 +104,9 @@
     background: #f8f8f8;
     div{
       background: white;
+    &:last-child{
+      padding-bottom: 52px;
+    }
     }
   }
 
@@ -113,11 +114,11 @@
 <script>
 import ProblemContent from '../components/problem-content.vue'
 import FootMenu from '../components/foot-menu.vue'
-    export default{
-      name: 'home',
-      components:{
-        ProblemContent,
-        FootMenu
-      }
-    }
+export default{
+ name: 'home',
+ components: {
+    ProblemContent,
+    FootMenu
+  }
+}
 </script>
