@@ -1,24 +1,17 @@
 <template>
   <div id="app">
-    <h1>Hello App!</h1>
-    <svg class="icon" aria-hidden="true">
-      <use xlink:href="#icon-fenxiang"></use>
-    </svg>
-    <div class="testDiv">Special Div</div>
-    <smile></smile>
-
+   <home></home>
   </div>
 
 </template>
 
 <script>
-import Hello from './components/Hello'
-import Smile from './components/Smile'
+import Home from './pages/home'
+
 export default {
   name: 'app',
   components: {
-    Hello,
-    Smile
+    Home
   }
 }
 </script>
