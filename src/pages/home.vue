@@ -48,6 +48,7 @@
   .home {
     background: #f8f8f8;
   }
+
   .head-content {
     background: white;
     .search-bar {
@@ -109,11 +110,11 @@
     margin-top: 10px;
     width: 100%;
     background: #f8f8f8;
-    div{
+    div {
       background: white;
-    &:last-child{
-      padding-bottom: 52px;
-    }
+      &:last-child {
+        padding-bottom: 52px;
+      }
     }
   }
 
@@ -122,10 +123,11 @@
 import ProblemContent from '../components/problem-content.vue'
 import FootMenu from '../components/foot-menu.vue'
 export default{
- name: 'home',
- components: {
+  name: 'home',
+  components: {
     ProblemContent,
     FootMenu
   }
 }
+
 </script>
