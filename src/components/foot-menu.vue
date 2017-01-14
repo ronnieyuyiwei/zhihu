@@ -35,7 +35,8 @@
 <style lang='scss'>
 .foot-menu{
   height: 52px;
-  width:100%;
+  width: 100%;
+  max-width: 640px;
   background: white;
   position: fixed;
   bottom: 0;

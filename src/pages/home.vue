@@ -31,12 +31,15 @@
       </div>
     </div>
     <div class="body-content">
-   <ProblemContent></ProblemContent>
-   <ProblemContent></ProblemContent>
-   <ProblemContent></ProblemContent>
-   <ProblemContent></ProblemContent>
-</div>
-    <FootMenu></FootMenu>
+      <ProblemContent></ProblemContent>
+      <ProblemContent></ProblemContent>
+      <ProblemContent></ProblemContent>
+      <ProblemContent></ProblemContent>
+    </div>
+    <div class="foot-content">
+      <FootMenu></FootMenu>
+    </div>
+
   </div>
 </template>
 <style lang="scss" scoped>
@@ -50,6 +53,10 @@
     .search-bar {
       height: 55px;
       width: 100%;
+      position: fixed;
+      top: 0;
+      background: white;
+      border-bottom: 1px solid #E7E7E7;
       display: inline-flex;
       align-items: center;
       justify-content: space-between;
@@ -77,6 +84,7 @@
       }
     }
     .button-bar {
+      margin-top: 55px;
       height: 35px;
       width: 100%;
       display: inline-flex;
@@ -85,7 +93,6 @@
       color: $font;
       font-size: 17px;
       font-weight: 600;
-      border-top: 1px solid #E7E7E7;
       border-bottom: 1px solid #E7E7E7;
       div {
         flex: 1;
