@@ -1,5 +1,8 @@
 <template>
   <div class="home">
+    <div class="app-loading">
+      <img src="../img/loading.jpg">
+    </div>
     <div class="head-content">
       <div class="search-bar">
         <div class="search"><input type="text" placeholder="搜索回答、文章话题或用户"></div>
@@ -45,6 +48,46 @@
 <style lang="scss" scoped>
   @import "../scss/config";
 
+  .app-loading {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    max-width: 640px;
+    margin: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    background: white;
+    img{
+      margin-top: -70px;
+      width: 100%;
+      height: 108%;
+    }
+  }
+  .app-loading-hide {
+    left: 120%;
+    bottom: 120%;
+    opacity: 0;
+  }
   .home {
     background: #f8f8f8;
   }
