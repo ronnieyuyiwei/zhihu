@@ -16,8 +16,16 @@ export default [
         component: resolve => require(['../pages/home.vue'], resolve)
       },
       {
-        path: '/smile',
-        component: resolve => require(['../pages/smile.vue'], resolve)
+        path: '/discovery',
+        component: resolve => require(['../pages/discovery.vue'], resolve)
+      },
+      {
+        path: '/question',
+        component: resolve => require(['../pages/question.vue'], resolve)
+      },
+      {
+        path: '/answer',
+        component: resolve => require(['../pages/answer.vue'], resolve)
       }
     ]
   }

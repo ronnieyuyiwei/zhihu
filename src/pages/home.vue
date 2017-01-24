@@ -1,8 +1,5 @@
 <template>
   <div class="home">
-    <div class="app-loading">
-      <img src="../img/loading.jpg">
-    </div>
     <div class="head-content">
       <div class="search-bar">
         <div class="search"><input type="text" placeholder="搜索回答、文章话题或用户"></div>
@@ -17,13 +14,17 @@
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-myQuestion"></use>
           </svg>
-          <span>提问</span>
+          <router-link to='/question'>
+            <span>提问</span>
+          </router-link>
         </div>
         <div class="answer">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-dingdan"></use>
           </svg>
-          <span>回答</span>
+          <router-link to='/answer'>
+            <span>回答</span>
+          </router-link>
         </div>
         <div class="share">
           <svg class="icon" aria-hidden="true">
@@ -42,7 +43,6 @@
     <div class="foot-content">
       <FootMenu></FootMenu>
     </div>
-
   </div>
 </template>
 <style lang="scss" scoped>
@@ -165,11 +165,13 @@
 <script>
 import ProblemContent from '../components/problem-content.vue'
 import FootMenu from '../components/foot-menu.vue'
+import Question from './question.vue'
 export default{
   name: 'home',
   components: {
     ProblemContent,
-    FootMenu
+    FootMenu,
+    Question
   }
 }
 
