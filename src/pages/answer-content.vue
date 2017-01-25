@@ -29,14 +29,27 @@
            <span class="sign">这是一个有理想的人</span>
          </div>
          <div class="focus">
-           <div>+&nbsp;&nbsp;关注</div>
+           <div>
+             <svg class="icon" aria-hidden="true">
+              <use xlink:href='#icon-jia'></use>
+             </svg>&nbsp;关注</div>
          </div>
        </div>
        <div class="content">
-         小时候最有印象的是我外婆在的时候她每年会做年糕。我跟她到磨米的地方，跟她磨米浆。到晚上的时候吃完年夜饭，9点蒸年糕。我们小孩子就在那吃糖，打游戏，年糕出锅以后，我们开始吃，吃完以后我外婆还会炸，半夜还在炸年糕。然后我们再吃一次炸年糕，晚上就撑的睡不着。一般我们过年晚上就是大年晚上都是熬通宵，熬到三、四点，所以小时候那
+         <p>小时候最有印象的是我外婆在的时候她每年会做年糕。我跟她到磨米的地方，跟她磨米浆。到晚上的时候吃完年夜饭，9点蒸年糕。我们小孩子就在那吃糖，打游戏，年糕出锅以后，我们开始吃，吃完以后我外婆还会炸，半夜还在炸年糕。然后我们再吃一次炸年糕，晚上就撑的睡不着。一般我们过年晚上就是大年晚上都是熬通宵，熬到三、四点，所以小时候那小时候最有印象的是我外婆在的时候她每年会做年糕。我跟她到磨米的地方，跟她磨米浆。到晚上的时候吃完年夜饭，9点蒸年糕。我们小孩子就在那吃糖，打游戏，年糕出锅以后，我们开始吃，吃完以后我外婆还会炸，半夜还在炸年糕。然后我们再吃一次炸年糕，晚上就撑的睡不着。一般我们过年晚上就是大年晚上都是熬通宵，熬到三、四点，所以小时候那</p>
+       </div>
+       <div class="copyright">
+         <div>
+           <p>创建于&nbsp;2017-01-17</p>
+           <p>著作权归作者所有</p>
+         </div>
        </div>
      </div>
+     <div class="answer-foot">
+       <AnswerFoot></AnswerFoot>
+     </div>
    </div>
+
 </template>
 <style lang="scss" scoped>
   @import "../scss/config";
@@ -127,14 +140,39 @@
     .content{
       width: 100%;
       font-size: 17px;
-      letter-spacing: 5px;
-      line-height: 30px;
+      letter-spacing: 1px;
+      line-height: 27px;
+      color: $c-font;
+      p{
+        padding:0 7px 0 12px;
+      }
+    }
+    .copyright{
+      width: 100%;
+      height: 180px;
+      padding-bottom: 60px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      p{
+        padding-right: 30px;
+        font-size: 16px;
+        color: $sm-font;
+        font-weight: 600;
+      }
+      div{
+        margin-top: -20px;
+      }
     }
   }
 }
 </style>
 <script>
+import AnswerFoot from '../components/answer-foot.vue'
 export default {
-  name: 'answer-content'
+  name: 'answer-content',
+  components: {
+    AnswerFoot
+  }
 }
 </script>
