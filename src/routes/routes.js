@@ -20,6 +20,10 @@ export default [
         component: resolve => require(['../pages/discovery.vue'], resolve)
       },
       {
+        path: '/more',
+        component: resolve => require(['../pages/more.vue'], resolve)
+      },
+      {
         path: '/question',
         component: resolve => require(['../pages/question.vue'], resolve)
       },

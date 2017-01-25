@@ -62,7 +62,8 @@
     align-items: center;
     font-size: 22px;
     text-align: center;
-    color: $font;
+    color: #54585D;
+    font-weight: 600;
     border-bottom: 1px solid $border-gray;
     .back{
       flex:1;
