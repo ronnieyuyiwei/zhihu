@@ -28,12 +28,6 @@ export default{
   },
   components: {
     FootMenu
-  },
-  methods: {
-    change: function () {
-      this.isActive = !this.isActive
-      alert(this.isActive)
-    }
   }
 }
 </script>

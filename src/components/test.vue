@@ -1,27 +1,24 @@
 <template>
-    <div>
-        <header-component/>
-        <div>this is template body</div>
-        <other-component/>
-    </div>
+  <div class="test">
+    <button v-on:click='increment'>{{counter}}</button>
+  </div>
 </template>
 <style>
-    body{
-        background-color:#ff0000;
-    }
 </style>
 <script>
-    import HeaderComponent from './components/header.vue'
-    import OtherComponent from './components/other.vue'
-    export default{
-        data(){
-            return{
-                msg:'hello vue'
-            }
-        },
-        components:{
-            'other-component':OtherComponent,
-            HeaderComponent,
-        }
+export default {
+  name: 'button-counter',
+  data: function () {
+    return {
+      counter: 0
     }
+  },
+  methods: {
+    increment: function () {
+      this.counter += 1
+      this.$emit('increment')
+    }
+  }
+
+}
 </script>
