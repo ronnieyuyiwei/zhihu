@@ -1,9 +1,9 @@
 
 <template>
   <div class="smile">
-    <div>显示total：{{total}}</div>
-    <test v-on:increment="incrementTotal"></test>
-    <test v-on:increment="incrementTotal"></test>
+    <br>
+    <test v-on:changeMsg="change"></test>
+    <div>AOA{{msg}}</div>
   </div>
 </template>
 
@@ -16,12 +16,15 @@ export default {
   },
   data: function () {
     return {
-      total: 0
+      msg: ''
     }
   },
   methods: {
-    incrementTotal: function () {
-      this.total += 1
+    change: function (msg) {
+      this.msg = msg
+      console.log('active')
+      console.log('qwert' + msg)
+      console.log('abcdefg' + name)
     }
   }
 }

@@ -1,24 +1,23 @@
 <template>
   <div class="test">
-    <button v-on:click='increment'>{{counter}}</button>
+    <label><input type="text" v-bind:value="msg" v-on:input="changeMsg"></label>
   </div>
 </template>
 <style>
 </style>
 <script>
 export default {
-  name: 'button-counter',
+  name: 'test',
   data: function () {
     return {
-      counter: 0
+      msg: ''
     }
   },
   methods: {
-    increment: function () {
-      this.counter += 1
-      this.$emit('increment')
+    changeMsg: function () {
+      this.$emit('changeMsg', '12345')
+      console.log(this.msg)
     }
   }
-
 }
 </script>
