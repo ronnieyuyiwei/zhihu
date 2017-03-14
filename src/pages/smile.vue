@@ -1,33 +1,26 @@
 
 <template>
   <div class="smile">
-    <br>
-    <test v-on:changeMsg="change"></test>
-    <div>AOA{{msg}}</div>
+    <my-components>
+      <template scope="props">
+        <span>hello from parent</span>
+        <span>{{ props.text }}</span>
+      </template>
+    </my-components>
   </div>
 </template>
 
 <script>
-import test from '../components/test.vue'
+import myComponents from '../components/test.vue'
+import {Cat} from '../js/jsfile.js'
 export default {
   name: 'smile',
   components: {
-    test
-  },
-  data: function () {
-    return {
-      msg: ''
-    }
-  },
-  methods: {
-    change: function (msg) {
-      this.msg = msg
-      console.log('active')
-      console.log('qwert' + msg)
-      console.log('abcdefg' + name)
-    }
+    myComponents
   }
 }
+var cat = new Cat()
+cat.sleep()
 </script>
 <style lang="scss" scoped>
 </style>
