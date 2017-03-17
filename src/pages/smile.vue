@@ -1,26 +1,23 @@
-
 <template>
   <div class="smile">
-    <my-components>
-      <template scope="props">
-        <span>hello from parent</span>
-        <span>{{ props.text }}</span>
-      </template>
-    </my-components>
+    <button v-on:click="shuffle">Shuffle</button>
+    <input type="range" min="0" max="100">
   </div>
 </template>
-
 <script>
-import myComponents from '../components/test.vue'
-import {Cat} from '../js/jsfile.js'
 export default {
   name: 'smile',
-  components: {
-    myComponents
+  data: function () {
+    return {
+      items: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    }
+  },
+  methods: {
   }
 }
-var cat = new Cat()
-cat.sleep()
 </script>
 <style lang="scss" scoped>
+  .flip-list-move {
+    transition: transform 1s;
+  }
 </style>

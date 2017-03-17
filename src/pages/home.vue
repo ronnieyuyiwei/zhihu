@@ -1,14 +1,7 @@
 <template>
   <div class="home">
     <div class="head-content">
-      <div class="search-bar">
-        <div class="search"><input type="text" placeholder="搜索回答、文章话题或用户"></div>
-        <div class="live">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-shandianfahuo01"></use>
-          </svg>
-        </div>
-      </div>
+      <search-bar></search-bar>
       <div class="button-bar">
         <div class="ask">
           <svg class="icon" aria-hidden="true">
@@ -47,7 +40,6 @@
 </template>
 <style lang="scss" scoped>
   @import "../scss/config";
-
   .app-loading {
     position: fixed;
     top: 0;
@@ -91,42 +83,8 @@
   .home {
     background: #f8f8f8;
   }
-
   .head-content {
     background: white;
-    .search-bar {
-      height: 55px;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      background: white;
-      border-bottom: 1px solid #E7E7E7;
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      .search {
-        flex: 9;
-        text-align: center;
-        input {
-          width: 90%;
-          height: 25px;
-          font-size: 14px;
-          padding-left: 10px;
-          border-radius: 5px;
-          background: #E7E7E7;
-          outline: none;
-          border: none;
-        }
-      }
-      .live {
-        flex: 1;
-        text-align: left;
-        font-size: 25px;
-      }
-      .icon {
-        color: $font;
-      }
-    }
     .button-bar {
       margin-top: 55px;
       height: 35px;
@@ -164,12 +122,14 @@
 </style>
 <script>
 import ProblemContent from '../components/problem-content.vue'
+import SearchBar from '../components/search-bar.vue'
 import FootMenu from '../components/foot-menu.vue'
 import Question from './question.vue'
 export default{
   name: 'home',
   components: {
     ProblemContent,
+    SearchBar,
     FootMenu,
     Question
   }
