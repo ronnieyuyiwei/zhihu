@@ -9,5 +9,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="font_a7tms02bila0pb9" level="application" />
+    <orderEntry type="library" name="Node.js v0.10.26 Core Modules" level="application" />
+    <orderEntry type="library" name="Node" level="application" />
+    <orderEntry type="library" name="node-DefinitelyTyped" level="application" />
   </component>
 </module>
