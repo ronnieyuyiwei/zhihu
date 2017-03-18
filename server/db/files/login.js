@@ -3,8 +3,11 @@
  */
 var mongoose = require('../mongoose')
 var Schema = mongoose.Schema
-var userSchema = new Schema ({
+var userSchema = new Schema({
   name: String,
   password: String
 })
-var user = user.model('user', userSchema)
+var User = mongoose.model('User', userSchema)
+module.exports = User
+
+
