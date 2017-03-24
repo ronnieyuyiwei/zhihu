@@ -26,3 +26,4 @@ app.get('*', function (req, res) {
 // 监听8088端口
 app.listen(8088)
 console.log('success listen at 8088……')
+module.exports = app
