@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <label>账户：<input type="text" v-model="account" placeholder="账户"></label>
+    <label>账户：<input type="text" @change='test' v-model="account" placeholder="账户"></label>
     <br>
     <label>密码：<input type="text" v-model="password" placeholder="密码"></label>
     <button type="submit" class="btn" @click="login">登录</button>
@@ -18,26 +18,52 @@ export default {
     }
   },
   methods: {
-    login () {
-      Axios.post('/login/createAccount', {
-        account: this.account,
-        password: this.password
+    test () {
+      Axios.get('/login/getAccount', {
+        params: {
+          account: this.account
+        }
       })
-        .then((response) => {
-          this.msg = response.data
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+      .then((response) => {
+        this.msg = response.data.message
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    },
+    login () {
+      Axios.get('/login/getAccount', {
+        params: {
+          account: this.account
+        }
+      })
+      .then((response) => {
+        this.msg = response.data.message + response.data.permission
+        if (response.data.permission) {
+          Axios.post('/login/createAccount', {
+            account: this.account,
+            password: this.password
+          })
+          .then((response) => {
+            this.msg = response.data
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     }
   }
 }
 </script>
 <style lang="scss">
-.login {
-  margin-top: 200px;
-  input {
-    margin-top: 40px;
+  .login {
+    margin-top: 200px;
+    input {
+      margin-top: 40px;
+    }
   }
-}
 </style>
