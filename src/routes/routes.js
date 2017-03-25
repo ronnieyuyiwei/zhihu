@@ -16,8 +16,8 @@ export default [
         component: resolve => require(['../pages/home.vue'], resolve)
       },
       {
-        path: '/login',
-        component: resolve => require(['../pages/login.vue'], resolve)
+        path: '/register',
+        component: resolve => require(['../pages/register.vue'], resolve)
       },
       {
         path: '/discovery',

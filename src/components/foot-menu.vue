@@ -64,7 +64,7 @@ export default{
         },
         {
           title: '私信',
-          path: '/message',
+          path: '/register',
           icon: '#icon-icon161605'
         },
         {
