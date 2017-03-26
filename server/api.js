@@ -1,41 +1,75 @@
 const express = require('express')
 const router = express.Router()
 const User = require('./db/files/login')
+const session = require('express-session')
+router.use(session({
+  secret: '12345',
+  name: 'testapp',   //这里的name值得是cookie的name，默认cookie的name是：connect.sid
+  cookie: {maxAge: 80000 },  //设置maxAge是80000ms，即80s后session和相应的cookie失效过期
+  resave: true,
+  saveUninitialized: true
+}))
 var svgCaptcha = require('svg-captcha')
 router.get('/register/getAccount', (req, res) => {
   User.findOne({'account': req.query.account}, (err, result) => {
     if (err) console.log(err)
     console.log(req.body.account)
     if (result) {
-      res.send({message: '用户名已经存在',permission: false})
+      res.send({message: '用户名已经存在', permission: false})
     }else {
-      res.send({message: '可以注册',permission: true})
+      res.send({message: '', permission: true})
     }
   })
 })
 router.post('/register/createAccount', (req, res) => {
-  let data = {
+  var data = {
     account: req.body.account,
     password: req.body.password
   }
-  var newAccount = new User(data)
-  newAccount.save((err) => {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send('注册成功')
-    }
-  })
+  function validate () {                        // 服务器验证
+    let acReg = /^[\u4E00-\u9FA5A-Za-z0-9_]+$/  // 匹配中文、数字、字母及下划线
+    let psReg = /^[A-Za-z0-9]+$/                // 匹配数字及字母
+    if (!(acReg.test(data.account) && data.account.length >=4 && data.account.length <=10))
+      return {msg: '用户名不符合格式，拒绝注册', permission: false}
+    if (!(psReg.test(data.password) && data.password.length >=8 && data.password.length <=20))
+      return {msg: '密码不符合格式，拒绝注册', permission: false}
+    return {msg: '验证通过', permission: true}
+  }
+  if(validate().permission) {            // 数据库存储
+    var newAccount = new User(data)
+    newAccount.save((err) => {
+      if (err) {
+        console.log(err)
+      } else {
+        res.send('注册成功')
+      }
+    })
+  } else {
+    res.send(validate().msg)
+  }
 })
 router.get('/register/captcha', (req, res) => {
-  var captcha = svgCaptcha.create()
-  console.log('aaa' + captcha)
-  // req.session.captcha = captcha.text
-  console.log(captcha.text)
+  var captcha = svgCaptcha.create({noise: 2})
+  // var captchaText =req.session.captchaText
+  // captchaText =
+  req.session.captchaText = captcha.text.toLowerCase()
   res.set('Content-Type', 'image/svg+xml')
   res.status(200).send(captcha.data)
 })
-router.get('/register/get', (req, res) => {
-  res.send('fffffff')
+router.get('/register/checkCaptcha', (req, res) => {
+  console.log('收到的验证码' + req.query.captcha)
+  console.log('session验证码' + req.session.captchaText)
+  if (req.query.captcha === req.session.captchaText) {
+    res.send({message:'验证码正确', permission: true})
+  } else {
+    res.send({message:'验证码错误,请重新输入', permission: false})
+  }
+})
+router.get('/register/test1', (req, res) => {
+  res.send(req.session.val2)
+})
+router.get('/register/test2', (req, res) => {
+  req.session.val2 = 'this is val2' + req.session.cookie.maxAge
+  res.send(req.session.val2)
 })
 module.exports = router
