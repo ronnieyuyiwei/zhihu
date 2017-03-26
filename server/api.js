@@ -49,7 +49,7 @@ router.post('/register/createAccount', (req, res) => {
   }
 })
 router.get('/register/captcha', (req, res) => {
-  var captcha = svgCaptcha.create({noise: 2})
+  var captcha = svgCaptcha.create({noise: 2, ignoreChars: '0o1i' })
   // var captchaText =req.session.captchaText
   // captchaText =
   req.session.captchaText = captcha.text.toLowerCase()

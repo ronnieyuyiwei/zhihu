@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f5dae39-52fc-4b01-9576-3a27c0c6c479" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/bpp.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/0.b054b4a7de7c28a69609.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/0.b054b4a7de7c28a69609.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.a624b270f82bce01c2e4.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.a624b270f82bce01c2e4.js.map" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/api.js" afterPath="$PROJECT_DIR$/server/api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/register.vue" afterPath="$PROJECT_DIR$/src/pages/register.vue" />
     </list>
     <ignored path="andromeda.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -105,8 +97,8 @@
                 <state relative-caret-position="527">
                   <caret line="50" column="47" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
                   <folding>
-                    <marker date="1490537275487" expanded="true" signature="806:1674" ph="{...}" />
-                    <marker date="1490537275487" expanded="true" signature="2350:2380" ph="{...}" />
+                    <marker date="1490537868010" expanded="true" signature="806:1674" ph="{...}" />
+                    <marker date="1490537868010" expanded="true" signature="2372:2402" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -139,8 +131,8 @@
           <file leaf-file-name="api.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/api.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="262">
-                  <caret line="48" column="3" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
+                <state relative-caret-position="313">
+                  <caret line="51" column="65" selection-start-line="51" selection-start-column="65" selection-end-line="51" selection-end-column="65" />
                   <folding />
                 </state>
               </provider>
@@ -171,8 +163,8 @@
         <option value="$PROJECT_DIR$/src/pages/login.js" />
         <option value="$PROJECT_DIR$/server/app.js" />
         <option value="$PROJECT_DIR$/server/bpp.js" />
-        <option value="$PROJECT_DIR$/server/api.js" />
         <option value="$PROJECT_DIR$/src/pages/register.vue" />
+        <option value="$PROJECT_DIR$/server/api.js" />
       </list>
     </option>
   </component>
@@ -509,12 +501,12 @@
       <workItem from="1490424724495" duration="19000" />
       <workItem from="1490424762761" duration="12846000" />
       <workItem from="1490446970443" duration="10116000" />
-      <workItem from="1490510245200" duration="16810000" />
+      <workItem from="1490510245200" duration="16935000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40355000" />
+    <option name="totallyTimeSpent" value="40480000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -592,10 +584,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-          <folding>
-            <marker date="1490537275487" expanded="true" signature="806:1674" ph="{...}" />
-            <marker date="1490537275487" expanded="true" signature="2350:2380" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -852,21 +841,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="50" column="47" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
-          <folding>
-            <marker date="1490537275487" expanded="true" signature="806:1674" ph="{...}" />
-            <marker date="1490537275487" expanded="true" signature="2350:2380" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/register.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="51" column="65" selection-start-line="51" selection-start-column="65" selection-end-line="51" selection-end-column="65" />
           <folding />
         </state>
       </provider>
