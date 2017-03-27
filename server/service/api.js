@@ -15,6 +15,6 @@ router.use(session({
   resave: true,
   saveUninitialized: true
 }))
-router.use('/', register )
+// router.use('/', register )
 router.use('/', login)
 module.exports = router

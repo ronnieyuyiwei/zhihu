@@ -23,7 +23,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/login': {
-        target: 'http://localhost:8088/login/',
+        target: 'http://localhost:8088/login',
         changeOrigin: true,
         pathRewrite: {
           '^/login': ''

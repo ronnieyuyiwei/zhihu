@@ -19,8 +19,7 @@
       </div>
       <div class="notice-msg">{{msg}}</div>
       <div class="submit">
-          <button type="submit" class="btn true-btn" @click="">登录</button>
-        <div class="go-register"><a>没有知乎账号？去注册</a></div>
+        <button type="submit" class="btn true-btn" @click="login">登录</button>
       </div>
     </div>
   </div>
@@ -42,7 +41,28 @@ export default {
   },
   methods: {
     login () {
-      console.log('33')
+      if (this.account && this.password) {
+        Axios.get('/login/checkCaptcha', {
+          params: {
+            captcha: this.captcha
+          }
+        })
+        .then((response) => {
+          if (response.data.permission) {
+            Axios.post('/login/checkAccount', {
+              account: this.account,
+              password: this.password
+            })
+            .then((response) => {
+              this.msg = response.data
+            })
+          } else {
+            this.msg = response.data.message
+          }
+        })
+      } else {
+        this.msg = '用户名密码不能为空'
+      }
     },
     getCaptcha () {              // 获取验证码
       Axios.get('/login/getCaptcha', (err, response) => {
