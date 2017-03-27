@@ -20,6 +20,10 @@ export default [
         component: resolve => require(['../pages/register.vue'], resolve)
       },
       {
+        path: '/login',
+        component: resolve => require(['../pages/login.vue'], resolve)
+      },
+      {
         path: '/discovery',
         component: resolve => require(['../pages/discovery.vue'], resolve)
       },

@@ -45,10 +45,7 @@ export default {
       userCheck: false,
       passwordCheck: false,
       passwordEq: false,
-      captchaCheck: false,
-      val1: '',
-      val2: ''
-
+      captchaCheck: false
     }
   },
   mounted: function () {
@@ -150,7 +147,7 @@ export default {
       })
     },
     getCaptcha () {              // 获取验证码
-      Axios.get('/register/captcha', (err, response) => {
+      Axios.get('/register/getCaptcha', (err, response) => {
         if (err) console.log(err)
       })
       .then((response) => {

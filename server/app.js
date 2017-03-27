@@ -2,7 +2,7 @@
  * Created by YYW on 2017/3/17.
  */
 // 引入编写好的api
-const api = require('./api')
+const api = require('./service/api')
 // 引入文件模块
 const fs = require('fs')
 // 引入处理路径的模块

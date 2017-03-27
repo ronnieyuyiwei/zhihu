@@ -1,14 +1,9 @@
+/**
+ * Created by YYW on 2017/3/27.
+ */
 const express = require('express')
 const router = express.Router()
-const User = require('./db/files/login')
-const session = require('express-session')
-router.use(session({
-  secret: '12345',
-  name: 'testapp',   //这里的name值得是cookie的name，默认cookie的name是：connect.sid
-  cookie: {maxAge: 80000 },  //设置maxAge是80000ms，即80s后session和相应的cookie失效过期
-  resave: true,
-  saveUninitialized: true
-}))
+const User = require('../db/files/user')
 var svgCaptcha = require('svg-captcha')
 router.get('/register/getAccount', (req, res) => {
   User.findOne({'account': req.query.account}, (err, result) => {
@@ -48,10 +43,8 @@ router.post('/register/createAccount', (req, res) => {
     res.send(validate().msg)
   }
 })
-router.get('/register/captcha', (req, res) => {
+router.get('/register/getCaptcha', (req, res) => {
   var captcha = svgCaptcha.create({noise: 2, ignoreChars: '0o1i' })
-  // var captchaText =req.session.captchaText
-  // captchaText =
   req.session.captchaText = captcha.text.toLowerCase()
   res.set('Content-Type', 'image/svg+xml')
   res.status(200).send(captcha.data)
@@ -65,11 +58,5 @@ router.get('/register/checkCaptcha', (req, res) => {
     res.send({message:'验证码错误,请重新输入', permission: false})
   }
 })
-router.get('/register/test1', (req, res) => {
-  res.send(req.session.val2)
-})
-router.get('/register/test2', (req, res) => {
-  req.session.val2 = 'this is val2' + req.session.cookie.maxAge
-  res.send(req.session.val2)
-})
+
 module.exports = router
