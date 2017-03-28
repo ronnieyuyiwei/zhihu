@@ -26,14 +26,14 @@ router.post('/login/checkAccount', (req, res) => {
 })
 router.get('/login/getCaptcha', (req, res) => {
   var captcha = svgCaptcha.create({noise: 2, ignoreChars: '0o1i' })
-  req.session.captchaText = captcha.text.toLowerCase()
+  req.session.captchaText2 = captcha.text.toLowerCase()
   res.set('Content-Type', 'image/svg+xml')
   res.status(200).send(captcha.data)
 })
 router.get('/login/checkCaptcha', (req, res) => {
   console.log('收到的验证码' + req.query.captcha)
-  console.log('session验证码' + req.session.captchaText)
-  if (req.query.captcha === req.session.captchaText) {
+  console.log('session验证码' + req.session.captchaText2)
+  if (req.query.captcha === req.session.captchaText2) {
     res.send({message:'验证码正确', permission: true})
   } else {
     res.send({message:'验证码错误,请重新输入', permission: false})

@@ -45,7 +45,7 @@ router.post('/register/createAccount', (req, res) => {
 })
 router.get('/register/getCaptcha', (req, res) => {
   var captcha = svgCaptcha.create({noise: 2, ignoreChars: '0o1i' })
-  req.session.captchaText = captcha.text.toLowerCase()
+  req.session.captchaText2 = captcha.text.toLowerCase()
   res.set('Content-Type', 'image/svg+xml')
   res.status(200).send(captcha.data)
 })

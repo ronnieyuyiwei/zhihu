@@ -2,17 +2,25 @@
   <div class="more">
     <search-bar></search-bar>
     <div class="operate">更多</div>
-    <div class="person">
-      <div class="head">
-        <img src="../img/head.jpg">
+    <div v-if='login'>
+      <div class="person">
+        <div class="head">
+          <img src="../img/head.jpg">
+        </div>
+        <div class="info">
+          <span class="name">申智珉</span>
+          <span class="notice">查看或编辑个人资料</span>
+        </div>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href='#icon-jiantou'></use>
+        </svg>
       </div>
-      <div class="info">
-        <span class="name">申智珉</span>
-        <span class="notice">查看或编辑个人资料</span>
+    </div>
+    <div v-else>
+      <div class="login-btn">
+        <div>登录知乎，体验更多功能</div>
+        <button @click='goRegister'>注册/登录</button>
       </div>
-      <svg class="icon" aria-hidden="true">
-        <use xlink:href='#icon-jiantou'></use>
-      </svg>
     </div>
     <div class="mine">
       <template v-for="item in list">
@@ -83,6 +91,26 @@
         font-size: 18px;
       }
     }
+    .login-btn {
+      width: 100%;
+      height: 95px;
+      text-align: center;
+      border-bottom: 2px solid $border-gray;
+      div {
+        padding-top: 20px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+      button {
+        margin-top: 10px;
+        padding: 4px 22px 4px 22px;
+        background: #ffffff;
+        border: 1px solid $blue;
+        border-radius: 5px;
+        color: $blue;
+        font-size: 13px;
+      }
+    }
     .mine {
       .my-operate {
         height: 43px;
@@ -118,6 +146,7 @@ import FootMenu from '../components/foot-menu.vue'
 export default {
   data () {
     return {
+      login: false,
       list: [
         {
           title: '我的关注',
@@ -136,6 +165,11 @@ export default {
           icon: '#icon-zuijin'
         }
       ]
+    }
+  },
+  methods: {
+    goRegister () {
+      console.log('register')
     }
   },
   components: {
