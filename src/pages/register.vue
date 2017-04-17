@@ -26,10 +26,10 @@
         <div v-else>
           <button  class="btn fake-btn">注册</button>
         </div>
-      <div class="go-login"><a>已有知乎账号？ 去登录</a></div>
+        <div class="go-login"><a href="#/login">已有知乎账号？ 去登录</a></div>
       </div>
+    </div>
   </div>
-</div>
 </template>
 <script>
 import Axios from 'axios'
@@ -83,7 +83,6 @@ export default {
           .catch((error) => {
             console.log(error)
           })
-          // this.userCheck = true
         } else {
           this.userCheck = false
           this.msg = '用户名只能包含中文、字母数字和下划线'
@@ -159,42 +158,27 @@ export default {
 </script>
 <style lang="scss" scoped>
   @import "../scss/config";
-.register {
-  .close-btn {
-    color: $icon;
-    font-size: 23px;
-    margin-top: 10px;
-    margin-left: 10px;
-  }
-  .title {
-    margin-top: 20px;
-    color: #2DA1FE;
-    font-size: 55px;
-    text-align: center;
-    letter-spacing: 8px;
-  }
-  .register-form {
-    width: 93%;
-    margin: 10px auto 0 auto;
-    .user-set {
-      label {
-        display: block;
-      }
-      input {
-        padding: 5px;
-        height: 35px;
-        font-size: 15px;
-        letter-spacing: 1px;
-        width: 98%;
-        border: none;
-        border-radius: 0;
-        border-bottom: 1px solid $sm-font;
-      }
+  .register {
+    .close-btn {
+      color: $icon;
+      font-size: 23px;
+      margin-top: 10px;
+      margin-left: 10px;
     }
-    .captcha {
-      display: flex;
-      .captcha-input {
-        flex: 3;
+    .title {
+      margin-top: 20px;
+      color: #2DA1FE;
+      font-size: 55px;
+      text-align: center;
+      letter-spacing: 8px;
+    }
+    .register-form {
+      width: 93%;
+      margin: 10px auto 0 auto;
+      .user-set {
+        label {
+          display: block;
+        }
         input {
           padding: 5px;
           height: 35px;
@@ -206,36 +190,51 @@ export default {
           border-bottom: 1px solid $sm-font;
         }
       }
-      .captcha-pic {
-        flex: 1;
+      .captcha {
+        display: flex;
+        .captcha-input {
+          flex: 3;
+          input {
+            padding: 5px;
+            height: 35px;
+            font-size: 15px;
+            letter-spacing: 1px;
+            width: 98%;
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid $sm-font;
+          }
+        }
+        .captcha-pic {
+          flex: 1;
+        }
       }
-    }
-    .notice-msg {
-      color: #FF4600;
-    }
-    .submit {
-      width: 100%;
-      margin-top: 10px;
-      text-align: center;
-      button {
+      .notice-msg {
+        color: #FF4600;
+      }
+      .submit {
+        width: 100%;
+        margin-top: 10px;
         text-align: center;
-        border: none;
-        border-radius: 5px;
-        background: #2DA1FE;
-        width: 90%;
-        height: 45px;
-        color: #ffffff;
-        font-size: 16px;
-        letter-spacing: 3px;
-      }
-      .fake-btn {
-        background: rgba(45,161,254,0.5);
+        button {
+          text-align: center;
+          border: none;
+          border-radius: 5px;
+          background: #2DA1FE;
+          width: 90%;
+          height: 45px;
+          color: #ffffff;
+          font-size: 16px;
+          letter-spacing: 3px;
+        }
+        .fake-btn {
+          background: rgba(45,161,254,0.5);
+        }
       }
     }
+    .go-login {
+      margin-top: 15px;
+      text-align: center;
+    }
   }
-  .go-login {
-    margin-top: 15px;
-    text-align: center;
-  }
-}
 </style>

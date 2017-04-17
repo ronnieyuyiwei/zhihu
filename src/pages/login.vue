@@ -58,6 +58,7 @@ export default {
             })
           } else {
             this.msg = response.data.message
+            this.getCaptcha()     // 重新获取验证码
           }
         })
       } else {

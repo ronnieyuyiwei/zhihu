@@ -44,15 +44,15 @@ router.post('/register/createAccount', (req, res) => {
   }
 })
 router.get('/register/getCaptcha', (req, res) => {
-  var captcha = svgCaptcha.create({noise: 2, ignoreChars: '0o1i' })
-  req.session.captchaText2 = captcha.text.toLowerCase()
+  var captcha = svgCaptcha.create({noise: 2, ignoreChars: '0o1il' })
+  req.session.captchaText = captcha.text.toLowerCase()
   res.set('Content-Type', 'image/svg+xml')
   res.status(200).send(captcha.data)
 })
 router.get('/register/checkCaptcha', (req, res) => {
   console.log('收到的验证码' + req.query.captcha)
   console.log('session验证码' + req.session.captchaText)
-  if (req.query.captcha === req.session.captchaText) {
+  if (req.query.captcha.toLowerCase() === req.session.captchaText) {
     res.send({message:'验证码正确', permission: true})
   } else {
     res.send({message:'验证码错误,请重新输入', permission: false})

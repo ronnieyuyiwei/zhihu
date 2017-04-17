@@ -8,7 +8,7 @@
           <img src="../img/head.jpg">
         </div>
         <div class="info">
-          <span class="name">申智珉</span>
+          <span class="name">{{account}}</span>
           <span class="notice">查看或编辑个人资料</span>
         </div>
         <svg class="icon" aria-hidden="true">
@@ -143,10 +143,12 @@
 <script>
 import SearchBar from '../components/search-bar.vue'
 import FootMenu from '../components/foot-menu.vue'
+import Axios from 'axios'
 export default {
   data () {
     return {
       login: false,
+      account: '',
       list: [
         {
           title: '我的关注',
@@ -167,9 +169,21 @@ export default {
       ]
     }
   },
+  mounted: function () {
+    Axios.get('/login/checkLogin')
+      .then((response) => {
+        console.log('more页面的response' + response.data.login)
+        if (response.data.login) {
+          this.login = true
+          this.account = response.data.account
+        } else {
+          this.login = false
+        }
+      })
+  },
   methods: {
     goRegister () {
-      console.log('register')
+      window.location.href = '#/register'
     }
   },
   components: {

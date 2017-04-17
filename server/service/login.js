@@ -18,11 +18,36 @@ router.post('/login/checkAccount', (req, res) => {
     if (err) console.log(err)
     console.log(result)
     if (result) {
+      req.session.account = data.account
+      res.cookie('AndLogin', {account: data.account}, { expires: new Date(Date.now() + 3600*1000*24*10), httpOnly: true });
       res.send('登录成功')
     } else {
       res.send('用户名密码错误')
     }
   })
+})
+router.get('/login/checkLogin', (req, res) => { //验证是否已经登录
+  // console.log('Cookies: ', req.cookies)
+  // console.log('Signed Cookies: ', req.signedCookies)
+  if(req.session.account) {
+    console.log('session中获取到账户名' + req.session.account)
+    res.send({
+      login: true,
+      account: req.session.account,
+      session_id: req.session.id
+    })
+  } else if (req.cookies.AndLogin.account) {
+    console.log('cookies中获取的账户名' + req.cookies.AndLogin.account)
+    res.send({
+      login: true,
+      account: req.cookies.AndLogin.account,
+      session_id: req.session.id
+    })
+  } else {
+    res.send({
+      login:false
+    })
+  }
 })
 router.get('/login/getCaptcha', (req, res) => {
   var captcha = svgCaptcha.create({noise: 2, ignoreChars: '0o1i' })
@@ -33,7 +58,7 @@ router.get('/login/getCaptcha', (req, res) => {
 router.get('/login/checkCaptcha', (req, res) => {
   console.log('收到的验证码' + req.query.captcha)
   console.log('session验证码' + req.session.captchaText2)
-  if (req.query.captcha === req.session.captchaText2) {
+  if (req.query.captcha.toLowerCase() === req.session.captchaText2) {
     res.send({message:'验证码正确', permission: true})
   } else {
     res.send({message:'验证码错误,请重新输入', permission: false})
