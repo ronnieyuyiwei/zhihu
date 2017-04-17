@@ -36,7 +36,7 @@ router.get('/login/checkLogin', (req, res) => { //验证是否已经登录
       account: req.session.account,
       session_id: req.session.id
     })
-  } else if (req.cookies.AndLogin.account) {
+  } else if (req.cookies.AndLogin) {
     console.log('cookies中获取的账户名' + req.cookies.AndLogin.account)
     res.send({
       login: true,
@@ -63,5 +63,14 @@ router.get('/login/checkCaptcha', (req, res) => {
   } else {
     res.send({message:'验证码错误,请重新输入', permission: false})
   }
+})
+router.get('/login/quitLogin', (req, res) => {
+  req.session.destroy(function (err) {
+    if (err) console.log(err)
+    res.cookie('AndLogin', {account: null}, {maxAge: 0}) // 删除cookie
+    res.send({login:false});
+  })
+
+
 })
 module.exports = router

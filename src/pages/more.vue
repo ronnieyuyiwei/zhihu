@@ -39,12 +39,16 @@
         </div>
       </template>
     </div>
+    <div class="quit" @click='quit'>
+      退出我的账号
+    </div>
     <foot-menu></foot-menu>
   </div>
 </template>
 <style lang="scss" scoped>
   @import "../scss/config";
   .more {
+    background: #EEEEF3;
     .operate {
       width: 100%;
       height: 50px;
@@ -54,7 +58,7 @@
       font-size: 16px;
       color: #54585D;
       font-weight: 600;
-      border-bottom: 1px solid $border-gray;
+      border-bottom: 1px solid $border;
     }
     .person {
       width: 100%;
@@ -62,7 +66,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      border-bottom: 2px solid $border-gray;
+      border-bottom: 2px solid $border;
+      background: white;
       .head {
         flex: 1.2;
         img {
@@ -95,7 +100,8 @@
       width: 100%;
       height: 95px;
       text-align: center;
-      border-bottom: 2px solid $border-gray;
+      border-bottom: 1px solid $border;
+      background: white;
       div {
         padding-top: 20px;
         font-size: 16px;
@@ -112,6 +118,8 @@
       }
     }
     .mine {
+      margin-top: 15px;
+      background: white;
       .my-operate {
         height: 43px;
         display: flex;
@@ -127,16 +135,27 @@
            text-align: left;
            color: $c-font;
            font-size: 14px;
-           border-bottom: 2px solid $border-gray;
+           border-bottom: 1px solid $border;
          }
          .right-icon {
            flex: 1;
            color: $sm-font;
            font-size: 15px;
-           border-bottom: 2px solid $border-gray;
+           border-bottom: 1px solid $border;
          }
 
       }
+    }
+    .quit {
+      width: 100%;
+      height: 45px;
+      margin-top: 15px;
+      background: #ffffff;
+      color: red;
+      text-align: center;
+      line-height: 45px;
+      border-top: 1px solid $border;
+      border-bottom: 1px solid $border;
     }
   }
 </style>
@@ -184,6 +203,14 @@ export default {
   methods: {
     goRegister () {
       window.location.href = '#/register'
+    },
+    quit () {
+      Axios.get('/login/quitLogin')
+      .then((response) => {
+        if (!response.data.login) {
+          this.login = false
+        }
+      })
     }
   },
   components: {
