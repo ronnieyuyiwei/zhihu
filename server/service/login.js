@@ -26,10 +26,10 @@ router.post('/login/checkAccount', (req, res) => {
     }
   })
 })
-router.get('/login/checkLogin', (req, res) => { //验证是否已经登录
+router.get('/login/checkLogin', (req, res) => { // 验证是否已经登录
   // console.log('Cookies: ', req.cookies)
   // console.log('Signed Cookies: ', req.signedCookies)
-  if(req.session.account) {
+  if (req.session.account) {
     console.log('session中获取到账户名' + req.session.account)
     res.send({
       login: true,
@@ -45,7 +45,7 @@ router.get('/login/checkLogin', (req, res) => { //验证是否已经登录
     })
   } else {
     res.send({
-      login:false
+      login: false
     })
   }
 })
@@ -59,18 +59,16 @@ router.get('/login/checkCaptcha', (req, res) => {
   console.log('收到的验证码' + req.query.captcha)
   console.log('session验证码' + req.session.captchaText2)
   if (req.query.captcha.toLowerCase() === req.session.captchaText2) {
-    res.send({message:'验证码正确', permission: true})
+    res.send({message: '验证码正确', permission: true})
   } else {
-    res.send({message:'验证码错误,请重新输入', permission: false})
+    res.send({message: '验证码错误,请重新输入', permission: false})
   }
 })
 router.get('/login/quitLogin', (req, res) => {
   req.session.destroy(function (err) {
     if (err) console.log(err)
     res.cookie('AndLogin', {account: null}, {maxAge: 0}) // 删除cookie
-    res.send({login:false});
+    res.send({login: false})
   })
-
-
 })
 module.exports = router
