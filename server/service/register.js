@@ -11,7 +11,7 @@ router.get('/register/getAccount', (req, res) => {
     console.log(req.body.account)
     if (result) {
       res.send({message: '用户名已经存在', permission: false})
-    }else {
+    } else {
       res.send({message: '', permission: true})
     }
   })
@@ -24,13 +24,15 @@ router.post('/register/createAccount', (req, res) => {
   function validate () {                        // 服务器验证
     let acReg = /^[\u4E00-\u9FA5A-Za-z0-9_]+$/  // 匹配中文、数字、字母及下划线
     let psReg = /^[A-Za-z0-9]+$/                // 匹配数字及字母
-    if (!(acReg.test(data.account) && data.account.length >=4 && data.account.length <=10))
+    if (!(acReg.test(data.account) && data.account.length >= 4 && data.account.length <= 10)) {
       return {msg: '用户名不符合格式，拒绝注册', permission: false}
-    if (!(psReg.test(data.password) && data.password.length >=8 && data.password.length <=20))
+    }
+    if (!(psReg.test(data.password) && data.password.length >= 8 && data.password.length <= 20)) {
       return {msg: '密码不符合格式，拒绝注册', permission: false}
+    }
     return {msg: '验证通过', permission: true}
   }
-  if(validate().permission) {            // 数据库存储
+  if (validate().permission) {            // 数据库存储
     var newAccount = new User(data)
     newAccount.save((err) => {
       if (err) {
@@ -44,7 +46,7 @@ router.post('/register/createAccount', (req, res) => {
   }
 })
 router.get('/register/getCaptcha', (req, res) => {
-  var captcha = svgCaptcha.create({noise: 2, ignoreChars: '0o1il' })
+  var captcha = svgCaptcha.create({ noise: 2, ignoreChars: '0o1il' })
   req.session.captchaText = captcha.text.toLowerCase()
   res.set('Content-Type', 'image/svg+xml')
   res.status(200).send(captcha.data)
@@ -53,9 +55,9 @@ router.get('/register/checkCaptcha', (req, res) => {
   console.log('收到的验证码' + req.query.captcha)
   console.log('session验证码' + req.session.captchaText)
   if (req.query.captcha.toLowerCase() === req.session.captchaText) {
-    res.send({message:'验证码正确', permission: true})
+    res.send({message: '验证码正确', permission: true})
   } else {
-    res.send({message:'验证码错误,请重新输入', permission: false})
+    res.send({message: '验证码错误,请重新输入', permission: false})
   }
 })
 
