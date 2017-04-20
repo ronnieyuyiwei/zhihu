@@ -8,7 +8,7 @@
     <div class="title">知乎</div>
     <div class="register-form">
       <div class="user-set">
-        <label><input type="text" @change='validate' v-model.trim='account' placeholder="用户名"></label>
+        <label><input type="text" @input='validate' v-model.trim='account' placeholder="用户名"></label>
         <label><input type="password" @change='ps_validate' v-model.trim='password' placeholder="密码（8-15位）"></label>
         <label><input type="password" @change='equal_validate' v-model.trim='password2' placeholder="再次输入密码"></label>
       </div>
@@ -61,28 +61,31 @@ export default {
     }
   },
   methods: {
+    checkUser () {
+      Axios.get('/register/getAccount', {  // 验证用户名是否重复
+        params: {
+          account: this.account
+        }
+      })
+      .then((response) => {
+        if (!response.data.permission) {
+          this.msg = response.data.message
+          this.userCheck = false
+        } else {
+          this.msg = response.data.message
+          this.userCheck = true
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    },
     validate () {
       if (this.account.length >= 4 && this.account.length <= 10) {
         this.msg = ''
         let reg = /^[\u4E00-\u9FA5A-Za-z0-9_]+$/  // 匹配中文、字母数字和下划线
         if (reg.test(this.account)) {
-          Axios.get('/register/getAccount', {  // 验证用户名是否重复
-            params: {
-              account: this.account
-            }
-          })
-          .then((response) => {
-            if (!response.data.permission) {
-              this.msg = response.data.message
-              this.userCheck = false
-            } else {
-              this.msg = response.data.message
-              this.userCheck = true
-            }
-          })
-          .catch((error) => {
-            console.log(error)
-          })
+          this.checkUser()
         } else {
           this.userCheck = false
           this.msg = '用户名只能包含中文、字母数字和下划线'
@@ -115,6 +118,7 @@ export default {
       } else {
         this.passwordEq = true
         this.msg = ''
+        this.checkUser()                // 再次检查用户名是否重复
       }
     },
     register () {
