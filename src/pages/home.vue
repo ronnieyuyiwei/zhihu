@@ -7,7 +7,7 @@
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-myQuestion"></use>
           </svg>
-          <router-link to='/question'>
+          <router-link to='/ask_question'>
             <span>提问</span>
           </router-link>
         </div>
@@ -29,9 +29,7 @@
     </div>
     <div class="body-content">
       <ProblemContent></ProblemContent>
-      <ProblemContent></ProblemContent>
-      <ProblemContent></ProblemContent>
-      <ProblemContent></ProblemContent>
+      
     </div>
     <div class="foot-content">
       <FootMenu></FootMenu>
@@ -124,14 +122,12 @@
 import ProblemContent from '../components/problem-content.vue'
 import SearchBar from '../components/search-bar.vue'
 import FootMenu from '../components/foot-menu.vue'
-import Question from './question.vue'
 export default{
   name: 'home',
   components: {
     ProblemContent,
     SearchBar,
-    FootMenu,
-    Question
+    FootMenu
   }
 }
 

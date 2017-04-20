@@ -32,8 +32,8 @@ export default [
         component: resolve => require(['../pages/more.vue'], resolve)
       },
       {
-        path: '/question',
-        component: resolve => require(['../pages/question.vue'], resolve)
+        path: '/ask_question',
+        component: resolve => require(['../pages/ask-question.vue'], resolve)
       },
       {
         path: '/answer',
@@ -44,8 +44,8 @@ export default [
         component: resolve => require(['../pages/answer-content.vue'], resolve)
       },
       {
-        path: '/smile',
-        component: resolve => require(['../pages/smile.vue'], resolve)
+        path: '/more/my_creation',
+        component: resolve => require(['../pages/my-creation.vue'], resolve)
       }
     ]
   }

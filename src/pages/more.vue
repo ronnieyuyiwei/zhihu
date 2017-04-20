@@ -24,7 +24,7 @@
     </div>
     <div class="mine">
       <template v-for="item in list">
-        <div class="my-operate">
+        <div class="my-operate" @click="goPage(item.href)">
             <span class="left-icon">
               <svg class="icon" aria-hidden="true">
               <use :xlink:href='item.icon'></use>
@@ -170,6 +170,11 @@ export default {
       account: '',
       list: [
         {
+          title: '我的创作',
+          icon: '#icon-bianji1',
+          href: '/more/my_creation'
+        },
+        {
           title: '我的关注',
           icon: '#icon-guanzhu'
         },
@@ -204,13 +209,16 @@ export default {
     goRegister () {
       window.location.href = '#/register'
     },
-    quit () {
+    quit () {             // 退出登录
       Axios.get('/login/quitLogin')
       .then((response) => {
         if (!response.data.login) {
           this.login = false
         }
       })
+    },
+    goPage (href) {      // 进入二级页面
+      window.location.href = '#' + href
     }
   },
   components: {

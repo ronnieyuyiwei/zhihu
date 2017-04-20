@@ -7,7 +7,7 @@
         </router-link>
         <a class="next-step" @click='goStep2'>下一步</a>
       </div>
-      <input v-model.trim='title' type="text" placeholder="请写下你的问题并用问号结尾" autofocus>
+      <input v-model.trim='title' type="text" @input='checkTitle' placeholder="请写下你的问题并用问号结尾" autofocus>
     </div>
     <div v-show='step2' class="fill-describle">
       <div class="button-bar">
@@ -48,7 +48,7 @@
         step1: true,
         step2: false,
         step3: false,
-        titles: '',
+        title: '',
         describe: '',
         topic: ''
       }
@@ -77,6 +77,14 @@
         .then((response) => {
           console.log(response.data)
         })
+      },
+      checkTitle () {
+        let reg = /.*[//?？]$/   // 匹配是否问号结尾
+        if (reg.test(this.title)) {
+          console.log('问号结尾')
+        } else {
+          console.log('没有问号结尾')
+        }
       }
     }
   }

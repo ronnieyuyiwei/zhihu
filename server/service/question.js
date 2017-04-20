@@ -20,4 +20,7 @@ router.post('/question/addQuestion', (req, res) => {
     }
   })
 })
+router.get('/question/getQuestion', (req, res) => {
+
+})
 module.exports = router
