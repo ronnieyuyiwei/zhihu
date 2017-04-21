@@ -46,6 +46,10 @@ export default [
       {
         path: '/more/my_creation',
         component: resolve => require(['../pages/my-creation.vue'], resolve)
+      },
+      {
+        path: '/test',
+        component: resolve => require(['../pages/test.vue'], resolve)
       }
     ]
   }

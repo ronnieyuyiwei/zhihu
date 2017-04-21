@@ -4,6 +4,7 @@
 const express = require('express')
 const router = express.Router()
 const Problem = require('../db/files/problem')
+const User = require('../db/files/user')
 router.post('/question/addQuestion', (req, res) => {
   let data = {
     questioner: req.session.account,
@@ -12,11 +13,17 @@ router.post('/question/addQuestion', (req, res) => {
     describe: req.body.describe
   }
   var newProblem = new Problem(data)
-  newProblem.save((err) => {
+  newProblem.save((err, doc) => {
     if (err) {
       console.log(err)
     } else {
-      res.send('保存成功')
+      User.update({'account': data.questioner}, {$push: {'ask': doc._id}}, {upsert: true}, function (err) {
+        if (err) {
+          console.log(err)
+        } else {
+          res.send('保存成功')
+        }
+      })
     }
   })
 })

@@ -72,7 +72,8 @@
       },
       commit () {
         Axios.post('/question/addQuestion', {
-          title: this.title
+          title: this.title,
+          describe: this.describe
         })
         .then((response) => {
           console.log(response.data)
