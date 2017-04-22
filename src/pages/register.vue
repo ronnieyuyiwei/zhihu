@@ -44,8 +44,7 @@ export default {
       pic: '',
       userCheck: false,
       passwordCheck: false,
-      passwordEq: false,
-      captchaCheck: false
+      passwordEq: false
     }
   },
   mounted: function () {
@@ -118,7 +117,7 @@ export default {
       } else {
         this.passwordEq = true
         this.msg = ''
-        this.checkUser()                // 再次检查用户名是否重复
+        this.account_validate() // 再次检查用户是否合法
       }
     },
     register () {

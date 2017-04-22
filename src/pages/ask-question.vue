@@ -5,9 +5,13 @@
         <router-link to="/home">
           <a class="cancel">取消</a>
         </router-link>
+        <label>还可以输入&nbsp;3&nbsp;字</label>
         <a class="next-step" @click='goStep2'>下一步</a>
       </div>
-      <input v-model.trim='title' type="text" @input='checkTitle' placeholder="请写下你的问题并用问号结尾" autofocus>
+      <span>{{title}}</span>
+      <div class="input">
+        <textarea></textarea>
+      </div>
     </div>
     <div v-show='step2' class="fill-describle">
       <div class="button-bar">
@@ -41,6 +45,7 @@
 </template>
 <script>
   import Axios from 'axios'
+  import AutoSize from '../js/autosize.js'
   export default {
     name: 'question',
     data () {
@@ -50,8 +55,12 @@
         step3: false,
         title: '',
         describe: '',
-        topic: ''
+        topic: this.$refs.gg
+
       }
+    },
+    mounted: function () {
+      AutoSize.autosize(document.querySelectorAll('textarea'))
     },
     methods: {
       goStep2 () {
@@ -126,13 +135,24 @@
         min-width: 40px;
         text-align: center;
       }
+      label{
+        line-height: 40px;
+        font-size: 14px;
+        color: $font;
+      }
     }
-    input {
+    .input {
+      display: flex;
       width: 100%;
+      min-height: 40px;
+      border: 1px solid red;
+
+    }
+    textarea {
+      width: 96%;
       border: none;
-      height: 40px;
-      padding-left: 20px;
       font-size: 16px;
+      justify-content: center;
     }
     .fill-topic {
       .title {

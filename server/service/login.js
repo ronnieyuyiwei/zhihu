@@ -19,7 +19,7 @@ router.post('/login/checkAccount', (req, res) => {
     console.log(result)
     if (result) {
       req.session.account = data.account
-      res.cookie('AndLogin', {account: data.account}, { expires: new Date(Date.now() + 3600*1000*24*10), httpOnly: true });
+      res.cookie('AndLogin', {account: data.account}, { expires: new Date(Date.now() + 3600 * 1000 * 24 * 10), httpOnly: true });
       res.send('登录成功')
     } else {
       res.send('用户名密码错误')

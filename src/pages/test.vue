@@ -1,39 +1,25 @@
 <template>
   <div class="test">
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
-    <div>5</div>
-    <div class="six">6</div>
-    <div>7</div>
-    <div>8</div>
-    <div>9</div>
-    <div>10</div>
+    <!--g<div>{{text}}</div>-->
+    <!--<div class="dv" contenteditable="true" @input="handleClick($event)"></div>-->
+    <textarea ></textarea>
   </div>
 </template>
 <style lang="scss" scoped>
-  .test {
-    width: 360px;
-    height: 300px;
-    border: 5px solid black;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    /*align-content: space-around;*/
-    flex-grow: 3;
-    div{
-      width: 40px;
-      height: 40px;
-      background:cornflowerblue;
-      border: 1px solid mediumpurple;
-    }
-    .six {
-      align-self: flex-end;
-    }
-
+  div{
+    font-size: 16px;
   }
-
+  .dv {
+    margin-left: 100px;
+    margin-top: 100px;
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+  }
+  textarea{
+    width: 500px;
+    resize: both;
+  }
 </style>
 <script>
 </script>
