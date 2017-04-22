@@ -5,12 +5,11 @@
         <router-link to="/home">
           <a class="cancel">取消</a>
         </router-link>
-        <label>还可以输入&nbsp;3&nbsp;字</label>
+        <label>还可以输入&nbsp;{{titleCount}}&nbsp;字</label>
         <a class="next-step" @click='goStep2'>下一步</a>
       </div>
-      <span>{{title}}</span>
       <div class="input">
-        <textarea></textarea>
+        <textarea v-model='title' @input='checkTitle' placeholder="请写下你的问题并用问号结尾" autofocus></textarea>
       </div>
     </div>
     <div v-show='step2' class="fill-describle">
@@ -22,7 +21,9 @@
           </span>
         <a class="next-step" @click='goStep3'>下一步</a>
       </div>
-      <input v-model.trim='describe' type="text" placeholder="请填写问题相关的描述信息（选填）" autofocus>
+      <div class="input">
+        <textarea placeholder="请填写问题相关描述信息（选填）" autofocus></textarea>
+      </div>
     </div>
     <div v-show='step3' class="fill-topic">
       <div class="button-bar">
@@ -54,13 +55,13 @@
         step2: false,
         step3: false,
         title: '',
+        titleCount: '',
         describe: '',
-        topic: this.$refs.gg
-
+        topic: ''
       }
     },
     mounted: function () {
-      AutoSize.autosize(document.querySelectorAll('textarea'))
+      AutoSize(document.querySelectorAll('textarea'))
     },
     methods: {
       goStep2 () {
@@ -89,12 +90,20 @@
         })
       },
       checkTitle () {
+      /*
         let reg = /.*[//?？]$/   // 匹配是否问号结尾
         if (reg.test(this.title)) {
           console.log('问号结尾')
         } else {
           console.log('没有问号结尾')
         }
+        */
+        let count = this.title.length
+        console.log(count)
+        if (count > 40 && count <= 50) {
+          this.titleCount = 50 - count
+        }
+        
       }
     }
   }
@@ -143,16 +152,17 @@
     }
     .input {
       display: flex;
-      width: 100%;
-      min-height: 40px;
-      border: 1px solid red;
-
-    }
-    textarea {
-      width: 96%;
-      border: none;
+      width: 95%;
+      color: $sm-font;
+      border-bottom: 1px solid red;
       font-size: 16px;
-      justify-content: center;
+      margin: 0 auto;
+      textarea {
+        width: 96%;
+        border: none;
+        font-size: 17px;
+        justify-content: center;
+    }
     }
     .fill-topic {
       .title {
