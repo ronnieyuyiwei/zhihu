@@ -7,7 +7,7 @@ const Problem = require('../db/files/problem')
 const User = require('../db/files/user')
 router.post('/question/addQuestion', (req, res) => {
   let data = {
-    questioner: req.session.account,
+    questioner: req.cookies.account,
     // topic: req.body.topic,
     title: req.body.title,
     describe: req.body.describe
