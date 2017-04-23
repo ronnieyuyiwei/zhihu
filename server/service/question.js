@@ -7,11 +7,14 @@ const Problem = require('../db/files/problem')
 const User = require('../db/files/user')
 router.post('/question/addQuestion', (req, res) => {
   let data = {
-    questioner: req.cookies.account,
+    questioner: req.session.account || req.cookies.AndLogin.account,
     // topic: req.body.topic,
     title: req.body.title,
     describe: req.body.describe
   }
+  console.log('后台得到的questioner：' + data.questioner)
+  console.log('后台得到的session.account：' + req.session.account)
+  console.log('后台得到的cookies.account：' + req.cookies.AndLogin.account)
   var newProblem = new Problem(data)
   newProblem.save((err, doc) => {
     if (err) {

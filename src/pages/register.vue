@@ -9,7 +9,7 @@
     <div class="register-form">
       <div class="user-set">
         <label><input type="text" @input='account_validate' v-model.trim='account' placeholder="用户名"></label>
-        <label><input type="password" @change='ps_validate' v-model.trim='password' placeholder="密码（8-15位）"></label>
+        <label><input type="password" @input='ps_validate' v-model.trim='password' placeholder="密码（8-15位）"></label>
         <label><input type="password" @change='equal_validate' v-model.trim='password2' placeholder="再次输入密码"></label>
       </div>
       <div class="captcha">
@@ -144,6 +144,7 @@ export default {
           this.getCaptcha()               // 重新请求验证码
         }
       })
+      this.getCaptcha()
       .catch((error) => {
         console.log(error)
       })

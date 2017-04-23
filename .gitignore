@@ -41,5 +41,5 @@ jspm_packages
 /npm_modules/*
 
 # .idea
-/.idea
+/.idea/*
 

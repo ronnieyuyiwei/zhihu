@@ -8,7 +8,6 @@ var svgCaptcha = require('svg-captcha')
 router.get('/register/getAccount', (req, res) => {
   User.findOne({'account': req.query.account}, (err, result) => {
     if (err) console.log(err)
-    console.log(req.body.account)
     if (result) {
       res.send({message: '用户名已经存在', permission: false})
     } else {
@@ -32,21 +31,29 @@ router.post('/register/createAccount', (req, res) => {
     }
     return {msg: '验证通过', permission: true}
   }
-  if (validate().permission) {            // 数据库存储
-    var newAccount = new User(data)
-    newAccount.save((err) => {
+  console.log('是否允许登录：' + validate().permission)
+  if (validate().permission) { // 数据库存储
+    // var newAccount = new User(data)
+    console.log(`执行到数据存储之前`)
+    // newAccount.save((err) => {
+    //   if (err) {
+    //     console.log(err)
+    //   } else {
+    //     res.send('注册成功')
+    //   }
+    // })
+    User.create(data, function (err) {
       if (err) {
         console.log(err)
-      } else {
-        res.send('注册成功')
       }
+      res.send('新注册成功')
     })
   } else {
     res.send(validate().msg)
   }
 })
 router.get('/register/getCaptcha', (req, res) => {
-  var captcha = svgCaptcha.create({ noise: 2, ignoreChars: '0o1il' })
+  var captcha = svgCaptcha.create({ noise: 2, ignoreChars: '0o1i' })
   req.session.captchaText = captcha.text.toLowerCase()
   res.set('Content-Type', 'image/svg+xml')
   res.status(200).send(captcha.data)

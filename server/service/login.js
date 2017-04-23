@@ -19,7 +19,7 @@ router.post('/login/checkAccount', (req, res) => {
     console.log(result)
     if (result) {
       req.session.account = data.account
-      res.cookie('AndLogin', {account: data.account}, { expires: new Date(Date.now() + 3600 * 1000 * 24 * 10), httpOnly: true });
+      res.cookie('AndLogin', {account: data.account}, { expires: new Date(Date.now() + 3600 * 1000 * 24 * 10), httpOnly: true })
       res.send('登录成功')
     } else {
       res.send('用户名密码错误')
@@ -38,6 +38,7 @@ router.get('/login/checkLogin', (req, res) => { // 验证是否已经登录
     })
   } else if (req.cookies.AndLogin) {
     console.log('cookies中获取的账户名' + req.cookies.AndLogin.account)
+    req.session.account = req.cookies.AndLogin.account
     res.send({
       login: true,
       account: req.cookies.AndLogin.account,
@@ -50,7 +51,7 @@ router.get('/login/checkLogin', (req, res) => { // 验证是否已经登录
   }
 })
 router.get('/login/getCaptcha', (req, res) => {
-  var captcha = svgCaptcha.create({noise: 2, ignoreChars: '0o1i' })
+  var captcha = svgCaptcha.create({ noise: 2, ignoreChars: '0o1i' })
   req.session.captchaText2 = captcha.text.toLowerCase()
   res.set('Content-Type', 'image/svg+xml')
   res.status(200).send(captcha.data)
