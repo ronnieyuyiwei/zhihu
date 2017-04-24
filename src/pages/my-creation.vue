@@ -21,35 +21,24 @@
       <div class='answer-content'></div>
       <div class='answer-info'></div>
     </div>
-    <div class="question">
-      <div class='question-title'>
-        {{questionTitle}}
-      </div>
-      <div class='question-content'>
-        {{questionContent}}
-      </div>
-      <div class='question-info'>
-        <span>3&nbsp;回答</span>
-        <span>4&nbsp;关注</span>
-        <span>1&nbsp;年前</span>
-      </div>
-    </div>
+    <my-question v-for='(item, index) in questionList' v-bind:data='item' v-bind:index='index'></my-question>
     <foot-menu></foot-menu>
   </div>
 </template>
 
 <script>
 import FootMenu from '../components/foot-menu.vue'
+import MyQuestion from '../components/question.vue'
 import Axios from 'axios'
 export default{
   name: 'my-creation',
   components: {
-    FootMenu
+    FootMenu,
+    MyQuestion
   },
   data () {
     return {
-      questionTitle: '',
-      questionContent: ''
+      questionList: []
     }
   },
   mounted: function () {
@@ -57,9 +46,18 @@ export default{
       if (err) {
         console.log(err)
       }
-    }).then((response) => {
-      this.questionTitle = response.data.questionTitle
-      this.questionContent = response.data.questionContent
+    })
+   .then((response) => {
+     for (let i = response.data.length; i > 0; i--) {
+       this.questionList.push({
+         questionTitle: response.data[i - 1].title,
+         questionContent: response.data[i - 1].describe
+       })
+       console.log(i)
+     }
+   })
+    .catch((error) => {
+      console.log(error)
     })
   }
 }
@@ -114,38 +112,6 @@ export default{
         &:nth-child(1) {
           border-right: 1px solid $border;
         }
-      }
-    }
-    .question {
-      padding: 0 10px 0 10px;
-      border-bottom: 1px solid $border;
-      .question-title{
-        margin-top: 15px;
-        width:100%;
-        word-break:break-all;
-        display:-webkit-box;
-        -webkit-line-clamp:2;
-        -webkit-box-orient:vertical;
-        overflow:hidden;
-        font-size: 17px;
-        font-weight: 600;
-      }
-      .question-content {
-        margin-top: 10px;
-        width:100%;
-        word-break:break-all;
-        display:-webkit-box;
-        -webkit-line-clamp:3;
-        -webkit-box-orient:vertical;
-        overflow:hidden;
-        font-size: 15px;
-        color: $c-font;
-      }
-      .question-info {
-        margin-top: 8px;
-        font-size: 14px;
-        color: $sm-font;
-        padding-bottom: 8px;
       }
     }
   }

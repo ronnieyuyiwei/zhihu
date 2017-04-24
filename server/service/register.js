@@ -46,7 +46,7 @@ router.post('/register/createAccount', (req, res) => {
       if (err) {
         console.log(err)
       }
-      res.send('新注册成功')
+      res.send('注册成功')
     })
   } else {
     res.send(validate().msg)

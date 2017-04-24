@@ -41,9 +41,16 @@ router.get('/question/getQuestion', (req, res) => {
       if (err) {
         console.log(err)
       }
-      console.log(doc[0]._ask[0].title)
-
-      res.send('ff')
+      var list = []
+      for (let i = 0; i < doc[0]._ask.length; i++) {
+        list.push({
+          title: doc[0]._ask[i].title,
+          describe: doc[0]._ask[i].describe
+        })
+      }
+      console.log(list)
+      res.send(list)
     })
+
 })
 module.exports = router
