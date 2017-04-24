@@ -23,17 +23,16 @@
     </div>
     <div class="question">
       <div class='question-title'>
-        前端模块化的意义是什么？前端模块化的意义是什么？前端模块化的意义是什么？前端模块化的意义是什么？前端模块化的意义是什么？前端模块化的意义是什么？前端模块化的意义是什么？前端模块化的意义是什么？前端模块化的意义是什么？前端模块化的意义是什么？前端模块化的意义是什么？前端模块化的意义是什么？
+        {{questionTitle}}
       </div>
       <div class='question-content'>
-        这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容
+        {{questionContent}}
       </div>
       <div class='question-info'>
         <span>3&nbsp;回答</span>
         <span>4&nbsp;关注</span>
         <span>1&nbsp;年前</span>
       </div>
-
     </div>
     <foot-menu></foot-menu>
   </div>
@@ -41,10 +40,27 @@
 
 <script>
 import FootMenu from '../components/foot-menu.vue'
+import Axios from 'axios'
 export default{
   name: 'my-creation',
   components: {
     FootMenu
+  },
+  data () {
+    return {
+      questionTitle: '',
+      questionContent: ''
+    }
+  },
+  mounted: function () {
+    Axios.get('/question/getQuestion', (err, response) => {
+      if (err) {
+        console.log(err)
+      }
+    }).then((response) => {
+      this.questionTitle = response.data.questionTitle
+      this.questionContent = response.data.questionContent
+    })
   }
 }
 </script>

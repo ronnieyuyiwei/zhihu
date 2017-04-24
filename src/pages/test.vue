@@ -2,7 +2,8 @@
   <div class="test">
     <!--g<div>{{text}}</div>-->
     <!--<div class="dv" contenteditable="true" @input="handleClick($event)"></div>-->
-    <textarea ></textarea>
+    <div>{{msg}}</div>
+    <input type="text" v-model="msg">
   </div>
 </template>
 <style lang="scss" scoped>
@@ -22,4 +23,11 @@
   }
 </style>
 <script>
+  export default {
+    data () {
+      return {
+        msg: ''
+      }
+    }
+  }
 </script>

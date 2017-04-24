@@ -6,31 +6,44 @@ const router = express.Router()
 const Problem = require('../db/files/problem')
 const User = require('../db/files/user')
 router.post('/question/addQuestion', (req, res) => {
-  let data = {
-    questioner: req.session.account || req.cookies.AndLogin.account,
-    // topic: req.body.topic,
-    title: req.body.title,
-    describe: req.body.describe
-  }
-  console.log('后台得到的questioner：' + data.questioner)
-  console.log('后台得到的session.account：' + req.session.account)
-  console.log('后台得到的cookies.account：' + req.cookies.AndLogin.account)
-  var newProblem = new Problem(data)
-  newProblem.save((err, doc) => {
+  var user = req.session.account || req.cookies.AndLogin.account
+  var userQuery = User.findOne({account: user})
+  userQuery.exec(function (err, result) {
     if (err) {
       console.log(err)
-    } else {
-      User.update({'account': data.questioner}, {$push: {'ask': doc._id}}, {upsert: true}, function (err) {
-        if (err) {
-          console.log(err)
-        } else {
-          res.send('保存成功')
-        }
-      })
     }
+    let question = {
+      questioner: result._id,
+      title: req.body.title,
+      describe: req.body.describe
+    }
+    var newProblem = new Problem(question)
+    newProblem.save((err, doc) => {
+      if (err) {
+        console.log(err)
+      } else {
+        User.update({'account': user}, {$push: {'_ask': doc._id}}, {upsert: true}, function (err) {
+          if (err) {
+            console.log(err)
+          } else {
+            res.send('保存成功')
+          }
+        })
+      }
+    })
   })
 })
 router.get('/question/getQuestion', (req, res) => {
+  var user = req.session.account || req.cookies.AndLogin.account
+  User.find({account: user})
+    .populate('_ask')
+    .exec(function (err, doc) {
+      if (err) {
+        console.log(err)
+      }
+      console.log(doc[0]._ask[0].title)
 
+      res.send('ff')
+    })
 })
 module.exports = router

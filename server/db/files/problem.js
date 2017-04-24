@@ -5,7 +5,7 @@ var mongoose = require('../mongoose')
 var Schema = mongoose.Schema
 var problemSchema = new Schema({
   date: { type: Date, default: Date.now },
-  questioner: String,
+  questioner: { type: Schema.Types.ObjectId, ref: 'User' },
   topic: Array,
   title: String,
   describe: String,

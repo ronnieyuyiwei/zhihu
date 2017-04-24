@@ -52,9 +52,13 @@ export default {
   },
   computed: {
     validator: function () {  // 开放注册按钮
-      if (this.userCheck && this.passwordCheck && this.passwordEq) {
+      var flag = this.userCheck && this.passwordCheck && this.passwordEq
+      if (flag) {
         return true
       } else {
+        if (this.account !== '' && this.password !== '' && this.password2 !== '' && this.msg === '' && !flag) {
+          this.msg = '注册信息有误，请重新检查规则' // 防弱智代码
+        }
         return false
       }
     }
@@ -117,7 +121,7 @@ export default {
       } else {
         this.passwordEq = true
         this.msg = ''
-        this.account_validate() // 再次检查用户是否合法
+        this.account_validate() // 再次检查用户是否合法-->
       }
     },
     register () {
