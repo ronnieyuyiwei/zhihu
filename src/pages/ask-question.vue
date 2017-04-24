@@ -109,11 +109,11 @@
         if (count === 0) {
           this.titleNext = false
         }
-        if (count > 0 && count <= 40) {
+        if (count > 0 && count <= 40) {        // 显示提示
           this.titleNext = true
           this.titleLimit1 = false
           this.titleLimit2 = false
-        } else if (count > 40 && count <= 50) {
+        } else if (count > 40 && count <= 50) {  // 问题不得超过50字
           this.titleNext = true
           this.titleLimit1 = true
           this.titleLimit2 = false

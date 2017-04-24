@@ -7,7 +7,7 @@
       {{data.questionContent}}
     </div>
     <div class='question-info'>
-      <span>{{index}}&nbsp;回答</span>
+      <span>2&nbsp;回答</span>
       <span>4&nbsp;关注</span>
       <span>1&nbsp;年前</span>
     </div>
@@ -51,6 +51,6 @@
 <script>
 export default {
   name: 'question',
-  props: ['data', 'index']
+  props: ['data']
 }
 </script>
