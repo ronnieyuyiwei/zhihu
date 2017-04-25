@@ -16,8 +16,11 @@
 <style lang="scss" scoped>
 @import "../scss/config";
 .question {
+      margin-top: 10px;
       padding: 0 10px 0 10px;
       border-bottom: 1px solid $border;
+      border-top: 1px solid $border;
+      background: white;
       .question-title{
         margin-top: 15px;
         width:100%;

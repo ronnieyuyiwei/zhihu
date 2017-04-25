@@ -7,21 +7,24 @@
       我的创作
     </div>
     <div class="menu">
-      <div>回答</div>
-      <div>提问</div>
-      <div>分享</div>
+      <div @click="changeMenu('answer')"><span>回答</span></div>
+      <div @click="changeMenu('question')"><span>提问</span></div>
+      <div @click="changeMenu('share')"><span>分享</span></div>
       <div>专栏</div>
     </div>
-    <div class="order">
+    <div v-show='menu.answer' class="order">
       <div>按时间排序</div>
       <div>按赞同排序</div>
     </div>
-    <div class="answer">
-      <div class='answer-title'></div>
-      <div class='answer-content'></div>
-      <div class='answer-info'></div>
+
+    <div class="menu-question" v-show='menu.question'>
+      <my-question v-for='(item, index) in questionList' v-bind:data='item' v-bind:index='index'></my-question>
     </div>
-    <my-question v-for='(item, index) in questionList' v-bind:data='item' v-bind:index='index'></my-question>
+    <div v-show='menu.answer' class="answer">
+      <div class='answer-title'>222222222</div>
+      <div class='answer-content'>333</div>
+      <div class='answer-info'>3334</div>
+    </div>
     <foot-menu></foot-menu>
   </div>
 </template>
@@ -38,7 +41,13 @@ export default{
   },
   data () {
     return {
-      questionList: []
+      questionList: [],
+      menu: {
+        answer: true,
+        question: false,
+        share: false,
+        column: false
+      }
     }
   },
   mounted: function () {
@@ -58,6 +67,17 @@ export default{
     .catch((error) => {
       console.log(error)
     })
+  },
+  methods: {
+    changeMenu: function (data) {
+      for (var item in this.menu) {
+        if (data === item) {
+          this.menu[item] = true
+        } else {
+          this.menu[item] = false
+        }
+      }
+    }
   }
 }
 </script>
@@ -87,13 +107,25 @@ export default{
       padding: 0 30px 0 30px;
       text-align: center;
       justify-content: center;
-      align-items: center;
+      line-height: 40px;
       font-size: 14px;
       color: $sp-font;
       font-weight: 600;
       div {
         flex: 1;
+        height: 40px;
       }
+      span {
+        display: inline-block;
+        width: 60%;
+      }
+      span.active {
+        border-bottom: 2px solid $blue
+      }
+
+    }
+    .menu-question{
+      background: $border-gray;
     }
     .order {
       display: flex;
