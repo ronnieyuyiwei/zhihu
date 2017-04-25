@@ -36,7 +36,13 @@ router.post('/question/addQuestion', (req, res) => {
 router.get('/question/getQuestion', (req, res) => {
   var user = req.session.account || req.cookies.AndLogin.account
   User.find({account: user})
-    .populate('_ask')
+    .populate({
+      path: '_ask',
+      options: {
+        limit: 3,
+        sort: {date: -1}
+      }
+    })
     .exec(function (err, doc) {
       if (err) {
         console.log(err)

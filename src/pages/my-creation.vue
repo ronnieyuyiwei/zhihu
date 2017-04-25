@@ -48,12 +48,11 @@ export default{
       }
     })
    .then((response) => {
-     for (let i = response.data.length; i > 0; i--) {
+     for (let i = 0; i < response.data.length; i++) {
        this.questionList.push({
-         questionTitle: response.data[i - 1].title,
-         questionContent: response.data[i - 1].describe
+         questionTitle: response.data[i].title,
+         questionContent: response.data[i].describe
        })
-       console.log(i)
      }
    })
     .catch((error) => {
