@@ -44,11 +44,12 @@ export default [
         component: resolve => require(['../pages/answer-content.vue'], resolve)
       },
       {
-        path: '/more/my_creation',
+        path: '/more/my_creation/:userId',
         component: resolve => require(['../pages/my-creation.vue'], resolve)
       },
       {
-        path: '/test',
+        name: 'test2',
+        path: '/test/:id',
         component: resolve => require(['../pages/test.vue'], resolve)
       }
     ]

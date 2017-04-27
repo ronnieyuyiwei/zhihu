@@ -1,9 +1,8 @@
 <template>
   <div class="test">
-    <!--g<div>{{text}}</div>-->
-    <!--<div class="dv" contenteditable="true" @input="handleClick($event)"></div>-->
-    <div>{{msg}}</div>
-    <input type="text" v-model="msg">
+   <P>这个页面是test</P>
+    user:    {{$route.params.id}}
+    user:    {{$route.params.ff}}
   </div>
 </template>
 <style lang="scss" scoped>

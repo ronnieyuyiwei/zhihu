@@ -24,7 +24,7 @@
     </div>
     <div class="mine">
       <template v-for="item in list">
-        <div class="my-operate" @click="goPage(item.href)">
+        <div class="my-operate" @click="goPage()">
             <span class="left-icon">
               <svg class="icon" aria-hidden="true">
               <use :xlink:href='item.icon'></use>
@@ -172,7 +172,7 @@ export default {
         {
           title: '我的创作',
           icon: '#icon-bianji1',
-          href: '/more/my_creation'
+          href: 'user'
         },
         {
           title: '我的关注',
@@ -217,8 +217,9 @@ export default {
         }
       })
     },
-    goPage (href) {      // 进入二级页面
-      window.location.href = '#' + href
+    goPage () {      // 进入二级页面
+      // window.location.href = '#' + href
+      this.$router.push({ name: 'test2', params: {id: 155} })
     }
   },
   components: {

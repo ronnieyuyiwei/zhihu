@@ -55,12 +55,15 @@ export default {
       var flag = this.userCheck && this.passwordCheck && this.passwordEq
       if (flag) {
         return true
-      } else {
+      }
+      /*
+      else {
         if (this.account !== '' && this.password !== '' && this.password2 !== '' && this.msg === '' && !flag) {
           this.msg = '注册信息有误，请重新检查规则' // 防弱智代码
         }
         return false
       }
+      */
     }
   },
   methods: {
