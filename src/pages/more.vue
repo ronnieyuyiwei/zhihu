@@ -219,7 +219,7 @@ export default {
     },
     goPage (href) {      // 进入二级页面
       // window.location.href = '#' + href
-      this.$router.push({ path: `${href}${this.account}` })
+      this.$router.push({ path: `${href}` })
     }
   },
   components: {

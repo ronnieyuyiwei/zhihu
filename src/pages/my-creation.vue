@@ -7,23 +7,24 @@
       我的创作
     </div>
     <div class="menu">
-      <div v-for='item in menu'>
+      <div v-for='item in menus'>
         <router-link :to='item.path'>
           <div>{{item.name}}</div>
         </router-link>
       </div>
     </div>
-    <div v-show='menu.answer' class="order">
-      <div>按时间排序</div>
-      <div>按赞同排序</div>
-    </div>
-    <div v-show='menu.answer' class="answer">
-      <div class='answer-title'>222222222</div>
-      <div class='answer-content'>333</div>
-      <div class='answer-info'>3334</div>
-    </div>
-    <foot-menu></foot-menu>
-  </div>
+    <!--<div v-show='menu.answer' class="order">-->
+      <!--<div>按时间排序</div>-->
+      <!--<div>按赞同排序</div>-->
+    <!--</div>-->
+    <!--<div v-show='menu.answer' class="answer">-->
+      <!--<div class='answer-title'>222222222</div>-->
+      <!--<div class='answer-content'>333</div>-->
+      <!--<div class='answer-info'>3334</div>-->
+    <!--</div>-->
+    <!--<foot-menu></foot-menu>-->
+  <!--</div>-->
+</div>
 </template>
 
 <script>
@@ -36,23 +37,26 @@ export default {
   },
   data () {
     return {
-      menu: [
+      menus: [
         {
           name: '回答',
           title: 'answer',
-          path: '/answer'
+          path: 'answer'
         },
         {
           name: '提问',
-          title: 'question'
+          title: 'question',
+          path: 'question'
         },
         {
           name: '分享',
-          title: 'share'
+          title: 'share',
+          path: 'answer'
         },
         {
           name: '专栏',
-          title: 'column'
+          title: 'column',
+          path: 'answer'
         }
       ]
     }

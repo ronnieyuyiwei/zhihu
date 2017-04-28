@@ -44,19 +44,19 @@ export default [
         component: resolve => require(['../pages/answer-content.vue'], resolve)
       },
       {
-        path: '/more/my_creation/:userId',
+        path: '/more/my_creation',
         component: resolve => require(['../pages/my-creation.vue'], resolve),
         children: [
           {
             path: '/answer',
-            component: resolve => require(['../components/more/menu-question.vue'], resolve)
+            component: resolve => require(['../components/more/gg.vue'], resolve)
           }
         ]
       },
       {
         name: 'test2',
-        path: '/test/:id',
-        component: resolve => require(['../pages/test.vue'], resolve)
+        path: '/test',
+        component: resolve => require(['../components/more/gg.vue'], resolve)
       }
     ]
   }
