@@ -7,17 +7,22 @@
       我的创作
     </div>
     <div class="menu">
-      <div @click="changeMenu('answer')"><span>回答</span></div>
-      <div @click="changeMenu('question')"><span>提问</span></div>
-      <div @click="changeMenu('share')"><span>分享</span></div>
-      <div>专栏</div>
+      <!--<div @click="changeMenu('answer')"><span>回答</span></div>-->
+      <!--<div @click="changeMenu('question')"><span>提问</span></div>-->
+      <!--<div @click="changeMenu('share')"><span>分享</span></div>-->
+      <!--<div>专栏</div>-->
+      <template v-for='item in menu'>
+        <router-link :to='itme.path'>
+          <div>{{item.title}}</div>
+        </router-link>
+      </template>
     </div>
     <div v-show='menu.answer' class="order">
       <div>按时间排序</div>
       <div>按赞同排序</div>
     </div>
 
-    <div class="menu-question" v-show='menu.question'>
+    <div class="menu-question" v-if='menu.question'>
       <my-question v-for='(item, index) in questionList' v-bind:data='item' v-bind:index='index'></my-question>
     </div>
     <div v-show='menu.answer' class="answer">
@@ -42,12 +47,21 @@ export default{
   data () {
     return {
       questionList: [],
-      menu: {
-        answer: true,
-        question: false,
-        share: false,
-        column: false
-      }
+      menu: [
+        {
+          title: 'answer',
+          path: ''
+        },
+        {
+          title: 'question'
+        },
+        {
+          title: 'share'
+        },
+        {
+          title: 'column'
+        }
+      ]
     }
   },
   mounted: function () {
