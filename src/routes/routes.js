@@ -45,7 +45,13 @@ export default [
       },
       {
         path: '/more/my_creation/:userId',
-        component: resolve => require(['../pages/my-creation.vue'], resolve)
+        component: resolve => require(['../pages/my-creation.vue'], resolve),
+        children: [
+          {
+            path: '/answer',
+            component: resolve => require(['../components/more/menu-question.vue'], resolve)
+          }
+        ]
       },
       {
         name: 'test2',

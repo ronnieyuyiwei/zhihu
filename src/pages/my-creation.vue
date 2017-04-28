@@ -7,23 +7,15 @@
       我的创作
     </div>
     <div class="menu">
-      <!--<div @click="changeMenu('answer')"><span>回答</span></div>-->
-      <!--<div @click="changeMenu('question')"><span>提问</span></div>-->
-      <!--<div @click="changeMenu('share')"><span>分享</span></div>-->
-      <!--<div>专栏</div>-->
-      <template v-for='item in menu'>
-        <router-link :to='itme.path'>
-          <div>{{item.title}}</div>
+      <div v-for='item in menu'>
+        <router-link :to='item.path'>
+          <div>{{item.name}}</div>
         </router-link>
-      </template>
+      </div>
     </div>
     <div v-show='menu.answer' class="order">
       <div>按时间排序</div>
       <div>按赞同排序</div>
-    </div>
-
-    <div class="menu-question" v-if='menu.question'>
-      <my-question v-for='(item, index) in questionList' v-bind:data='item' v-bind:index='index'></my-question>
     </div>
     <div v-show='menu.answer' class="answer">
       <div class='answer-title'>222222222</div>
@@ -36,51 +28,34 @@
 
 <script>
 import FootMenu from '../components/foot-menu.vue'
-import MyQuestion from '../components/question.vue'
-import Axios from 'axios'
-export default{
+// import Axios from 'axios'
+export default {
   name: 'my-creation',
   components: {
-    FootMenu,
-    MyQuestion
+    FootMenu
   },
   data () {
     return {
-      questionList: [],
       menu: [
         {
+          name: '回答',
           title: 'answer',
-          path: ''
+          path: '/answer'
         },
         {
+          name: '提问',
           title: 'question'
         },
         {
+          name: '分享',
           title: 'share'
         },
         {
+          name: '专栏',
           title: 'column'
         }
       ]
     }
-  },
-  mounted: function () {
-    Axios.get('/question/getQuestion', (err, response) => {
-      if (err) {
-        console.log(err)
-      }
-    })
-   .then((response) => {
-     for (let i = 0; i < response.data.length; i++) {
-       this.questionList.push({
-         questionTitle: response.data[i].title,
-         questionContent: response.data[i].describe
-       })
-     }
-   })
-    .catch((error) => {
-      console.log(error)
-    })
   },
   methods: {
     changeMenu: function (data) {
@@ -125,7 +100,7 @@ export default{
       font-size: 14px;
       color: $sp-font;
       font-weight: 600;
-      div {
+      a {
         flex: 1;
         height: 40px;
       }
