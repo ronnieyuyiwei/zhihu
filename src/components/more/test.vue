@@ -1,7 +1,8 @@
 <template>
   <div>
-    <p>2gggggggggggg2</p>
+    <p>test</p>
     <div>{{msg}}</div>
+    <router-view></router-view>
   </div>
 </template>
 <style>
@@ -11,7 +12,7 @@
 export default{
   data () {
     return {
-      msg: 'hello gg vue'
+      msg: 'hello test vue'
     }
   }
 }

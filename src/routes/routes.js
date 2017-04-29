@@ -2,6 +2,20 @@
  * Created by YYW on 2017/1/14.
  */
 import App from '../App.vue'
+const myCreation = resolve => {
+  // require.ensure 是 Webpack 的特殊语法，用来设置 code-split point
+  // （代码分块）
+  require.ensure(['../pages/my-creation.vue'], () => {
+    resolve(require('../pages/my-creation.vue'))
+  })
+}
+const more = resolve => {
+  // require.ensure 是 Webpack 的特殊语法，用来设置 code-split point
+  // （代码分块）
+  require.ensure(['../pages/more.vue'], () => {
+    resolve(require('../pages/more.vue'))
+  })
+}
 export default [
   {
     path: '/',
@@ -28,35 +42,14 @@ export default [
         component: resolve => require(['../pages/discovery.vue'], resolve)
       },
       {
-        path: '/more',
-        component: resolve => require(['../pages/more.vue'], resolve)
-      },
-      {
-        path: '/ask_question',
-        component: resolve => require(['../pages/ask-question.vue'], resolve)
-      },
-      {
-        path: '/answer',
-        component: resolve => require(['../pages/answer.vue'], resolve)
-      },
-      {
-        path: '/answer-content',
-        component: resolve => require(['../pages/answer-content.vue'], resolve)
-      },
-      {
-        path: '/more/my_creation',
-        component: resolve => require(['../pages/my-creation.vue'], resolve),
+        path: 'more',
+        component: more,
         children: [
           {
-            path: '/answer',
-            component: resolve => require(['../components/more/gg.vue'], resolve)
+            path: 'my_creation',
+            component: myCreation
           }
         ]
-      },
-      {
-        name: 'test2',
-        path: '/test',
-        component: resolve => require(['../components/more/gg.vue'], resolve)
       }
     ]
   }

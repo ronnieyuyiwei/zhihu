@@ -24,21 +24,26 @@
     </div>
     <div class="mine">
       <template v-for="item in list">
-        <div class="my-operate" @click="goPage(item.href)">
+        <div class="my-operate">
+          <router-link :to='item.href'>
             <span class="left-icon">
               <svg class="icon" aria-hidden="true">
               <use :xlink:href='item.icon'></use>
             </svg>
             </span>
-             <span class="title">{{item.title}}</span>
-             <span class="right-icon">
+            <span class="title">{{item.title}}</span>
+            <span class="right-icon">
              <svg class="icon" aria-hidden="true">
                 <use xlink:href='#icon-jiantou'></use>
              </svg>
           </span>
+          </router-link>
         </div>
       </template>
     </div>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
     <div class="quit" @click='quit'>
       退出我的账号
     </div>
@@ -47,6 +52,12 @@
 </template>
 <style lang="scss" scoped>
   @import "../scss/config";
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0
+  }
   .more {
     background: #EEEEF3;
     .operate {
@@ -125,6 +136,10 @@
         display: flex;
         text-align: center;
         line-height: 43px;
+        a{
+          display: inline-flex;
+          width: 100%;
+        }
         .left-icon {
           flex: 1.2;
           font-size: 22px;
@@ -172,23 +187,27 @@ export default {
         {
           title: '我的创作',
           icon: '#icon-bianji1',
-          href: '/more/my_creation/'
+          href: '/more/my_creation'
         },
         {
           title: '我的关注',
-          icon: '#icon-guanzhu'
+          icon: '#icon-guanzhu',
+          href: '/more/my_creation'
         },
         {
           title: '我的收藏',
-          icon: '#icon-shoucang'
+          icon: '#icon-shoucang',
+          href: '/more/my_creation'
         },
         {
           title: '我的草稿',
-          icon: '#icon-caogao'
+          icon: '#icon-caogao',
+          href: '/more/my_creation'
         },
         {
           title: '最近浏览',
-          icon: '#icon-zuijin'
+          icon: '#icon-zuijin',
+          href: '/more/my_creation'
         }
       ]
     }
@@ -216,10 +235,6 @@ export default {
           this.login = false
         }
       })
-    },
-    goPage (href) {      // 进入二级页面
-      // window.location.href = '#' + href
-      this.$router.push({ path: `${href}` })
     }
   },
   components: {
