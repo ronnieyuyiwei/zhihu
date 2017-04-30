@@ -22,7 +22,7 @@
      <div class="answer">
        <div class="author">
          <div class="head-sculpture">
-           <img src="../img/head.jpg">
+           <img src="../../img/head.jpg">
          </div>
          <div class="person-intro">
            <span class="name">喵小星</span>
@@ -52,7 +52,7 @@
 
 </template>
 <style lang="scss" scoped>
-  @import "../scss/config";
+  @import "../../scss/config";
 .answer-content{
   .operate{
     width: 100%;
@@ -169,7 +169,7 @@
 }
 </style>
 <script>
-import AnswerFoot from '../components/answer-foot.vue'
+import AnswerFoot from '../../components/answer-foot.vue'
 export default {
   name: 'answer-content',
   components: {

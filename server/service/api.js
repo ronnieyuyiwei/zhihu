@@ -3,6 +3,7 @@ const router = express.Router()
 const register = require('./register')
 const login = require('./login')
 const question = require('./question')
+const answer = require('./answer')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 
@@ -20,4 +21,5 @@ router.use(cookieParser('this_is_a_smart_website'))
 router.use('/', question)
 router.use('/', register)
 router.use('/', login)
+router.use('/', answer)
 module.exports = router

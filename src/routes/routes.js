@@ -43,11 +43,11 @@ export default [
       },
       {
         path: '/answer/:id',
-        component: resolve => require(['../pages/answer.vue'], resolve)
+        component: resolve => require(['../pages/answer/answer.vue'], resolve)
       },
       {
         path: '/answer-content',
-        component: resolve => require(['../pages/answer-content.vue'], resolve)
+        component: resolve => require(['../pages/answer/answer-content.vue'], resolve)
       },
       {
         path: 'more',

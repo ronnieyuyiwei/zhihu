@@ -8,11 +8,11 @@
         </svg>
       </div>
       <div class="question-content">
-        <div class="title">在朝鲜的七个月，没网络没手机一夜回到解放前？</div>
-        <div class="describe">这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述</div>
+        <div class="title">{{title}}</div>
+        <div class="describe">{{describe}}</div>
         <div class="info">
           <div class="focus">1016人关注</div>
-          <div class="comment">2222条评论</div>
+          <div class="comment">{{commentNum}}&nbsp条评论</div>
           <div class="add-focus">
             <button>+&nbsp;关注</button>
           </div>
@@ -44,7 +44,7 @@
   </div>
 </template>
 <style lang="scss" scoped>
- @import "../scss/config";
+ @import "../../scss/config";
   .answer{
     .question {
       .topic {
@@ -149,12 +149,22 @@ export default {
       title: '',
       describe: '',
       focus: '',
-      comments: ''
+      commentNum: ''
     }
+  },
+  created: function () {
+    this.getData()
   },
   methods: {
     getData () {
-      Axios.get()
+      Axios.get('/answer/getQuestion', {
+        questionId: this.$route.params.id
+      })
+      .then((response) => {
+        this.title = response.data.title
+        this.describe = response.data.describe
+        this.commentNum = response.data.commentNum
+      })
     }
   }
 }
