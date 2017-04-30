@@ -1,6 +1,19 @@
 <template>
   <div class="menu-question">
-    <my-question v-for='(item, index) in questionList' v-bind:data='item' v-bind:index='index'></my-question>
+
+    <div class="question" v-for='item in questionnList'>
+      <div class='question-title'>
+        {item.title}
+      </div>
+      <div class='question-content'>
+        {item.describe}
+      </div>
+      <div class='question-info'>
+        <span>2&nbsp;回答</span>
+        <span>4&nbsp;关注</span>
+        <span>1&nbsp;年前</span>
+      </div>
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -42,23 +55,6 @@
   }
 </style>
 <script>
-const MyQuestion = {
-  template: `
-    <div class="question">
-      <div class='question-title'>
-        {{data.questionTitle}}
-      </div>
-    <div class='question-content'>
-      {{data.questionContent}}
-    </div>
-    <div class='question-info'>
-      <span>2&nbsp;回答</span>
-      <span>4&nbsp;关注</span>
-      <span>1&nbsp;年前</span>
-    </div>
-  </div>
-  `
-}
 import Axios from 'axios'
 export default {
   name: 'menu-question',
@@ -66,9 +62,6 @@ export default {
     return {
       questionList: []
     }
-  },
-  component: {
-    MyQuestion
   },
   props: ['data'],
   created () {

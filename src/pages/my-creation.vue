@@ -7,13 +7,15 @@
       我的创作
     </div>
     <div class="menu">
-      <div v-for='item in menus'>
-        <router-link :to='item.path'>
+      <div class="btn" v-for='item in menus'>
+        <router-link :to='item.path' >
           <div>{{item.name}}</div>
         </router-link>
       </div>
     </div>
-
+    <div class="menu-conent">
+      <router-view></router-view>
+    </div>
     <!--<div v-show='menu.answer' class="order">-->
       <!--<div>按时间排序</div>-->
       <!--<div>按赞同排序</div>-->
@@ -42,12 +44,12 @@ export default {
         {
           name: '回答',
           title: 'answer',
-          path: 'answer'
+          path: '/more/my_creation/'
         },
         {
           name: '提问',
           title: 'question',
-          path: 'question'
+          path: '/more/my_creation/question'
         },
         {
           name: '分享',
@@ -78,6 +80,12 @@ export default {
 <style lang='scss' scoped>
   @import "../scss/config";
   .my-creation {
+    position: absolute;
+    top: 0 ;
+    left: 0;
+    background: white ;
+    width: 100%;
+    min-height: 1000px;
     .title{
       width: 100%;
       height: 50px;
@@ -105,9 +113,8 @@ export default {
       font-size: 14px;
       color: $sp-font;
       font-weight: 600;
-      a {
+      .btn{
         flex: 1;
-        height: 40px;
       }
       span {
         display: inline-block;

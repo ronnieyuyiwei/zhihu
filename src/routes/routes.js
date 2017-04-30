@@ -3,15 +3,11 @@
  */
 import App from '../App.vue'
 const myCreation = resolve => {
-  // require.ensure 是 Webpack 的特殊语法，用来设置 code-split point
-  // （代码分块）
   require.ensure(['../pages/my-creation.vue'], () => {
     resolve(require('../pages/my-creation.vue'))
   })
 }
 const more = resolve => {
-  // require.ensure 是 Webpack 的特殊语法，用来设置 code-split point
-  // （代码分块）
   require.ensure(['../pages/more.vue'], () => {
     resolve(require('../pages/more.vue'))
   })
@@ -47,7 +43,13 @@ export default [
         children: [
           {
             path: 'my_creation',
-            component: myCreation
+            component: myCreation,
+            children: [
+              {
+                path: 'question',
+                component: resolve => require(['../components/more/menu-question.vue'], resolve)
+              }
+            ]
           }
         ]
       }
