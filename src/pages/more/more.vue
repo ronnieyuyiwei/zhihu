@@ -223,11 +223,9 @@ export default {
         if (response.data.login) {
           this.login = true
           this.account = response.data.account
-          /*
           for (var item in this.list) {
             this.list[item].href += this.account
           }
-          */
         } else {
           this.login = false
         }

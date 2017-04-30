@@ -51,7 +51,8 @@ router.get('/question/getQuestion', (req, res) => {
       for (let i = 0; i < doc[0]._ask.length; i++) {
         list.push({
           title: doc[0]._ask[i].title,
-          describe: doc[0]._ask[i].describe
+          describe: doc[0]._ask[i].describe,
+          id: doc[0]._ask[i]._id
         })
       }
       res.send(list)

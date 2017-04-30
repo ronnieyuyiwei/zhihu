@@ -42,7 +42,7 @@ export default [
         component: resolve => require(['../pages/ask-question.vue'], resolve)
       },
       {
-        path: '/answer',
+        path: '/answer/:id',
         component: resolve => require(['../pages/answer.vue'], resolve)
       },
       {
@@ -54,7 +54,7 @@ export default [
         component: more,
         children: [
           {
-            path: 'my_creation',
+            path: 'my_creation/:id',
             component: myCreation,
             children: [
               {

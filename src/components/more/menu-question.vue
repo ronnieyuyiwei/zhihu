@@ -1,17 +1,19 @@
 <template>
   <div class="menu-question">
-    <div class="question" v-for='data in questionList'>
-      <div class='question-title'>
-        {{data.questionTitle}}
-      </div>
-      <div class='question-content'>
-        {{data.questionContent}}
-      </div>
-      <div class='question-info'>
-        <span>2&nbsp;回答</span>
-        <span>4&nbsp;关注</span>
-        <span>1&nbsp;年前</span>
-      </div>
+    <div v-for='data in questionList'>
+      <router-link tag='div' :to='data.questionId' class="question" >
+        <div class='question-title'>
+          {{data.questionTitle}}
+        </div>
+        <div class='question-content'>
+          {{data.questionContent}}
+        </div>
+        <div class='question-info'>
+          <span>2&nbsp;回答</span>
+          <span>4&nbsp;关注</span>
+          <span>1&nbsp;年前</span>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -72,7 +74,8 @@ export default {
      for (let i = 0; i < response.data.length; i++) {
        this.questionList.push({
          questionTitle: response.data[i].title,
-         questionContent: response.data[i].describe
+         questionContent: response.data[i].describe,
+         questionId: `/answer/${response.data[i].id}`
        })
      }
    })

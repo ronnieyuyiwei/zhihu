@@ -25,19 +25,14 @@
       <!--<div class='answer-content'>333</div>-->
       <!--<div class='answer-info'>3334</div>-->
     <!--</div>-->
-    <!--<foot-menu></foot-menu>-->
   <!--</div>-->
 </div>
 </template>
 
 <script>
-import FootMenu from '../../../components/foot-menu.vue'
 // import Axios from 'axios'
 export default {
   name: 'my-creation',
-  components: {
-    FootMenu
-  },
   data () {
     return {
       menus: [
@@ -64,14 +59,14 @@ export default {
       ]
     }
   },
+  created: function () {
+    this.addPath()
+  },
   methods: {
-    changeMenu: function (data) {
-      for (var item in this.menu) {
-        if (data === item) {
-          this.menu[item] = true
-        } else {
-          this.menu[item] = false
-        }
+    addPath: function () {
+      for (let item in this.menus) {
+        this.menus[item].path = `/more/my_creation/${this.$route.params.id}/${this.menus[item].path}`  // 修改路由
+        console.log(this.menus[item].path)
       }
     }
   }
