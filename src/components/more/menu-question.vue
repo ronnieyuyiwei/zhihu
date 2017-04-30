@@ -1,12 +1,11 @@
 <template>
   <div class="menu-question">
-
-    <div class="question" v-for='item in questionnList'>
+    <div class="question" v-for='data in questionList'>
       <div class='question-title'>
-        {item.title}
+        {{data.questionTitle}}
       </div>
       <div class='question-content'>
-        {item.describe}
+        {{data.questionContent}}
       </div>
       <div class='question-info'>
         <span>2&nbsp;回答</span>
@@ -63,7 +62,6 @@ export default {
       questionList: []
     }
   },
-  props: ['data'],
   created () {
     Axios.get('/question/getQuestion', (err, response) => {
       if (err) {

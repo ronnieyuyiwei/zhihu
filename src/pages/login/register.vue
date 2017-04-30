@@ -26,7 +26,7 @@
         <div v-else>
           <button  class="btn fake-btn">注册</button>
         </div>
-        <div class="go-login"><a href="#/login">已有知乎账号？ 去登录</a></div>
+        <div class="go-login"><router-link to='/login'>已有知乎账号？ 去登录</router-link></div>
       </div>
     </div>
   </div>
@@ -168,7 +168,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  @import "../scss/config";
+  @import "../../scss/config";
   .register {
     .close-btn {
       color: $icon;

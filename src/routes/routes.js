@@ -3,13 +3,13 @@
  */
 import App from '../App.vue'
 const myCreation = resolve => {
-  require.ensure(['../pages/my-creation.vue'], () => {
-    resolve(require('../pages/my-creation.vue'))
+  require.ensure(['../pages/more/children/my-creation.vue'], () => {
+    resolve(require('../pages/more/children/my-creation.vue'))
   })
 }
 const more = resolve => {
-  require.ensure(['../pages/more.vue'], () => {
-    resolve(require('../pages/more.vue'))
+  require.ensure(['../pages/more/more.vue'], () => {
+    resolve(require('../pages/more/more.vue'))
   })
 }
 export default [
@@ -27,15 +27,27 @@ export default [
       },
       {
         path: '/register',
-        component: resolve => require(['../pages/register.vue'], resolve)
+        component: resolve => require(['../pages/login/register.vue'], resolve)
       },
       {
         path: '/login',
-        component: resolve => require(['../pages/login.vue'], resolve)
+        component: resolve => require(['../pages/login/login.vue'], resolve)
       },
       {
         path: '/discovery',
         component: resolve => require(['../pages/discovery.vue'], resolve)
+      },
+      {
+        path: '/ask_question',
+        component: resolve => require(['../pages/ask-question.vue'], resolve)
+      },
+      {
+        path: '/answer',
+        component: resolve => require(['../pages/answer.vue'], resolve)
+      },
+      {
+        path: '/answer-content',
+        component: resolve => require(['../pages/answer-content.vue'], resolve)
       },
       {
         path: 'more',
@@ -48,10 +60,18 @@ export default [
               {
                 path: 'question',
                 component: resolve => require(['../components/more/menu-question.vue'], resolve)
+              },
+              {
+                path: 'answer',
+                component: resolve => require(['../components/more/gg.vue'], resolve)
               }
             ]
           }
         ]
+      },
+      {
+        path: '*',
+        component: resolve => require(['../pages/error/404.vue'], resolve)
       }
     ]
   }

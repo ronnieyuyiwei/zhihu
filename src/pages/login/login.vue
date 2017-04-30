@@ -77,7 +77,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  @import "../scss/config";
+  @import "../../scss/config";
   .login {
     .close-btn {
       color: $icon;

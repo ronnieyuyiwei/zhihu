@@ -9,10 +9,13 @@ const fs = require('fs')
 const path = require('path')
 const bodyParser = require('body-parser')
 // 引入处理post数据的模块
-// const bodyParser = require('body-parser')
+
 // 引入Express
 const express = require('express')
+// 引入connect-history-api-fallback
+var history = require('connect-history-api-fallback')
 const app = express()
+app.use(history())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(api)

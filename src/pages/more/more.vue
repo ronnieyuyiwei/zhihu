@@ -5,7 +5,7 @@
     <div v-if='login'>
       <div class="person">
         <div class="head">
-          <img src="../img/head.jpg">
+          <img src="../../img/head.jpg">
         </div>
         <div class="info">
           <span class="name">{{account}}</span>
@@ -51,7 +51,7 @@
   </div>
 </template>
 <style lang="scss" scoped>
-  @import "../scss/config";
+  @import "../../scss/config";
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s
   }
@@ -175,8 +175,8 @@
   }
 </style>
 <script>
-import SearchBar from '../components/search-bar.vue'
-import FootMenu from '../components/foot-menu.vue'
+import SearchBar from '../../components/search-bar.vue'
+import FootMenu from '../../components/foot-menu.vue'
 import Axios from 'axios'
 export default {
   data () {
@@ -187,46 +187,54 @@ export default {
         {
           title: '我的创作',
           icon: '#icon-bianji1',
-          href: '/more/my_creation'
+          href: '/more/my_creation/'
         },
         {
           title: '我的关注',
           icon: '#icon-guanzhu',
-          href: '/more/my_creation'
+          href: `/more/my_creation/`
         },
         {
           title: '我的收藏',
           icon: '#icon-shoucang',
-          href: '/more/my_creation'
+          href: `/more/my_creation/`
         },
         {
           title: '我的草稿',
           icon: '#icon-caogao',
-          href: '/more/my_creation'
+          href: `/more/my_creation/`
         },
         {
           title: '最近浏览',
           icon: '#icon-zuijin',
-          href: '/more/my_creation'
+          href: `/more/my_creation/`
         }
       ]
     }
   },
-  mounted: function () {
-    Axios.get('/login/checkLogin')
+  created: function () {
+    this.checkLogin()
+  },
+  methods: {
+    checkLogin () {
+      Axios.get('/login/checkLogin')
       .then((response) => {
         console.log('more页面的response' + response.data.login)
         if (response.data.login) {
           this.login = true
           this.account = response.data.account
+          /*
+          for (var item in this.list) {
+            this.list[item].href += this.account
+          }
+          */
         } else {
           this.login = false
         }
       })
-  },
-  methods: {
+    },
     goRegister () {
-      window.location.href = '#/register'
+      this.$router.push('register')
     },
     quit () {             // 退出登录
       Axios.get('/login/quitLogin')

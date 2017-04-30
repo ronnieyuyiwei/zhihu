@@ -54,9 +54,7 @@ router.get('/question/getQuestion', (req, res) => {
           describe: doc[0]._ask[i].describe
         })
       }
-      console.log(list)
       res.send(list)
     })
-
 })
 module.exports = router

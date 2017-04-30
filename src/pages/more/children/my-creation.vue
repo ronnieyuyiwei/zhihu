@@ -8,7 +8,7 @@
     </div>
     <div class="menu">
       <div class="btn" v-for='item in menus'>
-        <router-link :to='item.path' >
+        <router-link :to='item.path'>
           <div>{{item.name}}</div>
         </router-link>
       </div>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import FootMenu from '../components/foot-menu.vue'
+import FootMenu from '../../../components/foot-menu.vue'
 // import Axios from 'axios'
 export default {
   name: 'my-creation',
@@ -44,22 +44,22 @@ export default {
         {
           name: '回答',
           title: 'answer',
-          path: '/more/my_creation/'
+          path: 'answer'
         },
         {
           name: '提问',
           title: 'question',
-          path: '/more/my_creation/question'
+          path: 'question'
         },
         {
           name: '分享',
           title: 'share',
-          path: 'answer'
+          path: 'share'
         },
         {
           name: '专栏',
           title: 'column',
-          path: 'answer'
+          path: 'column'
         }
       ]
     }
@@ -78,7 +78,7 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-  @import "../scss/config";
+  @import "../../../scss/config";
   .my-creation {
     position: absolute;
     top: 0 ;
@@ -115,13 +115,14 @@ export default {
       font-weight: 600;
       .btn{
         flex: 1;
-      }
-      span {
-        display: inline-block;
-        width: 60%;
-      }
-      span.active {
-        border-bottom: 2px solid $blue
+        a{
+          display: inline-block;
+          width: 100%;
+          height: 40px;
+        }
+        .router-link-active{
+          border-bottom: 2px solid $blue
+        }
       }
 
     }
