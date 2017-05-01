@@ -157,13 +157,28 @@ export default {
   },
   methods: {
     getData () {
+      console.log(this.$route.params.id)
       Axios.get('/answer/getQuestion', {
-        questionId: this.$route.params.id
+        params: {
+          questionId: this.$route.params.id
+        }
       })
       .then((response) => {
-        this.title = response.data.title
-        this.describe = response.data.describe
-        this.commentNum = response.data.commentNum
+        console.log('response.status' + response.status)
+        console.log(typeof response.status)
+        if (response.status === 400) {
+          console.log('error')
+        }
+        // this.title = response.data.title
+        // this.describe = response.data.describe
+        // this.commentNum = response.data.commentNum
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err.message)
+          console.log(err.status)
+          console.log(err.code)
+        }
       })
     }
   }
