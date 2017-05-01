@@ -66,7 +66,6 @@ export default {
     addPath: function () {
       for (let item in this.menus) {
         this.menus[item].path = `/more/my_creation/${this.$route.params.id}/${this.menus[item].path}`  // 修改路由
-        console.log(this.menus[item].path)
       }
     }
   }

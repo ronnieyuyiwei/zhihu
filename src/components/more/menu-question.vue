@@ -75,7 +75,7 @@ export default {
        this.questionList.push({
          questionTitle: response.data[i].title,
          questionContent: response.data[i].describe,
-         questionId: `/answer/${response.data[i].id}`
+         questionId: `/question/${response.data[i].id}`
        })
      }
    })

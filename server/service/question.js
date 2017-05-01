@@ -5,6 +5,7 @@ const express = require('express')
 const router = express.Router()
 const Problem = require('../db/files/problem')
 const User = require('../db/files/user')
+const mongoose = require('mongoose')
 router.post('/question/addQuestion', (req, res) => {
   var user = req.session.account || req.cookies.AndLogin.account
   var userQuery = User.findOne({account: user})
@@ -39,7 +40,6 @@ router.get('/question/getQuestion', (req, res) => {
     .populate({
       path: '_ask',
       options: {
-        limit: 3,
         sort: {date: -1}
       }
     })
@@ -58,4 +58,29 @@ router.get('/question/getQuestion', (req, res) => {
       res.send(list)
     })
 })
+router.get('/question/getData', (req, res) => {
+  let questionId = req.query.questionId
+  if (questionId.length === 24) {             // 检查问题id位数是否合法
+    Problem.findOne({_id: mongoose.Types.ObjectId(questionId)}, function (err, result) {
+      if (err) {
+        console.log(err)
+      }
+      console.log(result)
+      if (result) {
+        let question = {
+          status: true,
+          title: result.title,
+          describe: result.describe,
+          commentNum: result.comment.length
+        }
+        res.send(question)
+      } else {
+        res.send({status: false})
+      }
+    })
+  } else {
+    res.send({status: false})
+  }
+})
+
 module.exports = router

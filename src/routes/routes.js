@@ -42,8 +42,12 @@ export default [
         component: resolve => require(['../pages/ask-question.vue'], resolve)
       },
       {
-        path: '/answer/:id',
-        component: resolve => require(['../pages/answer/answer.vue'], resolve)
+        path: '/question/:id',
+        component: resolve => require(['../pages/question/question.vue'], resolve),
+        children: [{
+          path: 'add_answer',
+          component: resolve => require(['../pages/answer/add-answer.vue'], resolve)
+        }]
       },
       {
         path: '/test',
@@ -72,6 +76,11 @@ export default [
             ]
           }
         ]
+      },
+      {
+        name: 'error',
+        path: '/error',
+        component: resolve => require(['../pages/error/404.vue'], resolve)
       },
       {
         path: '*',
