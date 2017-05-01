@@ -161,12 +161,22 @@ export default {
       title: '',
       describe: '',
       focus: '',
-      commentNum: '',
-      layerPop: false // 回答层是否弹出
+      commentNum: ''
     }
   },
   created: function () {
     this.getData()
+  },
+  computed: {
+    layerPop: function () {
+      let reg = /add_answer$/
+      if (reg.test(this.$route.path)) {
+        console.log('it is true')
+        return true
+      } else {
+        return false
+      }
+    }
   },
   methods: {
     getData () {
@@ -192,7 +202,6 @@ export default {
     },
     addAnswer () {
       this.$router.push(`${this.$route.path}/add_answer`)
-      this.layerPop = true // 设置弹出层true
     }
   }
 }
