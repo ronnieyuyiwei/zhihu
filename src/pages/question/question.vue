@@ -28,13 +28,13 @@
               邀请回答
             </span>
           </div>
-          <div class="add-answer">
+          <div class="add-answer" @click='addAnswer'>
             <span>
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-bianji"></use>
               </svg>
             </span>&nbsp;
-            <span @click='addAnswer'>
+            <span>
               添加回答
             </span>
           </div>
@@ -43,7 +43,7 @@
     </div>
     <div class="answer-preview" v-show='!layerPop'></div>
     <div class="question-view">
-      <router-view></router-view>
+      <router-view :qid='questionId'></router-view>  // 绑定问题id
     </div>
   </div>
 </template>
@@ -161,7 +161,8 @@ export default {
       title: '',
       describe: '',
       focus: '',
-      commentNum: ''
+      commentNum: '',
+      questionId: this.$route.params.id
     }
   },
   created: function () {
@@ -169,9 +170,8 @@ export default {
   },
   computed: {
     layerPop: function () {
-      let reg = /add_answer$/
+      let reg = /add_answer$/                 // 匹配路由后缀 控制隐藏
       if (reg.test(this.$route.path)) {
-        console.log('it is true')
         return true
       } else {
         return false

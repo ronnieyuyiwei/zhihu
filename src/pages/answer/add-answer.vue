@@ -30,7 +30,7 @@
       border-bottom: 1px solid $border;
       span {
         color: #0283FE;
-        width: 50px;
+        width: 60px;
         height: 40px;
         line-height: 40px;
         font-size: 16px;
@@ -72,14 +72,17 @@
         flag: false
       }
     },
+    props: ['qid'],    // 获取上层路由传来的问题id
     methods: {
       checkWords: function () {
+        console.log('this.qid' + this.qid)
         if (this.answer.length !== 0) {
           this.flag = true
         } else {
           this.flag = false
         }
-      }
+      },
+
     }
   }
 </script>
