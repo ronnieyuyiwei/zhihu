@@ -7,7 +7,7 @@
           <span>千里不留行</span>
         </div>
         <div class='answer-content'>
-          这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容这里是回答内容
+          {{data.content}}
         </div>
         <div class='answer-info'>
           <span>2&nbsp;赞同</span> ·
@@ -67,18 +67,34 @@
   }
 </style>
 <script>
+import Axios from 'axios'
 export default {
   name: 'answer-template',
   data () {
     return {
-      answerList: [
-        {
-          hello: 1
-        },
-        {
-          hello: 2
+      answerList: []
+    }
+  },
+  props: ['qid'],
+  created: function () {
+    this.fetchData()
+  },
+  methods: {
+    fetchData () {
+      Axios.get('/answer/getAnswer_preview', {
+        params: {
+          questionId: this.qid
         }
-      ]
+      })
+      .then((response) => {
+        if (response.data) {
+          for (let i = 0; i < response.data.length; i++) {
+            this.answerList.push({
+              content: response.data[i].content
+            })
+          }
+        }
+      })
     }
   }
 }

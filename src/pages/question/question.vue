@@ -41,9 +41,11 @@
         </div>
       </div>
     </div>
-    <div class="answer-preview" v-show='!layerPop'></div>
+    <div class="answer-preview">
+      <answer-preview :qid='questionId'></answer-preview>
+    </div>
     <div class="question-view">
-      <router-view :qid='questionId'></router-view>  // 绑定问题id
+      <router-view :qid='questionId'></router-view>
     </div>
   </div>
 </template>
@@ -143,9 +145,7 @@
       }
     }
     .answer-preview {
-      height: 3000px;
       width: 100%;
-      background: yellow;
     }
     .question-view { // 弹出层
       width: 100%;
@@ -154,6 +154,7 @@
 </style>
 <script>
 import Axios from 'axios'
+import AnswerPreview from '../../components/answer/answer-template.vue'
 export default {
   name: 'question',
   data () {
@@ -164,6 +165,9 @@ export default {
       commentNum: '',
       questionId: this.$route.params.id
     }
+  },
+  components: {
+    AnswerPreview
   },
   created: function () {
     this.getData()
