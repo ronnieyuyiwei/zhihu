@@ -51,7 +51,7 @@ export default [
       },
       {
         path: '/test',
-        component: resolve => require(['../pages/test.vue'], resolve)
+        component: resolve => require(['../components/answer/answer-template.vue'], resolve)
       },
       {
         path: '/answer-content',

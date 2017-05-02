@@ -2,10 +2,10 @@
   <div class="success">
     <div>
       <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-chenggong"></use>
+        <use xlink:href="#icon-cha"></use>
       </svg>
     </div>
-    <div class="message">发布成功</div>
+    <div class="message">发布失败</div>
   </div>
 </template>
 <style lang='scss' scoped>
@@ -20,7 +20,7 @@
     flex-direction: column;
     .icon{
       font-size: 28px;
-      color: #23DE55;
+      color: #CC0000;
     }
     font-size: 14px;
     color: $c-font;

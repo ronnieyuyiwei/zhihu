@@ -13,6 +13,7 @@
       <div class="loading-gif">
         <div v-show='success'><Success></Success></div>
         <div v-show='loading'><Loading></Loading></div>
+        <div v-show='error'><Error></Error></div>
       </div>
     </div>
   </div>
@@ -97,6 +98,7 @@
 import Axios from 'axios'
 import Loading from '../../components/loading'
 import Success from '../../components/success'
+import Error from '../../components/error'
 export default {
   data () {
     return {
@@ -105,7 +107,8 @@ export default {
       flag: false,
       loading_gif: false,
       success: false,
-      loading: false
+      loading: false,
+      error: false
     }
   },
   props: ['qid'],    // 获取上层路由传来的问题id
@@ -114,7 +117,8 @@ export default {
   },
   components: {
     Loading,
-    Success
+    Success,
+    Error
   },
   methods: {
     checkLogin () {
@@ -145,12 +149,22 @@ export default {
           setTimeout(() => {
             this.loading = false
             this.success = true
-          }, 1000)
+          }, 1000)                         // loading 动画延迟
           setTimeout(() => {
             this.success = false
             this.loading_gif = false
             this.$router.go(-1)
-          }, 2000)
+          }, 2200)                         // 成功动画跳转延迟
+        } else {
+          setTimeout(() => {
+            this.loading = false
+            this.error = true
+          }, 800)
+          setTimeout(() => {
+            this.error = false
+            this.loading_gif = false
+            this.$router.go(-1)
+          }, 2200)
         }
       })
       .catch((err) => {
