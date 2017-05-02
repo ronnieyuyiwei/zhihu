@@ -3,22 +3,18 @@
     <div class="head-content">
       <search-bar></search-bar>
       <div class="button-bar">
-        <div class="ask">
+        <router-link to='/ask_question' tag='div' class="ask">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-myQuestion"></use>
           </svg>
-          <router-link to='/ask_question'>
             <span>提问</span>
-          </router-link>
-        </div>
-        <div class="answer">
+        </router-link>
+        <router-link to='/answer_question' tag='div' class="answer">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-dingdan"></use>
           </svg>
-          <router-link to='/answer'>
             <span>回答</span>
-          </router-link>
-        </div>
+        </router-link>
         <div class="share">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-fenxiang"></use>
@@ -29,7 +25,7 @@
     </div>
     <div class="body-content">
       <ProblemContent></ProblemContent>
-      
+
     </div>
     <div class="foot-content">
       <FootMenu></FootMenu>

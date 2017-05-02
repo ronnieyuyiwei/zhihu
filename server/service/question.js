@@ -65,7 +65,6 @@ router.get('/question/getData', (req, res) => {
       if (err) {
         console.log(err)
       }
-      console.log(result)
       if (result) {
         let question = {
           status: true,

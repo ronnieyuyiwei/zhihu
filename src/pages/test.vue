@@ -1,17 +1,14 @@
 <template>
   <div class="test">
-
+    3333333
+  <Loading></Loading>
   </div>
 </template>
 <script>
+  import Loading from '../components/loading'
   export default {
-    data () {
-      return {
-        list: []
-      }
-    },
-    created () {
-      alert(this.list.length)
+    components: {
+      Loading
     }
   }
 </script>

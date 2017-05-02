@@ -11,10 +11,10 @@ var problemSchema = new Schema({
   describe: String,
   invited: Array,
   answer: [{
-    date: Date,
-    responder: String,
+    date: { type: Date, default: Date.now },
+    responder: { type: Schema.Types.ObjectId, ref: 'User' },
     content: String,
-    fold: Boolean
+    fold: { type: Boolean, default: false }
   }],
   comment: [{
     date: Date,
