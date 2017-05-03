@@ -4,7 +4,7 @@
       <router-link tag='div' to='/home' class="answer" >
         <div class='answer-people'>
           <span><img src="../../img/1.jpg"></span>
-          <span>千里不留行</span>
+          <span>{{data.responder}}</span>
         </div>
         <div class='answer-content'>
           {{data.content}}
@@ -90,7 +90,8 @@ export default {
         if (response.data) {
           for (let i = 0; i < response.data.length; i++) {
             this.answerList.push({
-              content: response.data[i].content
+              content: response.data[i].content,
+              responder: response.data[i].responder
             })
           }
         }

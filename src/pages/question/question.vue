@@ -41,9 +41,10 @@
         </div>
       </div>
     </div>
-    <div class="answer-preview">
+    <div class="answer-preview" v-show='!layerPop'>
       <answer-preview :qid='questionId'></answer-preview>
     </div>
+    <!--弹出层-->
     <div class="question-view">
       <router-view :qid='questionId'></router-view>
     </div>

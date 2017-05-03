@@ -32,23 +32,26 @@ router.post('/answer/addAnswer', (req, res) => {
 })
 router.get('/answer/getAnswer_preview', (req, res) => {
   let questionId = req.query.questionId
-  Problem.findOne({_id: mongoose.Types.ObjectId(questionId)}, function (err, doc) {
-    if (err) {
-      console.log(err)
-      res.send(err)
-    }
-    if (doc.answer.length) {
-      let answer = []
-      for (let i = 0; i < doc.answer.length; i++) {
-        console.log('后台内容' + doc.answer[i].content)
-        answer.push({
-          content: doc.answer[i].content,
-
-        })
+  Problem.findOne({_id: mongoose.Types.ObjectId(questionId)})
+    .populate('answer.responder')
+    .exec(function (err, doc) {
+      if (err) {
+        console.log(err)
+        res.send(err)
       }
-      res.send(answer)
-    }
-  })
+      if (doc.answer.length) {
+        let answer = []
+        for (let i = 0; i < doc.answer.length; i++) {
+          answer.push({
+            content: doc.answer[i].content,
+            responder: doc.answer[i].responder.account
+          })
+        }
+        res.send(answer)
+      } else {
+        res.send('error')
+      }
+    })
 })
 
 module.exports = router

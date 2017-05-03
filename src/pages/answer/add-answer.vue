@@ -149,12 +149,12 @@ export default {
           setTimeout(() => {
             this.loading = false
             this.success = true
-          }, 1000)                         // loading 动画延迟
+          }, 800)                         // loading 动画延迟
           setTimeout(() => {
             this.success = false
             this.loading_gif = false
             this.$router.go(-1)
-          }, 2200)                         // 成功动画跳转延迟
+          }, 1800)                         // 成功动画跳转延迟
         } else {
           setTimeout(() => {
             this.loading = false
@@ -164,7 +164,7 @@ export default {
             this.error = false
             this.loading_gif = false
             this.$router.go(-1)
-          }, 2200)
+          }, 1800)
         }
       })
       .catch((err) => {
