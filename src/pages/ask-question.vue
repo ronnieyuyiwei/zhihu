@@ -87,7 +87,7 @@
         this.step2 = true
       },
       commit () {
-        Axios.post('/question/addQuestion', {
+        Axios.post('/api/question/addQuestion', {
           title: this.title,
           describe: this.describe
         })

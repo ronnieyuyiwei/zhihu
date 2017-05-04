@@ -4,6 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import routes from './routes/routes'
 import VueRouter from 'vue-router'
+import Axios from 'axios'
+if (process.env.NODE_ENV !== 'production') {
+  Axios.defaults.baseURL = 'http://localhost:8080/api'
+}
 Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
