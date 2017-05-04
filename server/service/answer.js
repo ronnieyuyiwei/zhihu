@@ -37,7 +37,7 @@ router.get('/answer/getAnswer_preview', (req, res) => {
     .exec(function (err, doc) {
       if (err) {
         console.log(err)
-        res.send(err)
+        res.send(false)
       }
       if (doc.answer.length) {
         let answer = []
@@ -49,7 +49,7 @@ router.get('/answer/getAnswer_preview', (req, res) => {
         }
         res.send(answer)
       } else {
-        res.send('error')
+        res.send(false)    // 找不到结果
       }
     })
 })

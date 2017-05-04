@@ -42,6 +42,7 @@ export default [
         component: resolve => require(['../pages/ask-question.vue'], resolve)
       },
       {
+        name: 'question',
         path: '/question/:id',
         component: resolve => require(['../pages/question/question.vue'], resolve),
         children: [{

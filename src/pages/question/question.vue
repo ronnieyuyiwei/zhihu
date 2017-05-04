@@ -41,6 +41,7 @@
         </div>
       </div>
     </div>
+    <!--回答层 answer-template-->
     <div class="answer-preview" v-show='!layerPop'>
       <answer-preview :qid='questionId'></answer-preview>
     </div>
@@ -48,6 +49,7 @@
     <div class="question-view">
       <router-view :qid='questionId'></router-view>
     </div>
+    <foot-menu></foot-menu>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -147,6 +149,8 @@
     }
     .answer-preview {
       width: 100%;
+      background: $bg-color;
+      min-height: calc(100vh - 128px);
     }
     .question-view { // 弹出层
       width: 100%;
@@ -156,6 +160,7 @@
 <script>
 import Axios from 'axios'
 import AnswerPreview from '../../components/answer/answer-template.vue'
+import FootMenu from '../../components/foot-menu.vue'
 export default {
   name: 'question',
   data () {
@@ -168,7 +173,8 @@ export default {
     }
   },
   components: {
-    AnswerPreview
+    AnswerPreview,
+    FootMenu
   },
   created: function () {
     this.getData()

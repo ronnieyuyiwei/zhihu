@@ -74,12 +74,12 @@
       top: 0;
       left: 0;
       width: 100%;
-      min-height: 600px;
+      min-height: 800px;
       background: rgba(151,151,151,0.6);
       display: flex;
       justify-content: center;
       .loading-gif {
-        margin-top: 52%;
+        margin-top: 55%;
         width: 70px;
         height: 70px;
         background: #F9F9F1;
@@ -149,22 +149,22 @@ export default {
           setTimeout(() => {
             this.loading = false
             this.success = true
-          }, 800)                         // loading 动画延迟
+          }, 700)                         // loading 动画延迟
           setTimeout(() => {
             this.success = false
             this.loading_gif = false
-            this.$router.go(-1)
-          }, 1800)                         // 成功动画跳转延迟
+            this.$router.push(`/question/${this.qid}`)
+          }, 1500)                         // 成功动画跳转延迟
         } else {
           setTimeout(() => {
             this.loading = false
             this.error = true
-          }, 800)
+          }, 700)
           setTimeout(() => {
             this.error = false
             this.loading_gif = false
             this.$router.go(-1)
-          }, 1800)
+          }, 1500)
         }
       })
       .catch((err) => {

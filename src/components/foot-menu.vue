@@ -1,14 +1,13 @@
 <template>
   <div class="foot-menu">
     <template v-for="item in list">
-      <li>
-        <router-link :to='item.path'>
-          <svg class="icon" aria-hidden="true">
-            <use :xlink:href='item.icon'></use>
-          </svg>
-        </router-link>
-        <span>{{item.title}}</span>
-      </li>
+      <router-link :to='item.path'>
+        <div><svg class="icon" aria-hidden="true">
+          <use :xlink:href='item.icon'></use>
+        </svg>
+        </div>
+        <div><span>{{item.title}}</span></div>
+      </router-link>
     </template>
   </div>
 </template>
@@ -24,16 +23,16 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #BFBFCD;
     font-size: 23px;
     border-top: 1px solid #E7E7E7;
-    li {
+    a {
       display: block;
       flex: 1;
       span {
         margin-top: -4px;
         display: block;
         font-size: 14px;
+        color: #BFBFCD
       }
     }
     .active a {
