@@ -20,8 +20,8 @@
             {{data.content}}
           </div>
           <div class='answer-info'>
-            <span>2&nbsp;赞同</span> ·
-            <span>4&nbsp;评论</span> ·
+            <span>{{data.asCommentNum}}&nbsp;赞同</span> ·
+            <span>{{data.asZanNum}}&nbsp;评论</span> ·
             <span>1&nbsp;年前</span>
           </div>
         </router-link>
@@ -153,7 +153,9 @@ export default {
           for (let i = 0; i < response.data.length; i++) {
             this.answerList.push({
               content: response.data[i].content,
-              responder: response.data[i].responder
+              responder: response.data[i].responder,
+              asCommentNum: response.data[i].num,
+              asZanNum: response.data[i].zan
             })
           }
         } else {

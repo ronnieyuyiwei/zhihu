@@ -13,12 +13,12 @@ var problemSchema = new Schema({
   answer: [{
     date: { type: Date, default: Date.now },
     responder: { type: Schema.Types.ObjectId, ref: 'User' },
-    as_comment: {
+    as_comment: [{
       date: { type: Date, default: Date.now },
       discussant: { type: Schema.Types.ObjectId, ref: 'User' },
       content: String,
-      zan: [{ type: Schema.Types.ObjectId, ref: 'User' }]
-    },
+      zan: { type: Boolean, default: false }
+    }],
     content: String,
     fold: { type: Boolean, default: false }
   }],
