@@ -43,14 +43,11 @@ router.get('/answer/getAnswer_preview', (req, res) => {
         let answer = []
         for (let i = 0; i < doc.answer.length; i++) {
           let zanCount = 0
-          console.log(zanCount)
           if (doc.answer[i].as_comment.length) {    // 先判断有没有评论
             if (doc.answer[i].as_comment[i].zan === true) {
               zanCount = zanCount++
             }
           }
-          console.log('后台zan' + zanCount)
-          console.log('评论数' + doc.answer[i].as_comment.length)
           answer.push({
             content: doc.answer[i].content,
             responder: doc.answer[i].responder.account,

@@ -39,7 +39,8 @@ export default [
       },
       {
         path: '/ask_question',
-        component: resolve => require(['../pages/ask-question.vue'], resolve)
+        meta: { requiresAuth: true },
+        component: resolve => require(['../pages/question/ask-question.vue'], resolve)
       },
       {
         name: 'question',

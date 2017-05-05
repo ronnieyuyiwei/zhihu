@@ -48,7 +48,7 @@
 </template>
 <script>
   import Axios from 'axios'
-  import AutoSize from '../js/autosize.js'
+  import AutoSize from '../../js/autosize.js'
   export default {
     name: 'question',
     data () {
@@ -130,7 +130,7 @@
 
 </script>
 <style lang="scss" scoped>
-  @import "../scss/config";
+  @import "../../scss/config";
   .question {
     .icon {
       margin-top: 10px;

@@ -20,15 +20,16 @@ router.post('/login/checkAccount', (req, res) => {
     if (result) {
       req.session.account = data.account
       res.cookie('AndLogin', {account: data.account}, { expires: new Date(Date.now() + 3600 * 1000 * 24 * 10), httpOnly: true })
-      res.send('登录成功')
+      res.send({login: true, msg: '登录成功'})
     } else {
-      res.send('用户名密码错误')
+      res.send({login: false, msg: '用户名密码错误'})
     }
   })
 })
 router.get('/login/checkLogin', (req, res) => { // 验证是否已经登录
   // console.log('Cookies: ', req.cookies)
   // console.log('Signed Cookies: ', req.signedCookies)
+
   if (req.session.account) {
     console.log('session中获取到账户名' + req.session.account)
     res.send({

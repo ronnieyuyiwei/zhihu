@@ -166,7 +166,7 @@
       height: 45px;
       margin-top: 15px;
       background: #ffffff;
-      color: red;
+      color: rgba(243,58,3,0.9);
       text-align: center;
       line-height: 45px;
       border-top: 1px solid $border;
