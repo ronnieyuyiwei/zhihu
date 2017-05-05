@@ -176,6 +176,14 @@ export default {
     AnswerPreview,
     FootMenu
   },
+  /*
+  ,
+  watch: {
+    $route: function () {
+      this.getData()
+    }
+  },
+  */
   created: function () {
     this.getData()
   },

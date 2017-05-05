@@ -10,11 +10,10 @@
       <textarea v-model="answer" @input='checkWords' autofocus placeholder="填写回答内容"></textarea>
     </div>
     <div class="loading" v-show='loading_gif'>
-      <div class="loading-gif">
-        <div v-show='success'><Success></Success></div>
-        <div v-show='loading'><Loading></Loading></div>
-        <div v-show='error'><Error></Error></div>
-      </div>
+      <!--载入动画-->
+      <loading v-show='loading'></loading>
+      <!--完成动画-->
+      <status status='status'></status>
     </div>
   </div>
 </template>
@@ -71,34 +70,15 @@
     }
     .loading {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
-      min-height: 800px;
-      background: rgba(151,151,151,0.6);
-      display: flex;
-      justify-content: center;
-      .loading-gif {
-        margin-top: 55%;
-        width: 70px;
-        height: 70px;
-        background: #F9F9F1;
-        border: 1px solid $border;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+      top: 200px;
     }
   }
 </style>
 <script>
 import Axios from 'axios'
-import Loading from '../../components/loading'
-import Success from '../../components/success'
-import Error from '../../components/error'
+import Loading from '../../components/loading/loading.vue'
+import Status from '../../components/loading/status.vue'
 export default {
   data () {
     return {
@@ -106,9 +86,8 @@ export default {
       answer: '',
       flag: false,
       loading_gif: false,
-      success: false,
-      loading: false,
-      error: false
+      status: false,
+      loading: false
     }
   },
   props: ['qid'],    // 获取上层路由传来的问题id
@@ -117,8 +96,7 @@ export default {
   },
   components: {
     Loading,
-    Success,
-    Error
+    Status
   },
   methods: {
     checkLogin () {
@@ -146,25 +124,12 @@ export default {
       })
       .then((response) => {
         if (response.data === 'ok') {
+          this.status = true
+          this.loading = false
           setTimeout(() => {
             this.loading = false
-            this.success = true
-          }, 700)                         // loading 动画延迟
-          setTimeout(() => {
-            this.success = false
-            this.loading_gif = false
             this.$router.push(`/question/${this.qid}`)
-          }, 1500)                         // 成功动画跳转延迟
-        } else {
-          setTimeout(() => {
-            this.loading = false
-            this.error = true
-          }, 700)
-          setTimeout(() => {
-            this.error = false
-            this.loading_gif = false
-            this.$router.go(-1)
-          }, 1500)
+          }, 1000)
         }
       })
       .catch((err) => {
