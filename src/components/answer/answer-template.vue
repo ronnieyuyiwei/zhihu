@@ -127,6 +127,7 @@ export default {
   },
   watch: {
     $route: function () {
+      this.answerList = []       // 改变路由后必须清除原数据，否则会重复
       this.fetchData()
     }
   },

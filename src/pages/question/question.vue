@@ -176,14 +176,11 @@ export default {
     AnswerPreview,
     FootMenu
   },
-  /*
-  ,
   watch: {
     $route: function () {
-      this.getData()
+      this.getData()    // 路由变化重新请求数据
     }
   },
-  */
   created: function () {
     this.getData()
   },

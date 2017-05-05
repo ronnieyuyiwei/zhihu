@@ -13,7 +13,7 @@
       <!--载入动画-->
       <loading v-show='loading'></loading>
       <!--完成动画-->
-      <status status='status'></status>
+      <status v-show='status' :status='axStatus'></status>
     </div>
   </div>
 </template>
@@ -86,8 +86,9 @@ export default {
       answer: '',
       flag: false,
       loading_gif: false,
-      status: false,
-      loading: false
+      axStatus: false,
+      loading: false,
+      status: false
     }
   },
   props: ['qid'],    // 获取上层路由传来的问题id
@@ -124,18 +125,29 @@ export default {
       })
       .then((response) => {
         if (response.data === 'ok') {
-          this.status = true
           this.loading = false
-          setTimeout(() => {
-            this.loading = false
+          this.axStatus = true
+          this.status = true
+          setTimeout(() => {            // 显示成功动画1秒
+            this.$router.push(`/question/${this.qid}`)
+          }, 1000)
+        } else {
+          this.loading = false
+          this.axStatus = false
+          this.status = true
+          setTimeout(() => {            // 显示失败动画1秒
             this.$router.push(`/question/${this.qid}`)
           }, 1000)
         }
       })
       .catch((err) => {
-        if (err) {
-          console.log(err)
-        }
+        console.log(err.msg)
+        this.loading = false
+        this.axStatus = false
+        this.status = true
+        setTimeout(() => {            // 显示失败动画1秒
+          this.$router.push(`/question/${this.qid}`)
+        }, 1500)
       })
     }
   }
