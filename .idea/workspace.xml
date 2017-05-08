@@ -6,48 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f5dae39-52fc-4b01-9576-3a27c0c6c479" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/0.75003754151704b13649.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/0.75003754151704b13649.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/1.6e91c9df1a9d3542d8ac.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/1.6e91c9df1a9d3542d8ac.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/10.79679d5bd2866f3c778f.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/10.79679d5bd2866f3c778f.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/11.171ba45dd69b21b93e8b.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/11.171ba45dd69b21b93e8b.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/12.59ed1a69d5c009a1a1b8.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/12.59ed1a69d5c009a1a1b8.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/2.eb69389d9d5bc9c8793d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/2.eb69389d9d5bc9c8793d.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/3.b6439460b3581ac3529e.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/3.b6439460b3581ac3529e.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/4.c488c4ed188204e73ceb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/4.c488c4ed188204e73ceb.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/5.3c9459ae81230d243b86.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/5.3c9459ae81230d243b86.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/6.192087f684d9fdc9b5af.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/6.192087f684d9fdc9b5af.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/7.0091d7ac817515c40797.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/7.0091d7ac817515c40797.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/8.77555cbd25ba6ab9f071.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/8.77555cbd25ba6ab9f071.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/9.dcc5e605ce64e3dc30e5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/9.dcc5e605ce64e3dc30e5.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.3b05157cdc147641ee1f.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.3b05157cdc147641ee1f.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.46a2e87bc29712094bef.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.46a2e87bc29712094bef.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.1bc607e3d27f6cbd0928.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.1bc607e3d27f6cbd0928.js.map" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/andromeda.iml" afterPath="$PROJECT_DIR$/.idea/andromeda.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/service/answer.js" afterPath="$PROJECT_DIR$/server/service/answer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/answer/answer-template.vue" afterPath="$PROJECT_DIR$/src/components/answer/answer-template.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/answer/answer-content.vue" afterPath="$PROJECT_DIR$/src/pages/answer/answer-content.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/question/question.vue" afterPath="$PROJECT_DIR$/src/pages/question/question.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/routes.js" afterPath="$PROJECT_DIR$/src/routes/routes.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/answer-foot.vue" afterPath="$PROJECT_DIR$/src/components/answer/answer-foot.vue" />
     </list>
     <ignored path="andromeda.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -160,8 +120,8 @@
           <file leaf-file-name="answer.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/service/answer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="596">
-                  <caret line="84" column="63" selection-start-line="84" selection-start-column="63" selection-end-line="84" selection-end-column="63" />
+                <state relative-caret-position="392">
+                  <caret line="72" column="12" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -235,8 +195,8 @@
         <option value="$PROJECT_DIR$/src/pages/question/question.vue" />
         <option value="$PROJECT_DIR$/src/routes/routes.js" />
         <option value="$PROJECT_DIR$/src/components/answer/answer-foot.vue" />
-        <option value="$PROJECT_DIR$/server/service/answer.js" />
         <option value="$PROJECT_DIR$/src/pages/answer/answer-content.vue" />
+        <option value="$PROJECT_DIR$/server/service/answer.js" />
       </list>
     </option>
   </component>
@@ -741,12 +701,12 @@
       <workItem from="1493995315213" duration="1106000" />
       <workItem from="1493996615781" duration="785000" />
       <workItem from="1494072363023" duration="58000" />
-      <workItem from="1494225213365" duration="22026000" />
+      <workItem from="1494225213365" duration="23087000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="396971000" />
+    <option name="totallyTimeSpent" value="398032000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1201,8 +1161,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/service/answer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="84" column="63" selection-start-line="84" selection-start-column="63" selection-end-line="84" selection-end-column="63" />
+        <state relative-caret-position="392">
+          <caret line="72" column="12" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
           <folding />
         </state>
       </provider>

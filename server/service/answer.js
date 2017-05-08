@@ -70,8 +70,8 @@ router.get('/answer/getAnswer_content', (req, res) => {
   let answerId = req.query.answerId
   let answer = []
   Problem.findOne({_id: mongoose.Types.ObjectId(questionId)})
-    .populate('answer.responder')
     .where('answer._id').equals(mongoose.Types.ObjectId(answerId))
+    .populate('answer.responder')
     .exec(function (err, doc) {
       if (err) {
         console.log(err)
@@ -84,7 +84,7 @@ router.get('/answer/getAnswer_content', (req, res) => {
           content: doc.answer[0].content,
           date: moment(doc.answer[0].date).format('YYYY-MM-DD')
         })
-        console.log(answer)
+        console.log(doc)
         res.send(answer)
       } else {
         res.send(false)    // 找不到结果
