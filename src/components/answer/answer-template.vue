@@ -11,7 +11,7 @@
     </div>
     <div v-if='hasValue'>
       <div class="answer-content" v-for='data in answerList' >
-        <router-link tag='div' to='/home' class="answer" >
+        <router-link tag='div' :to='data.asPath' class="answer">
           <div class='answer-people'>
             <span><img src="../../img/1.jpg"></span>
             <span>{{data.responder}}</span>
@@ -22,7 +22,7 @@
           <div class='answer-info'>
             <span>{{data.asCommentNum}}&nbsp;赞同</span> ·
             <span>{{data.asZanNum}}&nbsp;评论</span> ·
-            <span>1&nbsp;年前</span>
+            <span>{{data.asDate}}</span>
           </div>
         </router-link>
       </div>
@@ -156,7 +156,9 @@ export default {
               content: response.data[i].content,
               responder: response.data[i].responder,
               asCommentNum: response.data[i].num,
-              asZanNum: response.data[i].zan
+              asZanNum: response.data[i].zan,
+              asDate: response.data[i].date,
+              asPath: `${this.$route.path}/answer/${response.data[i].id}`
             })
           }
         } else {

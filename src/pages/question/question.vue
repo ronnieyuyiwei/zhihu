@@ -1,49 +1,51 @@
 <template>
   <div class="question">
-    <div class="question-body">
-      <div class="topic">
-        <span>话题内容</span>
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-jiantou"></use>
-        </svg>
-      </div>
-      <div class="question-content">
-        <div class="title">{{title}}</div>
-        <div class="describe">{{describe}}</div>
-        <div class="info">
-          <div class="focus">1016人关注</div>
-          <div class="comment">{{commentNum}}&nbsp条评论</div>
-          <div class="add-focus">
-            <button>+&nbsp;关注</button>
-          </div>
+    <div v-show='questionPage'>
+      <div class="question-body">
+        <div class="topic">
+          <span>话题内容</span>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-jiantou"></use>
+          </svg>
         </div>
-        <div class="button-bar">
-          <div class="invite-people">
+        <div class="question-content">
+          <div class="title">{{title}}</div>
+          <div class="describe">{{describe}}</div>
+          <div class="info">
+            <div class="focus">1016人关注</div>
+            <div class="comment">{{commentNum}}&nbsp条评论</div>
+            <div class="add-focus">
+              <button>+&nbsp;关注</button>
+            </div>
+          </div>
+          <div class="button-bar">
+            <div class="invite-people">
             <span>
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-yaoqing"></use>
               </svg>
             </span>&nbsp;
-            <span>
+              <span>
               邀请回答
             </span>
-          </div>
-          <div class="add-answer" @click='addAnswer'>
+            </div>
+            <div class="add-answer" @click='addAnswer'>
             <span>
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-bianji"></use>
               </svg>
             </span>&nbsp;
-            <span>
+              <span>
               添加回答
             </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!--回答层 answer-template-->
-    <div class="answer-preview" v-show='!layerPop'>
-      <answer-preview :qid='questionId'></answer-preview>
+      <!--回答层 answer-template-->
+      <div class="answer-preview" v-show='!layerPop'>
+        <answer-preview :qid='questionId'></answer-preview>
+      </div>
     </div>
     <!--弹出层-->
     <div class="question-view">
@@ -169,7 +171,8 @@ export default {
       describe: '',
       focus: '',
       commentNum: '',
-      questionId: this.$route.params.id
+      questionId: this.$route.params.id,
+      questionPage: true
     }
   },
   components: {
@@ -207,7 +210,7 @@ export default {
           this.describe = response.data.describe
           this.commentNum = response.data.commentNum
         } else {
-          this.$router.replace('/error')  // 404
+          // this.$router.replace('/error')  // 404
         }
       })
       .catch((err) => {

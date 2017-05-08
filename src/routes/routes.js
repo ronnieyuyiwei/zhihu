@@ -46,10 +46,16 @@ export default [
         name: 'question',
         path: '/question/:id',
         component: resolve => require(['../pages/question/question.vue'], resolve),
-        children: [{
-          path: 'add_answer',
-          component: resolve => require(['../pages/answer/add-answer.vue'], resolve)
-        }]
+        children: [
+          {
+            path: 'add_answer',
+            component: resolve => require(['../pages/answer/add-answer.vue'], resolve)
+          }
+        ]
+      },
+      {
+        path: '/question/:qid/answer/:asId',
+        component: resolve => require(['../pages/answer/answer-content'], resolve)
       },
       {
         path: '/test',

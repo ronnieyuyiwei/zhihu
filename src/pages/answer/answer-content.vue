@@ -1,7 +1,7 @@
 <template>
    <div class="answer-content">
      <div class="operate">
-       <div class="back">
+       <div class="back" @click='goBack'>
          <svg class="icon" aria-hidden="true">
            <use xlink:href='#icon-fanhui'></use>
          </svg>
@@ -16,7 +16,7 @@
        </div>
      </div>
      <div class="title">
-       如何解决Vue在部分机型上渲染失败？
+       {{title}}
      </div>
      <div class="blank"></div>
      <div class="answer">
@@ -25,7 +25,7 @@
            <img src="../../img/head.jpg">
          </div>
          <div class="person-intro">
-           <span class="name">喵小星</span>
+           <span class="name">{{responder}}</span>
            <span class="sign">这是一个有理想的人</span>
          </div>
          <div class="focus">
@@ -36,20 +36,19 @@
          </div>
        </div>
        <div class="content">
-         <p>小时候最有印象的是我外婆在的时候她每年会做年糕。我跟她到磨米的地方，跟她磨米浆。到晚上的时候吃完年夜饭，9点蒸年糕。我们小孩子就在那吃糖，打游戏，年糕出锅以后，我们开始吃，吃完以后我外婆还会炸，半夜还在炸年糕。然后我们再吃一次炸年糕，晚上就撑的睡不着。一般我们过年晚上就是大年晚上都是熬通宵，熬到三、四点，所以小时候那小时候最有印象的是我外婆在的时候她每年会做年糕。我跟她到磨米的地方，跟她磨米浆。到晚上的时候吃完年夜饭，9点蒸年糕。我们小孩子就在那吃糖，打游戏，年糕出锅以后，我们开始吃，吃完以后我外婆还会炸，半夜还在炸年糕。然后我们再吃一次炸年糕，晚上就撑的睡不着。一般我们过年晚上就是大年晚上都是熬通宵，熬到三、四点，所以小时候那</p>
+         <p>{{content}}</p>
        </div>
        <div class="copyright">
          <div>
-           <p>创建于&nbsp;2017-01-17</p>
+           <p>创建于&nbsp;{{date}}</p>
            <p>著作权归作者所有</p>
          </div>
        </div>
      </div>
      <div class="answer-foot">
-       <AnswerFoot></AnswerFoot>
+       <answer-foot></answer-foot>
      </div>
    </div>
-
 </template>
 <style lang="scss" scoped>
   @import "../../scss/config";
@@ -169,11 +168,45 @@
 }
 </style>
 <script>
-import AnswerFoot from '../../components/answer-foot.vue'
+import AnswerFoot from '../../components/answer/answer-foot.vue'
+import Axios from 'axios'
 export default {
   name: 'answer-content',
+  data () {
+    return {
+      title: '',
+      responder: '',
+      content: '',
+      date: ''
+    }
+  },
   components: {
     AnswerFoot
+  },
+  created: function () {
+    this.getData()
+  },
+  methods: {
+    goBack () {
+      this.$router.go(-1)
+    },
+    getData () {
+      Axios.get('/answer/getAnswer_content', {
+        params: {
+          questionId: this.$route.params.qid,
+          answerId: this.$route.params.asId
+        }
+      })
+      .then((response) => {
+        this.title = response.data[0].title
+        this.responder = response.data[0].responder
+        this.content = response.data[0].content
+        this.date = response.data[0].date
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
   }
 }
 </script>
