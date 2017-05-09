@@ -1,7 +1,7 @@
 <template>
   <div class="comment">
     <div class="operate">
-      <div class="back" @click='goBack'>
+      <div class="back">
         <svg class="icon" aria-hidden="true">
           <use xlink:href='#icon-fanhui'></use>
         </svg>
@@ -15,44 +15,53 @@
         </svg>
       </div>
     </div>
-
-    <div class="comment-details">
-      <div class="comment-template">
-        <div class="left-side">
-          <img src="../../img/head.jpg">
-        </div>
-        <div class="right-side">
-          <div class="account">绅士帽</div>
-          <div class="content">这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容</div>
-          <div class="btn-bar">
-            <div class="zan">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href='#icon-cha-copy'></use>
-              </svg>
-              赞
+    {{hasComment}}
+    <div class="comment-body" v-if='hasComment'>
+      <router-link to='/home' tag='div' class="comment-details" v-for='item in commentTemplate' >
+        <div class="comment-template">
+          <div class="left-side">
+            <img src="../../img/head.jpg">
+          </div>
+          <div class="right-side">
+            <div class="account">{{item.discussant}}</div>
+            <div class="content">{{item.content}}</div>
+            <div class="btn-bar">
+              <div class="zan">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href='#icon-cha-copy'></use>
+                </svg>
+                赞
+              </div>
+              <div>
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href='#icon-dian'></use>
+                </svg>
+              </div>
+              <div>回复</div>
+              <div>
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href='#icon-dian'></use>
+                </svg>
+              </div>
+              <div>周四 15:30</div>
             </div>
-            <div>
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href='#icon-dian'></use>
-              </svg>
-            </div>
-            <div>回复</div>
-            <div>
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href='#icon-dian'></use>
-              </svg>
-            </div>
-            <div>周四 15:30</div>
           </div>
         </div>
-      </div>
+      </router-link>
     </div>
-
+    <div class='no-comment' v-else='hasComment'>
+      <div>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href='#icon-icon86'></use>
+        </svg>
+      </div>
+      <div class="msg">没有任何评论</div>
+    </div>
     <div class="comment-input">
       <div class="input">
-        <textarea placeholder="请输入评论"></textarea>
+        <textarea v-model="comment" placeholder="请输入评论"></textarea>
       </div>
-      <div class="btn">发布</div>
+      <div class="btn" @click="addComment()">发布</div>
     </div>
   </div>
 </template>
@@ -79,6 +88,24 @@
       }
       .share{
         flex:1;
+      }
+    }
+    .comment-body{
+      width: 100%;
+    }
+    .no-comment {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: $icon;
+      .icon {
+        font-size: 65px;
+      }
+      .msg {
+        margin-top: 15px;
       }
     }
     .comment-details {
@@ -159,11 +186,20 @@
 </style>
 <script>
 import AutoSize from '../../js/autosize.js'
-import Axios form 'axios'
+import Axios from 'axios'
 export default {
   created: function () {
-    AutoSize(document.querySelectorAll('textarea')),
-    getData()
+    AutoSize(document.querySelectorAll('textarea'))
+    this.checkLogin()
+    this.getData()
+  },
+  data () {
+    return {
+      account: '',
+      comment: '',
+      hasComment: false,
+      commentTemplate: []
+    }
   },
   methods: {
     getData () {
@@ -171,6 +207,36 @@ export default {
         params: {
           qid: this.$route.params.qid
         }
+      })
+      .then((response) => {
+        if (response) {
+          this.hasComment = true
+          for (let i = 0; i < response.data.length; i++) {
+            this.commentTemplate.push({
+              date: response.data[i].date,
+              discussant: response.data[i].discussant,
+              content: response.data[i].content
+            })
+          }
+        }
+      })
+    },
+    checkLogin () {
+      Axios.get('/login/checkLogin')
+      .then((response) => {
+        if (response.data.login) {
+          this.account = response.data.account
+        }
+      })
+    },
+    addComment () {
+      Axios.post('/comment/addComment', {
+        qid: this.$route.params.qid,
+        discussant: this.account,
+        comment: this.comment
+      })
+      .then((response) => {
+        console.log(response.data)
       })
     }
   }
