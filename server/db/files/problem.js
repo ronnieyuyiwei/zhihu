@@ -13,21 +13,11 @@ var problemSchema = new Schema({
   answer: [{
     date: { type: Date, default: Date.now },
     responder: { type: Schema.Types.ObjectId, ref: 'User' },
-    as_comment: [{
-      date: { type: Date, default: Date.now },
-      discussant: { type: Schema.Types.ObjectId, ref: 'User' },
-      content: String,
-      zan: { type: Boolean, default: false }
-    }],
+    as_comment: { type: Schema.Types.ObjectId, ref: 'Comment' },
     content: String,
     fold: { type: Boolean, default: false }
   }],
-  comment: [{
-    date: Date,
-    discussant: String,
-    content: String,
-    zan: Number
-  }]
+  comment: { type: Schema.Types.ObjectId, ref: 'Comment' }
 })
 var Problem = mongoose.model('Problem', problemSchema)
 module.exports = Problem

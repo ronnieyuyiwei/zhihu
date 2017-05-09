@@ -13,7 +13,7 @@
           <div class="describe">{{describe}}</div>
           <div class="info">
             <div class="focus">1016人关注</div>
-            <div class="comment">{{commentNum}}&nbsp条评论</div>
+            <router-link tag='div' :to="{name: 'comment', params: {qid: this.$route.params.id}}" class="comment">{{commentNum}}&nbsp条评论</router-link>
             <div class="add-focus">
               <button>+&nbsp;关注</button>
             </div>

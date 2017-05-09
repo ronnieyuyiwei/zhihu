@@ -15,6 +15,7 @@
         </svg>
       </div>
     </div>
+
     <div class="comment-details">
       <div class="comment-template">
         <div class="left-side">
@@ -46,37 +47,7 @@
         </div>
       </div>
     </div>
-    <div class="comment-details">
-      <div class="comment-template">
-        <div class="left-side">
-          <img src="../../img/head.jpg">
-        </div>
-        <div class="right-side">
-          <div class="account">绅士帽</div>
-          <div class="content">这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容这里是评论内容</div>
-          <div class="btn-bar">
-            <div class="zan">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href='#icon-cha-copy'></use>
-              </svg>
-              赞
-            </div>
-            <div>
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href='#icon-dian'></use>
-              </svg>
-            </div>
-            <div>回复</div>
-            <div>
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href='#icon-dian'></use>
-              </svg>
-            </div>
-            <div>周四 15:30</div>
-          </div>
-        </div>
-      </div>
-    </div>
+
     <div class="comment-input">
       <div class="input">
         <textarea placeholder="请输入评论"></textarea>
@@ -181,15 +152,27 @@
         text-align: center;
         line-height: 48px;
         font-size: 15px;
+        color: $blue;
       }
     }
   }
 </style>
 <script>
 import AutoSize from '../../js/autosize.js'
+import Axios form 'axios'
 export default {
-  mounted: function () {
-    AutoSize(document.querySelectorAll('textarea'))
+  created: function () {
+    AutoSize(document.querySelectorAll('textarea')),
+    getData()
+  },
+  methods: {
+    getData () {
+      Axios.get('/comment/getQuestionComment', {
+        params: {
+          qid: this.$route.params.qid
+        }
+      })
+    }
   }
 }
 </script>

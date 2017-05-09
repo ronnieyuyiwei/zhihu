@@ -35,7 +35,7 @@ router.post('/answer/addAnswer', (req, res) => {
 router.get('/answer/getAnswer_preview', (req, res) => {
   let questionId = req.query.questionId
   Problem.findOne({_id: mongoose.Types.ObjectId(questionId)})
-    .populate('answer.responder answer.as_comment answer.as_comment_zan ')
+    .populate('answer.responder')
     .exec(function (err, doc) {
       if (err) {
         console.log(err)
@@ -44,17 +44,13 @@ router.get('/answer/getAnswer_preview', (req, res) => {
       if (doc.answer.length) {
         let answer = []
         for (let i = 0; i < doc.answer.length; i++) {
-          let zanCount = 0
-          if (doc.answer[i].as_comment.length) {    // 先判断有没有评论
-            if (doc.answer[i].as_comment[i].zan === true) {
-              zanCount = zanCount++
-            }
+          // let zanCount = 0
+          if (doc.answer[i].as_comment) {    // 先判断有没有评论
+            console.log(doc.answer[i].as_comment)
           }
           answer.push({
             content: doc.answer[i].content,
             responder: doc.answer[i].responder.account,
-            num: doc.answer[i].as_comment.length,
-            zan: zanCount,
             date: moment(doc.answer[i].date).fromNow(),
             id: doc.answer[i]._id
           })

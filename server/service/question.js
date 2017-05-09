@@ -69,10 +69,15 @@ router.get('/question/getData', (req, res) => {
         let question = {
           status: true,
           title: result.title,
-          describe: result.describe,
-          commentNum: result.comment.length
+          describe: result.describe
         }
-        res.send(question)
+        if (result.comment) {
+          question.commentNum = result.comment.length
+          res.send(question)
+        } else {
+          question.commentNum = 0
+          res.send(question)
+        }
       } else {
         res.send({status: false})
       }
