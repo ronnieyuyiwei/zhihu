@@ -6,7 +6,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f5dae39-52fc-4b01-9576-3a27c0c6c479" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/0.f16cb6fe6a42d566f82e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/0.f16cb6fe6a42d566f82e.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/11.a0206f18d4113f6bb0df.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/11.a0206f18d4113f6bb0df.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/2.f0ca45f929b603b0b6f5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/2.f0ca45f929b603b0b6f5.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/3.641dec55a63ef94b66a5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/3.641dec55a63ef94b66a5.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/4.406e017697d875f875c5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/4.406e017697d875f875c5.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/5.63f3e16a00e5df23bdf2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/5.63f3e16a00e5df23bdf2.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/6.d964968d68ac9f6217e3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/6.d964968d68ac9f6217e3.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/8.e380ffeabe356ff4417b.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/8.e380ffeabe356ff4417b.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/9.d31aaa0b3e69661d7f77.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/9.d31aaa0b3e69661d7f77.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.c148911b792fb26719ed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.c148911b792fb26719ed.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.b842cfeab3ac13591623.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.b842cfeab3ac13591623.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.6e3d913acf3aad84daba.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.6e3d913acf3aad84daba.js.map" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/db/files/problem.js" afterPath="$PROJECT_DIR$/server/db/files/problem.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/service/comment.js" afterPath="$PROJECT_DIR$/server/service/comment.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/comment/comment.vue" afterPath="$PROJECT_DIR$/src/pages/comment/comment.vue" />
@@ -31,40 +56,14 @@
     <favorites_list name="andromeda" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.42586544">
+    <splitter split-orientation="horizontal" split-proportion="0.2638798">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="answer.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="answer.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/server/service/answer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
+                <state relative-caret-position="1139">
                   <caret line="70" column="16" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="question.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/pages/question/question.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1036">
-                  <caret line="15" column="93" selection-start-line="15" selection-start-column="93" selection-end-line="15" selection-end-column="93" />
-                  <folding>
-                    <element signature="e#707#713#0" expanded="true" />
-                    <element signature="e#1002#1008#0" expanded="true" />
-                    <element signature="e#1309#1315#0" expanded="true" />
-                    <element signature="n#style#0;n#!!top" expanded="false" />
-                    <element signature="e#1859#3985#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/routes/routes.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="61" column="15" selection-start-line="61" selection-start-column="15" selection-end-line="61" selection-end-column="15" />
                   <folding />
                 </state>
               </provider>
@@ -73,8 +72,8 @@
           <file leaf-file-name="comment.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/pages/comment/comment.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+                <state relative-caret-position="338">
+                  <caret line="216" column="57" selection-start-line="216" selection-start-column="57" selection-end-line="216" selection-end-column="57" />
                   <folding>
                     <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                     <element signature="n#style#0;n#!!top" expanded="false" />
@@ -88,16 +87,6 @@
           </file>
           <file leaf-file-name="common.scss" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/scss/common.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="config.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/scss/config.scss">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="0">
                   <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -122,7 +111,17 @@
             <entry file="file://$PROJECT_DIR$/server/db/files/problem.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="323">
-                  <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+                  <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="user.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/server/db/files/user.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -131,15 +130,35 @@
           <file leaf-file-name="comment.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/server/service/comment.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="255">
+                  <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
                   <folding>
                     <element signature="e#0#38#0" expanded="false" />
-                    <marker date="1494342187488" expanded="true" signature="716:1132" ph="{...}" />
-                    <marker date="1494342187488" expanded="true" signature="831:1044" ph="{...}" />
-                    <marker date="1494342187488" expanded="true" signature="859:1030" ph="{...}" />
-                    <marker date="1494342187488" expanded="true" signature="1138:1207" ph="{...}" />
+                    <marker date="1494347508054" expanded="true" signature="1121:1587" ph="{...}" />
+                    <marker date="1494347508054" expanded="true" signature="1302:1547" ph="{...}" />
+                    <marker date="1494347508054" expanded="true" signature="1330:1533" ph="{...}" />
+                    <marker date="1494347508054" expanded="true" signature="1593:1662" ph="{...}" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="question.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/service/question.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1216">
+                  <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/service/login.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="332">
+                  <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -151,24 +170,10 @@
           <file leaf-file-name="comment.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/service/comment.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+                <state relative-caret-position="357">
+                  <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="28" selection-end-column="8" />
                   <folding>
                     <element signature="e#0#38#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="add-answer.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/pages/answer/add-answer.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="850">
-                  <caret line="107" column="9" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
-                  <folding>
-                    <element signature="n#style#0;n#!!top" expanded="false" />
-                    <element signature="e#778#1374#0" expanded="false" />
-                    <element signature="e#1386#1661#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -241,8 +246,8 @@
         <option value="$PROJECT_DIR$/server/service/question.js" />
         <option value="$PROJECT_DIR$/server/service/api.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/src/pages/comment/comment.vue" />
         <option value="$PROJECT_DIR$/server/db/files/problem.js" />
+        <option value="$PROJECT_DIR$/src/pages/comment/comment.vue" />
         <option value="$PROJECT_DIR$/server/service/comment.js" />
       </list>
     </option>
@@ -825,12 +830,12 @@
       <workItem from="1493996615781" duration="785000" />
       <workItem from="1494072363023" duration="58000" />
       <workItem from="1494225213365" duration="23286000" />
-      <workItem from="1494310707534" duration="26067000" />
+      <workItem from="1494310707534" duration="31284000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="424298000" />
+    <option name="totallyTimeSpent" value="429515000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -892,18 +897,11 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/search-bar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-135">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/error/404.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1006,13 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="616" column="23" selection-start-line="616" selection-start-column="23" selection-end-line="616" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/service/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1185,14 +1176,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/service/question.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1460">
-          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -1217,6 +1200,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/answer/add-answer.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="107" column="9" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
+          <folding>
+            <element signature="n#style#0;n#!!top" expanded="false" />
+            <element signature="e#778#1374#0" expanded="false" />
+            <element signature="e#1386#1661#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/service/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/service/question.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1216">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/question/question.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1036">
@@ -1231,6 +1242,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/service/answer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="70" column="16" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/scss/common.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1241,8 +1260,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/comment/comment.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+        <state relative-caret-position="338">
+          <caret line="216" column="57" selection-start-line="216" selection-start-column="57" selection-end-line="216" selection-end-column="57" />
           <folding>
             <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#!!top" expanded="false" />
@@ -1250,6 +1269,14 @@
             <element signature="e#2899#3839#0" expanded="false" />
             <element signature="e#3119#3237#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/db/files/problem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1263,38 +1290,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/answer/add-answer.vue">
+    <entry file="file://$PROJECT_DIR$/server/db/files/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="107" column="9" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#!!top" expanded="false" />
-            <element signature="e#778#1374#0" expanded="false" />
-            <element signature="e#1386#1661#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/db/files/problem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/service/answer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="70" column="16" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/service/comment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        <state relative-caret-position="357">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="28" selection-end-column="8" />
           <folding>
             <element signature="e#0#38#0" expanded="false" />
           </folding>

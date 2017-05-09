@@ -209,12 +209,12 @@ export default {
         }
       })
       .then((response) => {
-        if (response) {
+        if (response.data) {
           this.hasComment = true
           for (let i = 0; i < response.data.length; i++) {
             this.commentTemplate.push({
               date: response.data[i].date,
-              discussant: response.data[i].discussant,
+              // discussant: response.data[i].discussant,
               content: response.data[i].content
             })
           }

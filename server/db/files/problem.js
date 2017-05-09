@@ -17,7 +17,7 @@ var problemSchema = new Schema({
     content: String,
     fold: { type: Boolean, default: false }
   }],
-  questionComment: { type: Schema.Types.ObjectId, ref: 'Comment' }
+  questionComment: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
 })
 var Problem = mongoose.model('Problem', problemSchema)
 module.exports = Problem

@@ -18,19 +18,25 @@ router.get('/comment/getQuestionComment', (req, res) => {
       if (err) {
         console.log(err)
       }
-      console.log('doc' + doc.questionComment)
-      // console.log('doc.questionComment' + doc.questionComment.date)
-      // if (doc) {
-      //   console.log('in')
+      // console.log('doc[0].questionComment' + doc[0].questionComment)
+      console.log('doc[0].questionComment[0]' + '\n' + doc[0].questionComment[0].discussant.account)
+      console.log('doc[0].questionComment' + '\n' + doc[0].questionComment[0].discussant)
+      Problem.populate(doc, { path: 'questionComment.discussant' }, function (err, populateDoc) {
+        if (err) {
+          console.log(err)
+        }
+        console.log('xx' + populateDoc[0].questionComment.discussant.account)
+      })
+      // if (doc[0].questionComment) {
       //   let comment = []
-      //   for (var i = 0; i < doc.comment.length; i++) {
+      //   // console.log('account' + doc[0].questionComment[0].discussant.account)
+      //   for (var i = 0; i < doc[0].questionComment.length; i++) {
       //     comment.push({
-      //       date: doc.comment[i].date,
-      //       discussant: doc.comment[i].discussant.account,
-      //       content: doc.comment[i].textContent
+      //       date: doc[0].questionComment[i].date,
+      //       // discussant: doc[0].questionComment[i].discussant.account,
+      //       content: doc[0].questionComment[i].content
       //     })
       //   }
-      //   console.log('fffffffffff' + comment)
       //   res.send(comment)
       // } else {
       //   console.log('out')
