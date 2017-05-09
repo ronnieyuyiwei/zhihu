@@ -110,7 +110,7 @@
         }
       }
       .person-intro{
-        flex:4;
+        flex:5;
         span{
           display: block;
         }
@@ -124,7 +124,7 @@
         }
       }
       .focus{
-        flex: 1.4;
+        flex: 1.8;
         justify-content: flex-end;
         div {
           width: 70px;

@@ -83,7 +83,7 @@
         ta.style.overflowY = 'hidden'
       }
 
-      ta.style.height = endHeight - 5 + 'px'  // 调整一下输入框的高度，默认为36，这里改为31，保持手机端显示正常
+      ta.style.height = endHeight - 9 + 'px'  // 调整一下输入框的高度，默认为36，这里改为27，保持手机端显示正常
 
       // prevents scroll-position jumping
       document.documentElement.scrollTop = htmlTop

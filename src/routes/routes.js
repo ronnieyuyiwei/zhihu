@@ -55,7 +55,11 @@ export default [
       },
       {
         path: '/question/:qid/answer/:asId',
-        component: resolve => require(['../pages/answer/answer-content'], resolve)
+        component: resolve => require(['../pages/answer/answer-content.vue'], resolve)
+      },
+      {
+        path: '/question/:qid/comment/:cmId',
+        component: resolve => require(['../pages/comment/comment.vue'], resolve)
       },
       {
         path: '/test',

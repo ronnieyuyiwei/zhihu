@@ -70,7 +70,6 @@ router.get('/answer/getAnswer_content', (req, res) => {
   let answerId = req.query.answerId
   let answer = []
   Problem.findOne({_id: mongoose.Types.ObjectId(questionId)})
-    .where('answer._id').equals(mongoose.Types.ObjectId(answerId))
     .populate('answer.responder')
     .exec(function (err, doc) {
       if (err) {
@@ -78,13 +77,19 @@ router.get('/answer/getAnswer_content', (req, res) => {
         res.send(false)
       }
       if (doc.answer.length) {
-        answer.push({
-          title: doc.title,
-          responder: doc.answer[0].responder.account,
-          content: doc.answer[0].content,
-          date: moment(doc.answer[0].date).format('YYYY-MM-DD')
+        doc.answer.forEach(function (e) {               // 查找answerId 匹配的项
+          if (e._id.toString() === answerId) {
+            answer.push({
+              responder: e.responder.account,
+              content: e.content,
+              date: moment(e.date).format('YYYY-MM-DD')
+            })
+          }
         })
-        console.log(doc)
+        answer.push({
+          title: doc.title
+        })
+        // console.log(doc)
         res.send(answer)
       } else {
         res.send(false)    // 找不到结果
