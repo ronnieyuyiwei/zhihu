@@ -14,35 +14,27 @@ router.get('/comment/getQuestionComment', (req, res) => {
   let qid = req.query.qid
   Problem.find({_id: mongoose.Types.ObjectId(qid)})
     .populate('questionComment')
+    .populate({
+      path: 'questionComment',
+      populate: { path: 'discussant' }
+    })
     .exec((err, doc) => {
       if (err) {
         console.log(err)
       }
-      // console.log('doc[0].questionComment' + doc[0].questionComment)
-      console.log('doc[0].questionComment[0]' + '\n' + doc[0].questionComment[0].discussant.account)
-      console.log('doc[0].questionComment' + '\n' + doc[0].questionComment[0].discussant)
-      Problem.populate(doc, { path: 'questionComment.discussant' }, function (err, populateDoc) {
-        if (err) {
-          console.log(err)
+      if (doc[0].questionComment.length) {      // 是否存在评论
+        let comment = []
+        for (var i = 0; i < doc[0].questionComment.length; i++) {
+          comment.push({
+            date: moment(doc[0].questionComment[i].date).format('ddd, HH:mm '),
+            discussant: doc[0].questionComment[i].discussant.account,
+            content: doc[0].questionComment[i].content
+          })
         }
-        console.log('xx' + populateDoc[0].questionComment.discussant.account)
-      })
-      // if (doc[0].questionComment) {
-      //   let comment = []
-      //   // console.log('account' + doc[0].questionComment[0].discussant.account)
-      //   for (var i = 0; i < doc[0].questionComment.length; i++) {
-      //     comment.push({
-      //       date: doc[0].questionComment[i].date,
-      //       // discussant: doc[0].questionComment[i].discussant.account,
-      //       content: doc[0].questionComment[i].content
-      //     })
-      //   }
-      //   res.send(comment)
-      // } else {
-      //   console.log('out')
-      //   res.send(false)
-      // }
-      res.send(false)
+        res.send(comment)
+      } else {
+        res.send(false)
+      }
     })
 })
 router.post('/comment/addComment/', (req, res) => {

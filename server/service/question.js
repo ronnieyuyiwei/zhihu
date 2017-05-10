@@ -71,8 +71,8 @@ router.get('/question/getData', (req, res) => {
           title: result.title,
           describe: result.describe
         }
-        if (result.comment) {
-          question.commentNum = result.comment.length
+        if (result.questionComment.length) {
+          question.commentNum = result.questionComment.length
           res.send(question)
         } else {
           question.commentNum = 0

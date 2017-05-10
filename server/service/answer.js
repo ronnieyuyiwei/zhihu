@@ -73,9 +73,10 @@ router.get('/answer/getAnswer_content', (req, res) => {
         res.send(false)
       }
       if (doc.answer.length) {
-        doc.answer.forEach(function (e) {               // 查找answerId 匹配的项
+        doc.answer.forEach(function (e) {              // 查找answerId 匹配的项
           if (e._id.toString() === answerId) {
             answer.push({
+              title: doc.title,
               responder: e.responder.account,
               content: e.content,
               date: moment(e.date).format('YYYY-MM-DD')

@@ -1,7 +1,7 @@
 <template>
   <div class="comment">
     <div class="operate">
-      <div class="back">
+      <div class="back" @click="goBack">
         <svg class="icon" aria-hidden="true">
           <use xlink:href='#icon-fanhui'></use>
         </svg>
@@ -15,7 +15,6 @@
         </svg>
       </div>
     </div>
-    {{hasComment}}
     <div class="comment-body" v-if='hasComment'>
       <router-link to='/home' tag='div' class="comment-details" v-for='item in commentTemplate' >
         <div class="comment-template">
@@ -43,7 +42,7 @@
                   <use xlink:href='#icon-dian'></use>
                 </svg>
               </div>
-              <div>周四 15:30</div>
+              <div>{{item.date}}</div>
             </div>
           </div>
         </div>
@@ -62,6 +61,12 @@
         <textarea v-model="comment" placeholder="请输入评论"></textarea>
       </div>
       <div class="btn" @click="addComment()">发布</div>
+    </div>
+    <div class="loading" v-show='loading_gif'>
+      <!--载入动画-->
+      <loading v-show='loading'></loading>
+      <!--完成动画-->
+      <status v-show='status' :status='axStatus'></status>
     </div>
   </div>
 </template>
@@ -182,10 +187,17 @@
         color: $blue;
       }
     }
+    .loading {
+      position: absolute;
+      width: 100%;
+      top: 200px;
+    }
   }
 </style>
 <script>
 import AutoSize from '../../js/autosize.js'
+import Loading from '../../components/loading/loading.vue'
+import Status from '../../components/loading/status.vue'
 import Axios from 'axios'
 export default {
   created: function () {
@@ -198,8 +210,16 @@ export default {
       account: '',
       comment: '',
       hasComment: false,
-      commentTemplate: []
+      commentTemplate: [],
+      loading_gif: false,
+      axStatus: false,
+      loading: false,
+      status: false
     }
+  },
+  components: {
+    Loading,
+    Status
   },
   methods: {
     getData () {
@@ -214,7 +234,7 @@ export default {
           for (let i = 0; i < response.data.length; i++) {
             this.commentTemplate.push({
               date: response.data[i].date,
-              // discussant: response.data[i].discussant,
+              discussant: response.data[i].discussant,
               content: response.data[i].content
             })
           }
@@ -230,14 +250,42 @@ export default {
       })
     },
     addComment () {
+      this.loading_gif = true
+      this.loading = true
       Axios.post('/comment/addComment', {
         qid: this.$route.params.qid,
         discussant: this.account,
         comment: this.comment
       })
       .then((response) => {
-        console.log(response.data)
+        if (response.data) {
+          this.loading = false
+          this.axStatus = true
+          this.status = true
+          setTimeout(() => {            // 显示成功动画1秒
+            this.$router.go(-1)
+          }, 1000)
+        } else {
+          this.loading = false
+          this.axStatus = false
+          this.status = true
+          setTimeout(() => {            // 显示失败动画1秒
+            this.$router.go(-1)
+          }, 1000)
+        }
       })
+      .catch((err) => {
+        console.log(err.msg)
+        this.loading = false
+        this.axStatus = false
+        this.status = true
+        setTimeout(() => {            // 显示失败动画1秒
+          this.$router.go(-1)
+        }, 1500)
+      })
+    },
+    goBack () {
+      this.$router.go(-1)
     }
   }
 }

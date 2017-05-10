@@ -2,11 +2,9 @@
   <div class="answer-foot">
     <template v-for="item in list">
       <li>
-        <router-link :to='item.path'>
-          <svg class="icon" aria-hidden="true">
-            <use :xlink:href='item.icon'></use>
-          </svg>
-        </router-link>
+        <svg class="icon" aria-hidden="true">
+          <use :xlink:href='item.icon'></use>
+        </svg>
         <span>{{item.title}}</span>
       </li>
     </template>
@@ -28,17 +26,17 @@
     font-size: 21px;
     border-top: 1px solid #E7E7E7;
     li {
+      height: 52px;
       display: block;
       flex: 1;
+      .icon {
+        margin-top: 5px;
+      }
       span {
-        margin-top: -3px;
         display: block;
         font-size: 13px;
         color: #888D97;
       }
-    }
-    .active a {
-      color: #0283FE;
     }
   }
 </style>
@@ -49,22 +47,18 @@ export default{
       list: [
         {
           title: '赞同',
-          path: '/home',
           icon: '#icon-shangxia'
         },
         {
           title: '感谢作者',
-          path: '/discovery',
           icon: '#icon-icon1'
         },
         {
           title: '加入收藏',
-          path: '/notice',
           icon: '#icon-shoucang'
         },
         {
           title: '评论',
-          path: '/message',
           icon: '#icon-icon'
         }
       ]

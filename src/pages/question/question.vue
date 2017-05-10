@@ -1,5 +1,8 @@
 <template>
   <div class="question">
+    <div class="search-bar">
+      <search-bar></search-bar>
+    </div>
     <div v-show='questionPage'>
       <div class="question-body">
         <div class="topic">
@@ -57,7 +60,11 @@
 <style lang="scss" scoped>
  @import "../../scss/config";
   .question{
+    .search-bar {
+      width: 100%;
+    }
     .question-body {
+      margin-top: 55px;
       .topic {
         display: flex;
         justify-content: center;
@@ -161,6 +168,7 @@
 </style>
 <script>
 import Axios from 'axios'
+import SearchBar from '../../components/search-bar/sub-searchBar.vue'
 import AnswerPreview from '../../components/answer/answer-template.vue'
 import FootMenu from '../../components/foot-menu.vue'
 export default {
@@ -177,7 +185,8 @@ export default {
   },
   components: {
     AnswerPreview,
-    FootMenu
+    FootMenu,
+    SearchBar
   },
   watch: {
     $route: function () {
