@@ -219,7 +219,6 @@ export default {
     checkLogin () {
       Axios.get('/login/checkLogin')
       .then((response) => {
-        console.log('more页面的response' + response.data.login)
         if (response.data.login) {
           this.login = true
           this.account = response.data.account

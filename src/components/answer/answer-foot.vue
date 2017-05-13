@@ -1,19 +1,19 @@
 <template>
   <div class="answer-foot">
     <template v-for="item in list">
-      <li>
+      <li @click='handle(item.method)'>
         <svg class="icon" aria-hidden="true">
           <use :xlink:href='item.icon'></use>
         </svg>
         <span>{{item.title}}</span>
       </li>
     </template>
-    <div class="vote" v-bind:style="{ height: voteHeight + 'px', top: -voteHeight + 52 + 'px'}">
+    <div class="vote" v-show="voteDiv" v-bind:style="{ height: voteHeight + 'px', top: -voteHeight + 52 + 'px'}" v-on:click.self='voteHide()'>
       <div class="content">
         <div class="title">为答案投票</div>
         <div class="btn">
           <div class="agree vote-btn">
-            <div class="btn-box">
+            <div class="btn-box" :class='{ active: agreeIsActive}' @click="vote('agree')">
               <svg class="icon" aria-hidden="true">
                 <use xlink:href='#icon-down-copy-copy'></use>
               </svg>
@@ -21,7 +21,7 @@
             <div class="msg">赞同</div>
           </div>
           <div class="disagree vote-btn">
-            <div class="btn-box">
+            <div class="btn-box" :class='{ active: disagreeIsActive}' @click="vote('disagree')">
               <svg class="icon" aria-hidden="true">
                 <use xlink:href='#icon-sanjiao'></use>
               </svg>
@@ -100,6 +100,12 @@
               align-items: center;
               font-size: 35px;
             }
+            .active {
+              background: $blue;
+              .icon {
+                color: white;
+              }
+            }
             .msg {
               margin-top: 5px;
             }
@@ -110,26 +116,36 @@
   }
 </style>
 <script>
+import Axios from 'axios'
 export default{
   data () {
     return {
+      login: false,
+      account: '',
       voteHeight: 0,
+      agreeIsActive: false,
+      disagreeIsActive: false,
+      voteDiv: false,
       list: [
         {
           title: '赞同',
-          icon: '#icon-shangxia'
+          icon: '#icon-shangxia',
+          method: 'openVote'
         },
         {
           title: '感谢作者',
-          icon: '#icon-icon1'
+          icon: '#icon-icon1',
+          method: ''
         },
         {
           title: '加入收藏',
-          icon: '#icon-shoucang'
+          icon: '#icon-shoucang',
+          method: ''
         },
         {
           title: '评论',
-          icon: '#icon-icon'
+          icon: '#icon-icon',
+          method: ''
         }
       ]
     }
@@ -137,12 +153,46 @@ export default{
   name: 'answer-foot',
   created: function () {
     this.setVoteHeight()
+    this.checkLogin()
   },
   methods: {
     setVoteHeight () {
       var clientHeight = document.documentElement.clientHeight
       this.voteHeight = clientHeight
       // document.body.style.overflow = 'hidden'
+    },
+    checkLogin () {
+      Axios.get('/login/checkLogin')
+      .then((response) => {
+        if (response.data.login) {
+          this.login = true
+          this.account = response.data.account
+        } else {
+          this.login = false
+        }
+      })
+    },
+    vote (params) {             // 处理投票样式
+      if (params === 'agree' ) {
+        this.disagreeIsActive = false
+        this.agreeIsActive = true
+        Axios.post('/answer/vote', {
+          account: this.account,
+          qid: this.$route.params.qid,
+          asId: this.$route.params.asId
+        })
+      } else if (params === 'disagree') {
+        this.agreeIsActive = false
+        this.disagreeIsActive = true
+      }
+    },
+    handle (params) {
+      if (params === 'openVote') {
+        this.voteDiv = true
+      }
+    },
+    voteHide () {
+      this.voteDiv = false
     }
   }
 }

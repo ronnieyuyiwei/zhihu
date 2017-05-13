@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="comment-body" v-if='hasComment'>
-      <router-link to='/home' tag='div' class="comment-details" v-for='item in commentTemplate' >
+      <div class="comment-details" v-for='item in commentTemplate' >
         <div class="comment-template">
           <div class="left-side">
             <img src="../../img/head.jpg">
@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-      </router-link>
+      </div>
     </div>
     <div class='no-comment' v-else='hasComment'>
       <div>

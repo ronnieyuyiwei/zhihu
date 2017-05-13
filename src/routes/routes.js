@@ -64,7 +64,7 @@ export default [
       },
       {
         path: '/test',
-        component: resolve => require(['../components/loading/status.vue'], resolve)
+        component: resolve => require(['../pages/test.vue'], resolve)
       },
       {
         path: '/answer-content',

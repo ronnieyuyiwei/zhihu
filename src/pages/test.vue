@@ -1,15 +1,22 @@
 <template>
   <div class="test">
-    3333333
-  <Loading></Loading>
+    <form action="/test" method="get">
+      <input type="text" name="xss">
+      <input type="submit">
+    </form>
+    <hr>
+    你输入的字符为: {{msg}}
   </div>
 </template>
 <script>
-  import Loading from '../components/loading'
   export default {
-    components: {
-      Loading
+    data () {
+      return {
+        msg: null
+      }
     }
   }
 </script>
-<style></style>
+<style lang='scss' scoped>
+
+</style>

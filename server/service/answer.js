@@ -93,4 +93,37 @@ router.get('/answer/getAnswer_content', (req, res) => {
       }
     })
 })
+router.post('/answer/vote', (req, res) => {
+  let data = {
+    account: req.body.account,
+    qid: req.body.qid,
+    asId: req.body.asId
+  }
+  User.findOne({account: data.account}, (err, result) => {
+    if (err) {
+      console.log(err)
+    }
+    Problem.findById(data.qid)
+      .exec((err, doc) => {
+        if (err) {
+          console.log(err)
+        }
+        if (doc.answer) {
+          for (let i = 0; i < doc.answer.length; i++) {
+            if (doc.answer[i]._id.toString() === data.asId) {
+              console.log(data.asId)
+              doc.answer[i].agree.push(result._id)
+              doc.save((err) => {
+                if (err) {
+                  console.log(err)
+                }
+                res.send('ok')
+              })
+            }
+          }
+        }
+      })
+  })
+
+})
 module.exports = router

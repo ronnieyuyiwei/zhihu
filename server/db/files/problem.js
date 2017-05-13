@@ -15,6 +15,8 @@ var problemSchema = new Schema({
     responder: { type: Schema.Types.ObjectId, ref: 'User' },
     as_comment: { type: Schema.Types.ObjectId, ref: 'Comment' },
     content: String,
+    agree: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    disagree: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     fold: { type: Boolean, default: false }
   }],
   questionComment: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
