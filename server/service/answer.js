@@ -93,37 +93,83 @@ router.get('/answer/getAnswer_content', (req, res) => {
       }
     })
 })
+
 router.post('/answer/vote', (req, res) => {
   let data = {
+    vote: req.body.vote,      // true表示agree， false表示disagree
     account: req.body.account,
     qid: req.body.qid,
     asId: req.body.asId
   }
-  User.findOne({account: data.account}, (err, result) => {
-    if (err) {
-      console.log(err)
-    }
-    Problem.findById(data.qid)
-      .exec((err, doc) => {
+  if (data.vote === 'getVoteNum') {
+    Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
+      .exec((err, problem) => {
         if (err) {
           console.log(err)
         }
-        if (doc.answer) {
-          for (let i = 0; i < doc.answer.length; i++) {
-            if (doc.answer[i]._id.toString() === data.asId) {
-              console.log(data.asId)
-              doc.answer[i].agree.push(result._id)
-              doc.save((err) => {
-                if (err) {
-                  console.log(err)
-                }
-                res.send('ok')
-              })
+        if (problem) {
+          problem.answer.forEach(function (answer) {
+            if (answer._id.toString() === data.asId) {
+              console.log('点赞数' + answer.agree.length)
+              res.send({agreeNum: answer.agree.length})
             }
-          }
+          })
+        } else {
+          console.log('error')
         }
       })
-  })
-
+  }
+  // if (data.vote) {
+  //   Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
+  //     .populate('answer.agree')
+  //     .exec(function (err, problem) {
+  //       if (err) {
+  //         console.log(err)
+  //       }
+  //       if (problem) {
+  //         problem.answer.forEach(function (answer) {
+  //           if (answer._id.toString() === data.asId) {
+  //             console.log('进入')
+  //             answer.agree.some(function (user) {
+  //               User.findOne({_id: user}, function (err, userDoc) {
+  //                 if (err) {
+  //                   console.log(err)
+  //                 }
+  //                 console.log('进入user内部' + userDoc.account)
+  //                 if (userDoc) {
+  //                  //
+  //                 }
+  //               })
+  //             })
+  //           }
+  //         })
+  //       }
+  //     })
+  // }
+  // User.findOne({account: data.account}, (err, result) => {
+  //   if (err) {
+  //     console.log(err)
+  //   }
+  //   Problem.findById(data.qid)
+  //     .exec((err, doc) => {
+  //       if (err) {
+  //         console.log(err)
+  //       }
+  //       if (doc.answer) {
+  //         for (let i = 0; i < doc.answer.length; i++) {
+  //           if (doc.answer[i]._id.toString() === data.asId) {
+  //             console.log(data.asId)
+  //             doc.answer[i].agree.push(result._id)
+  //             doc.save((err) => {
+  //               if (err) {
+  //                 console.log(err)
+  //               }
+  //               res.send('ok')
+  //             })
+  //           }
+  //         }
+  //       }
+  //     })
+  // })
 })
 module.exports = router

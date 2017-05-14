@@ -126,6 +126,7 @@ export default{
       agreeIsActive: false,
       disagreeIsActive: false,
       voteDiv: false,
+      voteNumber: '',
       list: [
         {
           title: '赞同',
@@ -154,6 +155,7 @@ export default{
   created: function () {
     this.setVoteHeight()
     this.checkLogin()
+    this.getVoteNum()
   },
   methods: {
     setVoteHeight () {
@@ -172,14 +174,29 @@ export default{
         }
       })
     },
+    getVoteNum () {
+      Axios.post('/answer/vote', {
+        vote: 'getVoteNum',
+        account: this.account,
+        qid: this.$route.params.qid,
+        asId: this.$route.params.asId
+      })
+      .then((response) => {
+        this.list[0].title = response.data.agreeNum + this.list[0].title
+      })
+    },
     vote (params) {             // 处理投票样式
-      if (params === 'agree' ) {
+      if (params === 'agree') {
         this.disagreeIsActive = false
         this.agreeIsActive = true
         Axios.post('/answer/vote', {
+          vote: true,
           account: this.account,
           qid: this.$route.params.qid,
           asId: this.$route.params.asId
+        })
+        .then((response) => {
+          console.log(response.data)
         })
       } else if (params === 'disagree') {
         this.agreeIsActive = false
@@ -189,6 +206,13 @@ export default{
     handle (params) {
       if (params === 'openVote') {
         this.voteDiv = true
+        Axios.post('/answer/vote', {
+          vote: 'getVoteState',
+          account: this.account,
+          qid: this.$route.params.qid,
+          asId: this.$route.params.asId
+        })
+          
       }
     },
     voteHide () {
