@@ -6,6 +6,8 @@ const router = express.Router()
 const Problem = require('../db/files/problem')
 const User = require('../db/files/user')
 const mongoose = require('mongoose')
+const moment = require('moment')
+moment.locale('zh-cn')
 router.post('/question/addQuestion', (req, res) => {
   var user = req.session.account || req.cookies.AndLogin.account
   var userQuery = User.findOne({account: user})
@@ -52,7 +54,9 @@ router.get('/question/getQuestion', (req, res) => {
         list.push({
           title: doc[0]._ask[i].title,
           describe: doc[0]._ask[i].describe,
-          id: doc[0]._ask[i]._id
+          id: doc[0]._ask[i]._id,
+          answerNum: 0 || doc[0]._ask[i].answer.length,
+          date: moment(doc[0]._ask[i].date).fromNow()
         })
       }
       res.send(list)

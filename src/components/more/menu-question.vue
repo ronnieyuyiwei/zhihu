@@ -9,9 +9,9 @@
           {{data.questionContent}}
         </div>
         <div class='question-info'>
-          <span>2&nbsp;回答</span>
+          <span>{{data.answerNum}}&nbsp;回答</span>
           <span>4&nbsp;关注</span>
-          <span>1&nbsp;年前</span>
+          <span>{{data.date}}</span>
         </div>
       </router-link>
     </div>
@@ -75,7 +75,9 @@ export default {
        this.questionList.push({
          questionTitle: response.data[i].title,
          questionContent: response.data[i].describe,
-         questionId: `/question/${response.data[i].id}`
+         questionId: `/question/${response.data[i].id}`,  // 设置跳转路由
+         answerNum: response.data[i].answerNum,
+         date: response.data[i].date
        })
      }
    })
