@@ -13,7 +13,7 @@
         <div class="title">为答案投票</div>
         <div class="btn">
           <div class="agree vote-btn">
-            <div class="btn-box" :class='{ active: agreeIsActive}' @click="vote('agree')">
+            <div class="btn-box" :class='{ active: agreeIsActive }' @click="vote('agree')">
               <svg class="icon" aria-hidden="true">
                 <use xlink:href='#icon-down-copy-copy'></use>
               </svg>
@@ -21,7 +21,7 @@
             <div class="msg">赞同</div>
           </div>
           <div class="disagree vote-btn">
-            <div class="btn-box" :class='{ active: disagreeIsActive}' @click="vote('disagree')">
+            <div class="btn-box" :class='{ active: disagreeIsActive }' @click="vote('disagree')">
               <svg class="icon" aria-hidden="true">
                 <use xlink:href='#icon-sanjiao'></use>
               </svg>
@@ -195,7 +195,6 @@ export default{
         // 改变初始样式
         console.log(response.data.attitude)
         if (response.data.attitude === 'agree') {
-          console.log('发生了改变')
           this.agreeIsActive = true
           this.disagreeIsActive = false
         } else if (response.data.attitude === 'disagree') {
@@ -211,13 +210,12 @@ export default{
     },
     vote (params) {             // 处理投票样式
       if (params === 'agree') {
+        this.agreeIsActive = !this.agreeIsActive
         this.disagreeIsActive = false
-        this.agreeIsActive = true
       } else if (params === 'disagree') {
         this.agreeIsActive = false
-        this.disagreeIsActive = true
+        this.disagreeIsActive = !this.disagreeIsActive
       }
-      setTimeout(() => { this.voteHide() }, 1000)
     },
     handle (params) {
       if (params === 'openVote') {
@@ -243,6 +241,20 @@ export default{
       } else if (this.disagreeIsActive) {
         Axios.post('/answer/vote', {
           vote: 'disagree',
+          account: this.account,
+          qid: this.$route.params.qid,
+          asId: this.$route.params.asId
+        })
+        .then((response) => {
+          if (response.data.agreeNum) {    // 改变点赞数值
+            this.list[0].title = response.data.agreeNum + '赞同'
+          } else {
+            this.list[0].title = '赞同'
+          }
+        })
+      } else {
+        Axios.post('/answer/vote', {
+          vote: 'nothing',
           account: this.account,
           qid: this.$route.params.qid,
           asId: this.$route.params.asId

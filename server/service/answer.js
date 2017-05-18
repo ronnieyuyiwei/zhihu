@@ -136,40 +136,31 @@ router.post('/answer/vote/initializeVote', (req, res) => {
               if (answer.agree.length > 0) { // agree 存在
                 for (let i = 0; i < answer.agree.length; i++) {
                   if (answer.agree[i].account === data.account) {
-                    console.log('查询到agree')
                     resolve('agree')
                   } else {
-                    console.log('进入第一else分支')
                     if (answer.disagree) { // disagree 存在
                       for (let i = 0; i < answer.disagree.length; i++) {
                         if (answer.disagree[i].account === data.account) {
-                          console.log('查询到disagree')
                           resolve('disagree')
                         } else {
-                          console.log('返回null')
                           resolve(null)
                         }
                       }
                     } else {
-                      console.log('返回null')
                       resolve(null)
                     }
                   }
                 }
               } else if (answer.agree.length === 0) {
-                console.log('进入agree不存在')
                 if (answer.disagree) { // disagree 存在
                   for (let i = 0; i < answer.disagree.length; i++) {
                     if (answer.disagree[i].account === data.account) {
-                      console.log('查询到disagree')
                       resolve('disagree')
                     } else {
-                      console.log('返回null')
                       resolve(null)
                     }
                   }
                 } else {
-                  console.log('返回null')
                   resolve(null)
                 }
               }
@@ -316,6 +307,64 @@ router.post('/answer/vote', (req, res) => {
           }
         })
     })
+  }
+  if (data.vote === 'nothing') {
+    Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
+      .populate('answer.agree answer.disagree')
+      .exec(function (err, problem) {
+        if (err) {
+          console.log(err)
+        }
+        if (problem) {
+          problem.answer.forEach((answer) => {
+            if (answer.agree.length > 0) { // agree 存在
+              for (let i = 0; i < answer.agree.length; i++) {
+                if (answer.agree[i].account === data.account) {
+                  answer.agree.splice(i, 1) // 删除agree
+                  console.log('删除执行完毕')
+                  console.log(answer.agree)
+                } else {
+                  if (answer.disagree) { // disagree 存在
+                    for (let i = 0; i < answer.disagree.length; i++) {
+                      if (answer.disagree[i].account === data.account) {
+                        answer.disagree.splice(i, 1)
+                      }
+                    }
+                  }
+                }
+              }
+            } else if (answer.agree.length === 0) {
+              if (answer.disagree) { // disagree 存在
+                for (let i = 0; i < answer.disagree.length; i++) {
+                  if (answer.disagree[i].account === data.account) {
+                    answer.disagree.splice(i, 1) // 删除disagree
+                  }
+                }
+              }
+            }
+          })
+        }
+        problem.save((err) => {
+          if (err) {
+            console.log(err)
+          }
+          Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
+            .exec((err, problem) => {
+              if (err) {
+                console.log(err)
+              }
+              if (problem) {
+                problem.answer.forEach(function (answer) {
+                  if (answer._id.toString() === data.asId) {
+                    res.send({agreeNum: answer.agree.length})
+                  }
+                })
+              } else {
+                console.log('error')
+              }
+            })
+        })
+      })
   }
 })
 module.exports = router
