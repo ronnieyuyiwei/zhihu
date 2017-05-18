@@ -60,7 +60,7 @@ export default [
       {
         name: 'comment',
         path: '/question/:qid/comment',
-        component: resolve => require(['../pages/comment/comment.vue'], resolve)
+        component: resolve => require(['../pages/comment/question-comment.vue'], resolve)
       },
       {
         path: '/test',

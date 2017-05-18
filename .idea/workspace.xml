@@ -6,8 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f5dae39-52fc-4b01-9576-3a27c0c6c479" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/service/answer.js" afterPath="$PROJECT_DIR$/server/service/answer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pages/comment/question-comment.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/static/js/2.725a47574ead9add1695.js" afterPath="$PROJECT_DIR$/dist/static/js/2.725a47574ead9add1695.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/db/files/comment.js" afterPath="$PROJECT_DIR$/server/db/files/comment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/service/comment.js" afterPath="$PROJECT_DIR$/server/service/comment.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/answer/answer-foot.vue" afterPath="$PROJECT_DIR$/src/components/answer/answer-foot.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/routes.js" afterPath="$PROJECT_DIR$/src/routes/routes.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pages/comment/comment.vue" afterPath="$PROJECT_DIR$/src/pages/comment/answer-comment.vue" />
     </list>
     <ignored path="andromeda.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,37 +35,27 @@
     <favorites_list name="andromeda" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3536358">
+    <splitter split-orientation="horizontal" split-proportion="0.35728812">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="comment.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/server/service/comment.js">
+          <file leaf-file-name="question-comment.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/pages/comment/question-comment.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="comment.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/pages/comment/comment.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="408">
-                  <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="answer-foot.vue" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/answer/answer-foot.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="563">
-                  <caret line="256" column="24" selection-start-line="256" selection-start-column="24" selection-end-line="256" selection-end-column="24" />
+                <state relative-caret-position="596">
+                  <caret line="290" column="22" selection-start-line="290" selection-start-column="22" selection-end-line="290" selection-end-column="22" />
                   <folding>
                     <element signature="n#style#0;n#!!top" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="answer-comment.vue" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/pages/comment/answer-comment.vue">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-3978">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -77,52 +73,22 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="comment.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/server/service/comment.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="answer.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/server/service/answer.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="171">
-                  <caret line="336" column="38" selection-start-line="336" selection-start-column="38" selection-end-line="336" selection-end-column="38" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/server/db/files/user.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="problem.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/server/db/files/problem.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="18" column="61" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
+        <leaf>
           <file leaf-file-name="comment.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/server/db/files/comment.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+                <state relative-caret-position="170">
+                  <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="comment.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/server/service/comment.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="766">
+                  <caret line="83" column="16" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -147,7 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/app.js" />
         <option value="$PROJECT_DIR$/src/pages/error/404.vue" />
         <option value="$PROJECT_DIR$/src/pages/error/dd.vue" />
         <option value="$PROJECT_DIR$/src/pages/login/404.vue" />
@@ -181,9 +146,7 @@
         <option value="$PROJECT_DIR$/src/components/answer/answer-template.vue" />
         <option value="$PROJECT_DIR$/src/pages/answer/answer-content.vue" />
         <option value="$PROJECT_DIR$/src/js/autosize.js" />
-        <option value="$PROJECT_DIR$/server/db/files/comment.js" />
         <option value="$PROJECT_DIR$/server/service/api.js" />
-        <option value="$PROJECT_DIR$/server/service/comment.js" />
         <option value="$PROJECT_DIR$/src/components/search-bar.vue" />
         <option value="$PROJECT_DIR$/src/components/search-bar/sub-searchbar.vue" />
         <option value="$PROJECT_DIR$/index.html" />
@@ -196,8 +159,11 @@
         <option value="$PROJECT_DIR$/src/pages/more/more.vue" />
         <option value="$PROJECT_DIR$/src/components/more/menu-question.vue" />
         <option value="$PROJECT_DIR$/server/service/question.js" />
-        <option value="$PROJECT_DIR$/src/components/answer/answer-foot.vue" />
         <option value="$PROJECT_DIR$/server/service/answer.js" />
+        <option value="$PROJECT_DIR$/src/components/answer/answer-foot.vue" />
+        <option value="$PROJECT_DIR$/server/db/files/comment.js" />
+        <option value="$PROJECT_DIR$/src/pages/comment/question-comment.vue" />
+        <option value="$PROJECT_DIR$/server/service/comment.js" />
       </list>
     </option>
   </component>
@@ -562,16 +528,17 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\andromeda\src\pages\comment" />
+      <recent name="F:\andromeda\src\components\answer" />
+      <recent name="A:\Andromeda\src\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\andromeda\src\pages\comment" />
       <recent name="F:\andromeda\src\components\answer" />
       <recent name="F:\andromeda\src\components\loading" />
       <recent name="F:\andromeda\src\pages\question" />
       <recent name="F:\andromeda\src\pages\answer" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\andromeda\src\components\answer" />
-      <recent name="A:\Andromeda\src\img" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.Unnamed">
@@ -712,20 +679,21 @@
       <workItem from="1494748938927" duration="7492000" />
       <workItem from="1494996622082" duration="13000" />
       <workItem from="1494998574122" duration="21988000" />
-      <workItem from="1495080333429" duration="15686000" />
+      <workItem from="1495080333429" duration="28056000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="511610000" />
+    <option name="totallyTimeSpent" value="523980000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14232409" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21375267" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18004338" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -739,7 +707,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -784,13 +751,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/more/test.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1019,6 +979,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
           <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1048,6 +1009,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="70" column="30" selection-start-line="80" selection-start-column="13" selection-end-line="83" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1090,22 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/comment/comment.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/service/comment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/db/files/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1114,10 +1060,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/db/files/comment.js">
+    <entry file="file://$PROJECT_DIR$/server/service/answer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="239">
+          <caret line="337" column="23" selection-start-line="337" selection-start-column="23" selection-end-line="337" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1130,20 +1076,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/db/files/comment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/answer/answer-foot.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="256" column="24" selection-start-line="256" selection-start-column="24" selection-end-line="256" selection-end-column="24" />
+        <state relative-caret-position="383">
+          <caret line="220" column="10" selection-start-line="220" selection-start-column="10" selection-end-line="220" selection-end-column="10" />
           <folding>
             <element signature="n#style#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/service/answer.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/comment/answer-comment.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="336" column="38" selection-start-line="336" selection-start-column="38" selection-end-line="336" selection-end-column="38" />
+        <state relative-caret-position="-3978">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/comment/question-comment.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="596">
+          <caret line="290" column="22" selection-start-line="290" selection-start-column="22" selection-end-line="290" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/service/comment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="766">
+          <caret line="83" column="16" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="16" />
           <folding />
         </state>
       </provider>

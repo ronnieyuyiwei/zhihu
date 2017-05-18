@@ -216,6 +216,9 @@ export default{
         this.agreeIsActive = false
         this.disagreeIsActive = !this.disagreeIsActive
       }
+      setTimeout(() => {
+        this.voteHide()
+      }, 200)
     },
     handle (params) {
       if (params === 'openVote') {

@@ -8,7 +8,7 @@ var commentSchema = new Schema({
   discussant: { type: Schema.Types.ObjectId, ref: 'User' },
   content: String,
   comment: { type: Schema.Types.ObjectId, ref: 'Comment' },
-  zan: { type: Schema.Types.ObjectId, ref: 'User' }
+  zan: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 })
 
 var Comment = mongoose.model('Comment', commentSchema)

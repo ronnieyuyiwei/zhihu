@@ -12,6 +12,7 @@ moment.locale('zh-cn')
 
 router.get('/comment/getQuestionComment', (req, res) => {
   let qid = req.query.qid
+  // let account = req.session.account
   Problem.find({_id: mongoose.Types.ObjectId(qid)})
     .populate('questionComment')
     .populate({
@@ -28,7 +29,8 @@ router.get('/comment/getQuestionComment', (req, res) => {
           comment.push({
             date: moment(doc[0].questionComment[i].date).format('ddd, HH:mm '),
             discussant: doc[0].questionComment[i].discussant.account,
-            content: doc[0].questionComment[i].content
+            content: doc[0].questionComment[i].content,
+            commentId: doc[0].questionComment[i]._id
           })
         }
         res.send(comment)
@@ -62,5 +64,27 @@ router.post('/comment/addComment/', (req, res) => {
     })
   })
 })
-
+router.post('/comment/questionCommentZan', (req, res) => {
+  let qid = req.body.qid
+  let commentId = req.body.cId
+  console.log(req.session.account)
+  Problem.findOne({_id: mongoose.Types.ObjectId(qid)})
+    .populate('questionComment')
+    .populate({
+      path: 'questionComment',
+      populate: { path: 'zan' }
+    })
+    .exec((err, problem) => {
+      if (err) {
+        console.log(err)
+      }
+      if (problem.questionComment) {
+        for (let i = 0; i < problem.questionComment.length; i++) {
+          if (problem.questionComment[i].toString() === commentId.toString()) {
+            if ()
+          }
+        }
+      }
+    })
+})
 module.exports = router
