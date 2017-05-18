@@ -126,7 +126,6 @@ export default{
       agreeIsActive: false,
       disagreeIsActive: false,
       voteDiv: false,
-      voteNumber: '',
       voteState: null,
       list: [
         {
@@ -156,7 +155,11 @@ export default{
   created: function () {
     this.setVoteHeight()
     this.checkLogin()
-    this.initializeVote()
+    .then((data) => {
+      return this.initializeVote()
+    }).then((data) => {
+      console.log(data)
+    })
   },
   methods: {
     setVoteHeight () {
@@ -165,24 +168,32 @@ export default{
       // document.body.style.overflow = 'hidden'
     },
     checkLogin () {
-      Axios.get('/login/checkLogin')
-      .then((response) => {
-        if (response.data.login) {
-          this.login = true
-          this.account = response.data.account
-        } else {
-          this.login = false
-        }
+      return new Promise((resolve, reject) => {
+        Axios.get('/login/checkLogin')
+         .then((response) => {
+           if (response.data.login) {
+             this.login = true
+             this.account = response.data.account
+           } else {
+             this.login = false
+           }
+           resolve('yes')
+         })
       })
     },
     initializeVote () {
-      Axios.post('/answer/vote/initializeVote', {  // 获取当前用户点赞情况
-        account: this.account,
-        qid: this.$route.params.qid,
-        asId: this.$route.params.asId
-      })
-      .then((response) => {    // 改变初始样式
-        console.log(response.data.attitude + 'xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+      return new Promise((resolve, reject) => {
+        Axios.post('/answer/vote/initializeVote', {  // 获取当前用户点赞情况
+          account: this.account,
+          qid: this.$route.params.qid,
+          asId: this.$route.params.asId
+        })
+      .then((response) => {
+        if (response.data.agreeNum) {    // 改变点赞数值
+          this.list[0].title = response.data.agreeNum + '赞同'
+        }
+        // 改变初始样式
+        console.log(response.data.attitude)
         if (response.data.attitude === 'agree') {
           console.log('发生了改变')
           this.agreeIsActive = true
@@ -195,6 +206,8 @@ export default{
           this.agreeIsActive = false
         }
       })
+        resolve('yes')
+      })
     },
     vote (params) {             // 处理投票样式
       if (params === 'agree') {
@@ -204,6 +217,7 @@ export default{
         this.agreeIsActive = false
         this.disagreeIsActive = true
       }
+      setTimeout(() => { this.voteHide() }, 1000)
     },
     handle (params) {
       if (params === 'openVote') {
@@ -220,7 +234,11 @@ export default{
           asId: this.$route.params.asId
         })
         .then((response) => {
-          console.log(response.data)
+          if (response.data.agreeNum) {    // 改变点赞数值
+            this.list[0].title = response.data.agreeNum + '赞同'
+          } else {
+            this.list[0].title = '赞同'
+          }
         })
       } else if (this.disagreeIsActive) {
         Axios.post('/answer/vote', {
@@ -230,7 +248,11 @@ export default{
           asId: this.$route.params.asId
         })
         .then((response) => {
-          console.log(response.data)
+          if (response.data.agreeNum) {    // 改变点赞数值
+            this.list[0].title = response.data.agreeNum + '赞同'
+          } else {
+            this.list[0].title = '赞同'
+          }
         })
       }
     }

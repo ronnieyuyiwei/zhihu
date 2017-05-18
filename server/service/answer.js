@@ -94,64 +94,97 @@ router.get('/answer/getAnswer_content', (req, res) => {
     })
 })
 router.post('/answer/vote/initializeVote', (req, res) => {
-  console.log('进入初始化')
   let data = {
     account: req.body.account,
     qid: req.body.qid,
     asId: req.body.asId
   }
-  let list = []
-  Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
-    .exec((err, problem) => {
-      if (err) {
-        console.log(err)
-      }
-      if (problem) {
-        problem.answer.forEach(function (answer) {
-          if (answer._id.toString() === data.asId) {
-            list.push({agreeNum: answer.agree.length})
+  var list = {
+    agreeNum: '',
+    attitude: 'hehe'
+  }
+  console.log(data.account + '2222')
+  function getAgreeNum () {
+    return new Promise((resolve, reject) => {
+      Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
+        .exec((err, problem) => {
+          if (err) {
+            console.log(err)
           }
-        })
-      } else {
-        console.log('error')
-      }
-    })
-  Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
-    .populate('answer.agree')
-    .exec(function (err, problem) {
-      if (err) {
-        console.log(err)
-      }
-      if (problem) {
-        problem.answer.forEach(function (answer) {
-          if (answer._id.toString() === data.asId) {
-            answer.agree.some(function (user) {
-              User.findOne({_id: user}, function (err, userDoc) {
-                if (err) {
-                  console.log(err)
-                }
-                if (userDoc) {
-                  res.send({attitude: 'agree'})
-                }
-              })
+          if (problem) {
+            problem.answer.forEach(function (answer) {
+              if (answer._id.toString() === data.asId) {
+                resolve(answer.agree.length)
+              }
             })
-            answer.disagree.some(function (user) {
-              User.findOne({_id: user}, function (err, userDoc) {
-                if (err) {
-                  console.log(err)
-                }
-                if (userDoc) {
-                  res.send({attitude: 'disagree'})
-                }
-              })
-            })
-            res.send({attitude: null})
           } else {
-            console.log('错误，无法查询到回答')
+            console.log('error')
           }
         })
-      }
     })
+  }
+  function checkVote () {
+    return new Promise((resolve, reject) => {
+      Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
+        .populate('answer.agree answer.disagree')
+        .exec(function (err, problem) {
+          if (err) {
+            console.log(err)
+          }
+          if (problem) {
+            problem.answer.forEach((answer) => {
+              if (answer.agree.length > 0) { // agree 存在
+                for (let i = 0; i < answer.agree.length; i++) {
+                  if (answer.agree[i].account === data.account) {
+                    console.log('查询到agree')
+                    resolve('agree')
+                  } else {
+                    console.log('进入第一else分支')
+                    if (answer.disagree) { // disagree 存在
+                      for (let i = 0; i < answer.disagree.length; i++) {
+                        if (answer.disagree[i].account === data.account) {
+                          console.log('查询到disagree')
+                          resolve('disagree')
+                        } else {
+                          console.log('返回null')
+                          resolve(null)
+                        }
+                      }
+                    } else {
+                      console.log('返回null')
+                      resolve(null)
+                    }
+                  }
+                }
+              } else if (answer.agree.length === 0) {
+                console.log('进入agree不存在')
+                if (answer.disagree) { // disagree 存在
+                  for (let i = 0; i < answer.disagree.length; i++) {
+                    if (answer.disagree[i].account === data.account) {
+                      console.log('查询到disagree')
+                      resolve('disagree')
+                    } else {
+                      console.log('返回null')
+                      resolve(null)
+                    }
+                  }
+                } else {
+                  console.log('返回null')
+                  resolve(null)
+                }
+              }
+            })
+          }
+        })
+    })
+  }
+  getAgreeNum().then((data) => {
+    list.agreeNum = data
+    return checkVote()
+  }).then((data) => {
+    list.attitude = data
+    res.send(list)
+  })
 })
 router.post('/answer/vote', (req, res) => {
   let data = {
@@ -160,32 +193,6 @@ router.post('/answer/vote', (req, res) => {
     qid: req.body.qid,
     asId: req.body.asId
   }
-  // if (data.vote === 'agree') {
-  //   Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
-  //     .populate('answer.agree')
-  //     .exec(function (err, problem) {
-  //       if (err) {
-  //         console.log(err)
-  //       }
-  //       if (problem) {
-  //         problem.answer.forEach(function (answer) {
-  //           if (answer._id.toString() === data.asId) {
-  //             answer.agree.some(function (user) {
-  //               User.findOne({_id: user}, function (err, userDoc) {
-  //                 if (err) {
-  //                   console.log(err)
-  //                 }
-  //                 console.log('进入user内部' + userDoc.account)
-  //                 if (userDoc) {
-  //                  //
-  //                 }
-  //               })
-  //             })
-  //           }
-  //         })
-  //       }
-  //     })
-  // }
   if (data.vote === 'agree') {
     User.findOne({account: data.account}, (err, result) => {
       if (err) {
@@ -199,15 +206,112 @@ router.post('/answer/vote', (req, res) => {
           if (doc.answer) {
             for (let i = 0; i < doc.answer.length; i++) {
               if (doc.answer[i]._id.toString() === data.asId) {
-                console.log(data.asId)
-                doc.answer[i].agree.push(result._id)
-                doc.save((err) => {
-                  if (err) {
-                    console.log(err)
+                if (doc.answer[i].agree) {
+                  if (!doc.answer[i].agree.some(function (userId) {
+                    return userId.toString() === result._id.toString()
+                  })) {
+                    doc.answer[i].agree.push(result._id)
+                    if (doc.answer[i].disagree) {
+                      for (let j = 0; j < doc.answer[i].disagree.length; j++) {
+                        if (doc.answer[i].disagree[j].toString() === result._id.toString()) {
+                          doc.answer[i].disagree.splice(j, 1)
+                        }
+                      }
+                    }
                   }
-                  res.send('ok')
-                })
+                }
+              } else {
+                doc.answer[i].agree.push(result._id)
+                if (doc.answer[i].disagree) {
+                  for (let j = 0; j < doc.answer[i].disagree.length; j++) {
+                    if (doc.answer[i].disagree[j].toString() === result._id.toString()) {
+                      doc.answer[i].disagree.splice(j, 1)
+                    }
+                  }
+                }
               }
+              doc.save((err) => {
+                if (err) {
+                  console.log(err)
+                }
+                Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
+                  .exec((err, problem) => {
+                    if (err) {
+                      console.log(err)
+                    }
+                    if (problem) {
+                      problem.answer.forEach(function (answer) {
+                        if (answer._id.toString() === data.asId) {
+                          res.send({agreeNum: answer.agree.length})
+                        }
+                      })
+                    } else {
+                      console.log('error')
+                    }
+                  })
+              })
+            }
+          }
+        })
+    })
+  }
+  if (data.vote === 'disagree') {
+    User.findOne({account: data.account}, (err, result) => {
+      if (err) {
+        console.log(err)
+      }
+      Problem.findById(data.qid)
+        .exec((err, doc) => {
+          if (err) {
+            console.log(err)
+          }
+          if (doc.answer) {
+            for (let i = 0; i < doc.answer.length; i++) {
+              if (doc.answer[i]._id.toString() === data.asId) {
+                if (doc.answer[i].disagree) {
+                  if (!doc.answer[i].disagree.some(function (userId) {
+                    return userId.toString() === result._id.toString()
+                  })) {
+                    doc.answer[i].disagree.push(result._id)
+                    if (doc.answer[i].agree) {
+                      for (let j = 0; j < doc.answer[i].agree.length; j++) {
+                        if (doc.answer[i].agree[j].toString() === result._id.toString()) {
+                          doc.answer[i].agree.splice(j, 1)
+                        }
+                      }
+                    }
+                  }
+                }
+              } else {
+                doc.answer[i].disagree.push(result._id)
+                if (doc.answer[i].agree) {
+                  for (let j = 0; j < doc.answer[i].agree.length; j++) {
+                    if (doc.answer[i].agree[j].toString() === result._id.toString()) {
+                      doc.answer[i].agree.splice(j, 1)
+                    }
+                  }
+                }
+              }
+              doc.save((err) => {
+                if (err) {
+                  console.log(err)
+                }
+                Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
+                  .exec((err, problem) => {
+                    if (err) {
+                      console.log(err)
+                    }
+                    if (problem) {
+                      problem.answer.forEach(function (answer) {
+                        if (answer._id.toString() === data.asId) {
+                          res.send({agreeNum: answer.agree.length})
+                        }
+                      })
+                    } else {
+                      console.log('error')
+                    }
+                  })
+              })
             }
           }
         })
