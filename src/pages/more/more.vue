@@ -187,7 +187,8 @@ export default {
         {
           title: '我的创作',
           icon: '#icon-bianji1',
-          href: '/more/my_creation/'
+          href: '/more/my_creation/',
+          default: '/answer'       // 进入页面的默认值
         },
         {
           title: '我的关注',
@@ -223,7 +224,7 @@ export default {
           this.login = true
           this.account = response.data.account
           for (var item in this.list) {
-            this.list[item].href += this.account
+            this.list[item].href = this.list[item].href + this.account + this.list[item].default
           }
         } else {
           this.login = false

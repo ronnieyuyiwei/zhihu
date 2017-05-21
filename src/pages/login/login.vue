@@ -13,7 +13,7 @@
       </div>
       <div class="captcha">
         <div class="captcha-input">
-          <label><input type="text" v-model="captcha" placeholder="验证码（不区分大小写）"></label>
+          <label><input type="text" v-model.trim="captcha" placeholder="验证码（不区分大小写）"></label>
         </div>
         <div class="captcha-pic" v-html='pic' @click="getCaptcha"></div>
       </div>

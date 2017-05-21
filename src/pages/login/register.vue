@@ -87,7 +87,7 @@ export default {
       })
     },
     account_validate () {
-      if (this.account.length >= 4 && this.account.length <= 10) {
+      if (this.account.length >= 4 && this.account.length <= 11) {
         this.msg = ''
         let reg = /^[\u4E00-\u9FA5A-Za-z0-9_]+$/  // 匹配中文、字母数字和下划线
         if (reg.test(this.account)) {
@@ -98,7 +98,7 @@ export default {
         }
       } else {
         this.userCheck = false
-        this.msg = '用户名长度必须在4-10位之间'
+        this.msg = '用户名长度必须在4-11位之间'
       }
     },
     ps_validate () {

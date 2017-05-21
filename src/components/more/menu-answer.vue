@@ -1,7 +1,7 @@
 <template>
   <div class="menu-answer">
     <div v-for='data in answerList'>
-      <router-link tag='div' to='/home' class="answer" >
+      <router-link tag='div' :to='data.answerHref' class="answer" >
         <div class='answer-title'>
           {{data.answerTitle}}
         </div>
@@ -77,7 +77,8 @@ export default {
               this.answerList.push({
                 answerTitle: response.data[i].answerTitle,
                 answerContent: response.data[i].answerContent,
-                answerDate: response.data[i].answerDate
+                answerDate: response.data[i].answerDate,
+                answerHref: `/question/${response.data[i].questionId}/answer/${response.data[i].answerId}`
               })
             }
           } else {

@@ -38,7 +38,7 @@ router.post('/answer/addAnswer', (req, res) => {
     }
   })
 })
-router.get('/answer/getMyAnswer', (req, res) => {
+router.get('/answer/getMyAnswer', (req, res) => {       // 在我的创作中显示我的回答
   let account = req.query.account || req.session.account || req.cookies.account
   let answerList = []
   console.log(account)
@@ -55,7 +55,9 @@ router.get('/answer/getMyAnswer', (req, res) => {
               answerList.push({
                 answerTitle: user._answer[i].title,
                 answerContent: user._answer[i].answer[j].content,
-                answerDate: moment(user._answer[i].answer[j].date).fromNow()
+                answerDate: moment(user._answer[i].answer[j].date).fromNow(),
+                questionId: user._answer[i]._id.toString(),
+                answerId: user._answer[i].answer[j]._id.toString()
               })
             }
           }
@@ -135,9 +137,8 @@ router.post('/answer/vote/initializeVote', (req, res) => {
   }
   var list = {
     agreeNum: '',
-    attitude: 'hehe'
+    attitude: ''
   }
-  console.log(data.account + '2222')
   function getAgreeNum () {
     return new Promise((resolve, reject) => {
       Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
@@ -355,8 +356,6 @@ router.post('/answer/vote', (req, res) => {
               for (let i = 0; i < answer.agree.length; i++) {
                 if (answer.agree[i].account === data.account) {
                   answer.agree.splice(i, 1) // 删除agree
-                  console.log('删除执行完毕')
-                  console.log(answer.agree)
                 } else {
                   if (answer.disagree) { // disagree 存在
                     for (let i = 0; i < answer.disagree.length; i++) {

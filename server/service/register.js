@@ -23,7 +23,7 @@ router.post('/register/createAccount', (req, res) => {
   function validate () {                        // 服务器验证
     let acReg = /^[\u4E00-\u9FA5A-Za-z0-9_]+$/  // 匹配中文、数字、字母及下划线
     let psReg = /^[A-Za-z0-9]+$/                // 匹配数字及字母
-    if (!(acReg.test(data.account) && data.account.length >= 4 && data.account.length <= 10)) {
+    if (!(acReg.test(data.account) && data.account.length >= 4 && data.account.length <= 11)) {
       return {msg: '用户名不符合格式，拒绝注册', permission: false}
     }
     if (!(psReg.test(data.password) && data.password.length >= 8 && data.password.length <= 20)) {
