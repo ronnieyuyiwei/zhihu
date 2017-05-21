@@ -84,7 +84,7 @@ export default [
               },
               {
                 path: 'answer',
-                component: resolve => require(['../components/more/gg.vue'], resolve)
+                component: resolve => require(['../components/more/menu-answer.vue'], resolve)
               }
             ]
           }

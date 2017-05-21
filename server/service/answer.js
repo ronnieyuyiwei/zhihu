@@ -15,7 +15,7 @@ router.post('/answer/addAnswer', (req, res) => {
     responder: req.body.responder,
     content: req.body.content
   }
-  User.findOne({'account': data.responder}, '_id', function (err, doc) {
+  User.findOne({'account': data.responder}, function (err, doc) {
     if (err) {
       console.log(err)
       res.send('error')
@@ -25,12 +25,46 @@ router.post('/answer/addAnswer', (req, res) => {
         if (err) {
           console.log(err)
         }
-        res.send('ok')
+        doc._answer.push({_id: mongoose.Types.ObjectId(data.qid)})
+        doc.save((err) => {
+          if (err) {
+            console.log(err)
+          }
+          res.send('ok')
+        })
       })
     } else {
       res.send('error')
     }
   })
+})
+router.get('/answer/getMyAnswer', (req, res) => {
+  let account = req.query.account || req.session.account || req.cookies.account
+  let answerList = []
+  console.log(account)
+  User.findOne({account: account})
+    .populate('_answer')
+    .exec((err, user) => {
+      if (err) {
+        console.log(err)
+      }
+      if (user._answer.length > 0) {
+        for (let i = 0; i < user._answer.length; i++) {
+          for (let j = 0; j < user._answer[i].answer.length; j++) {
+            if (user._answer[i].answer[j].responder.toString() === user._id.toString()) {
+              answerList.push({
+                answerTitle: user._answer[i].title,
+                answerContent: user._answer[i].answer[j].content,
+                answerDate: moment(user._answer[i].answer[j].date).fromNow()
+              })
+            }
+          }
+        }
+        res.send(answerList)
+      } else {
+        res.send(answerList)
+      }
+    })
 })
 router.get('/answer/getAnswer_preview', (req, res) => {
   let questionId = req.query.questionId
