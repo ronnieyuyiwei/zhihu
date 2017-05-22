@@ -7,6 +7,7 @@ const session = require('express-session')
 const answer = require('./answer')
 const cookieParser = require('cookie-parser')
 const comment = require('./comment')
+const crawler = require('./crawler')
 router.use(session({
   secret: 'this_is_a_smart_website',
   name: 'swallow',   // 这里的name值得是cookie的name，默认cookie的name是：connect.sid
@@ -23,4 +24,5 @@ router.use('/', answer)
 router.use('/', register)
 router.use('/', login)
 router.use('/', comment)
+router.use('/', crawler)
 module.exports = router

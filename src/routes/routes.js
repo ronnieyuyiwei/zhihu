@@ -91,6 +91,10 @@ export default [
         ]
       },
       {
+        path: 'crawler',
+        component: resolve => require(['../pages/crawler/crawler.vue'], resolve)
+      },
+      {
         name: 'error',
         path: '/error',
         component: resolve => require(['../pages/error/404.vue'], resolve)

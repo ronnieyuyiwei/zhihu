@@ -10,7 +10,9 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "cheerio": "^0.22.0",
     "moment": "^2.18.1",
+    "superagent": "^3.5.2",
     "vue": "^2.1.0"
   },
   "devDependencies": {
