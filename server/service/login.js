@@ -27,9 +27,6 @@ router.post('/login/checkAccount', (req, res) => {
   })
 })
 router.get('/login/checkLogin', (req, res) => { // 验证是否已经登录
-  // console.log('Cookies: ', req.cookies)
-  // console.log('Signed Cookies: ', req.signedCookies)
-
   if (req.session.account) {
     console.log('session中获取到账户名' + req.session.account)
     res.send({
@@ -39,11 +36,24 @@ router.get('/login/checkLogin', (req, res) => { // 验证是否已经登录
     })
   } else if (req.cookies.AndLogin) {
     console.log('cookies中获取的账户名' + req.cookies.AndLogin.account)
-    req.session.account = req.cookies.AndLogin.account
-    res.send({
-      login: true,
-      account: req.cookies.AndLogin.account,
-      session_id: req.session.id
+    User.findOne({account: req.cookies.AndLogin.account}, (err, result) => {
+      if (err) {
+        console.log(err)
+      }
+      if (result) {
+        console.log(result)
+        req.session.account = req.cookies.AndLogin.account
+        res.send({
+          login: true,
+          account: req.cookies.AndLogin.account,
+          session_id: req.session.id
+        })
+      } else {
+        console.log(result)
+        res.send({
+          login: false
+        })
+      }
     })
   } else {
     res.send({

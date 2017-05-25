@@ -31,8 +31,14 @@ router.beforeEach((to, from, next) => {
       .catch((err) => {
         console.log(err)
       })
-  } else {
-    next() // 确保一定要调用 next()
+  } else {       // 为不需要登录Auth的页面写入session
+    Axios.get('/login/checkLogin')
+      .then((response) => {
+        next() // 确保一定要调用 next()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 })
 /* eslint-disable no-new */

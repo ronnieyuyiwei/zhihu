@@ -153,123 +153,19 @@ export default{
   },
   name: 'answer-foot',
   created: function () {
-    this.setVoteHeight()
-    this.checkLogin()
-    .then((data) => {
-      return this.initializeVote()
-    }).then((data) => {
-      console.log(data)
-    })
+    this.initializeVote()
   },
   methods: {
     setVoteHeight () {
       var clientHeight = document.documentElement.clientHeight
       this.voteHeight = clientHeight
-      // document.body.style.overflow = 'hidden'
-    },
-    checkLogin () {
-      return new Promise((resolve, reject) => {
-        Axios.get('/login/checkLogin')
-         .then((response) => {
-           if (response.data.login) {
-             this.login = true
-             this.account = response.data.account
-           } else {
-             this.login = false
-           }
-           resolve('yes')
-         })
-      })
     },
     initializeVote () {
-      return new Promise((resolve, reject) => {
-        Axios.post('/answer/vote/initializeVote', {  // 获取当前用户点赞情况
-          account: this.account,
-          qid: this.$route.params.qid,
-          asId: this.$route.params.asId
-        })
-      .then((response) => {
-        if (response.data.agreeNum) {    // 改变点赞数值
-          this.list[0].title = response.data.agreeNum + '赞同'
-        }
-        // 改变初始样式
-        console.log(response.data.attitude)
-        if (response.data.attitude === 'agree') {
-          this.agreeIsActive = true
-          this.disagreeIsActive = false
-        } else if (response.data.attitude === 'disagree') {
-          this.disagreeIsActive = true
-          this.agreeIsActive = false
-        } else if (response.data.attitude === null) {
-          this.disagreeIsActive = false
-          this.agreeIsActive = false
-        }
-      })
-        resolve('yes')
-      })
-    },
-    vote (params) {             // 处理投票样式
-      if (params === 'agree') {
-        this.agreeIsActive = !this.agreeIsActive
-        this.disagreeIsActive = false
-      } else if (params === 'disagree') {
-        this.agreeIsActive = false
-        this.disagreeIsActive = !this.disagreeIsActive
-      }
-      setTimeout(() => {
-        this.voteHide()
-      }, 200)
-    },
-    handle (params) {
-      if (params === 'openVote') {
-        this.voteDiv = true
-      }
-    },
-    voteHide () {
-      this.voteDiv = false
-      if (this.agreeIsActive) {
-        Axios.post('/answer/vote', {
-          vote: 'agree',
-          account: this.account,
-          qid: this.$route.params.qid,
-          asId: this.$route.params.asId
-        })
+      // 22
+      Axios.get('/answer/vote/initializeVote')
         .then((response) => {
-          if (response.data.agreeNum) {    // 改变点赞数值
-            this.list[0].title = response.data.agreeNum + '赞同'
-          } else {
-            this.list[0].title = '赞同'
-          }
+          console.log(response.data)
         })
-      } else if (this.disagreeIsActive) {
-        Axios.post('/answer/vote', {
-          vote: 'disagree',
-          account: this.account,
-          qid: this.$route.params.qid,
-          asId: this.$route.params.asId
-        })
-        .then((response) => {
-          if (response.data.agreeNum) {    // 改变点赞数值
-            this.list[0].title = response.data.agreeNum + '赞同'
-          } else {
-            this.list[0].title = '赞同'
-          }
-        })
-      } else {
-        Axios.post('/answer/vote', {
-          vote: 'nothing',
-          account: this.account,
-          qid: this.$route.params.qid,
-          asId: this.$route.params.asId
-        })
-        .then((response) => {
-          if (response.data.agreeNum) {    // 改变点赞数值
-            this.list[0].title = response.data.agreeNum + '赞同'
-          } else {
-            this.list[0].title = '赞同'
-          }
-        })
-      }
     }
   }
 }
