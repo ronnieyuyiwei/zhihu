@@ -153,6 +153,7 @@ export default{
   },
   name: 'answer-foot',
   created: function () {
+    this.setVoteHeight()
     this.initializeVote()
   },
   methods: {
@@ -161,11 +162,35 @@ export default{
       this.voteHeight = clientHeight
     },
     initializeVote () {
-      // 22
-      Axios.get('/answer/vote/initializeVote')
+      Axios.get('/answer/vote/initializeVote', {
+        params: {
+          qid: this.$route.params.qid,
+          asId: this.$route.params.asId
+        }
+      })
         .then((response) => {
-          console.log(response.data)
+          this.list[0].title = response.data.agreeNum + '赞同'
         })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    handle (method) { // 下菜单按钮点击
+      if (method === 'openVote') {
+        this.voteDiv = true
+      }
+    },
+    vote (params) {
+      if (params === 'agree') {
+        this.agreeIsActive = true
+        this.disagreeIsActive = false
+      } else {
+        this.agreeIsActive = false
+        this.disagreeIsActive = true
+      }
+    },
+    voteHide () { // 隐藏并提交
+      this.voteDiv = false
     }
   }
 }

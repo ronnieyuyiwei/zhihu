@@ -130,9 +130,38 @@ router.get('/answer/getAnswer_content', (req, res) => {
     })
 })
 router.get('/answer/vote/initializeVote', (req, res) => {
-  console.log('req.session.account' + ' ' + req.session.account)
-  console.log('req.cookies.AndLogin.account' + ' ' + req.cookies.AndLogin.account)
-  res.send('xx')
+  let data = {
+    account: req.session.account || req.cookies.AndLogin.account,
+    qid: req.query.qid,
+    asId: req.query.asId
+  }
+  let reg = /^[0-9a-fA-F]{24}$/
+  console.log(reg.test(data.qid))
+  if (reg.test(data.qid)) {
+    Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
+      .exec((err, problem) => {
+        if (err) {
+          console.log(err)
+        }
+        if (problem) {
+          if (problem.answer) {
+            problem.answer.forEach((answer) => {
+              if (answer._id.toString() === data.asId) {
+                console.log(answer._id)
+                if (answer.agree) {
+                  console.log('answer.agree' + answer.agree)
+                  res.send({agreeNum: answer.agree.length})
+                }
+              }
+            })
+          }
+        } else {
+          res.send(404)
+        }
+      })
+  } else {
+    console.log('id验证不通过')
+  }
 })
 router.post('/answer/vote', (req, res) => {
 })
