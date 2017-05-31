@@ -136,7 +136,6 @@ router.get('/answer/vote/initializeVote', (req, res) => {
     asId: req.query.asId
   }
   let reg = /^[0-9a-fA-F]{24}$/
-  console.log('路由进入初始化')
   if (reg.test(data.qid)) {
     Problem.findOne({_id: mongoose.Types.ObjectId(data.qid)})
       .populate('answer.agree answer.disagree')

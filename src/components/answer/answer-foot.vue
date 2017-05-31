@@ -170,7 +170,6 @@ export default{
       })
         .then((response) => {
           this.list[0].title = response.data.agreeNum + '赞同'
-          console.log(response.data.attitude + '22222222')
           if (response.data.attitude === 'agree') {
             this.agreeIsActive = true
             this.disagreeIsActive = false

@@ -6,9 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f5dae39-52fc-4b01-9576-3a27c0c6c479" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/andromeda.iml" afterPath="$PROJECT_DIR$/.idea/andromeda.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/service/answer.js" afterPath="$PROJECT_DIR$/server/service/answer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/service/login.js" afterPath="$PROJECT_DIR$/server/service/login.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/answer/answer-foot.vue" afterPath="$PROJECT_DIR$/src/components/answer/answer-foot.vue" />
     </list>
     <ignored path="andromeda.iws" />
@@ -31,7 +29,7 @@
     <favorites_list name="andromeda" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.25167784">
+    <splitter split-orientation="horizontal" split-proportion="0.49463087">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="answer-template.vue" pinned="false" current-in-tab="false">
@@ -47,8 +45,8 @@
           <file leaf-file-name="answer-foot.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/answer/answer-foot.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="98">
-                  <caret line="172" column="56" selection-start-line="172" selection-start-column="56" selection-end-line="172" selection-end-column="56" />
+                <state relative-caret-position="213">
+                  <caret line="171" column="60" selection-start-line="171" selection-start-column="60" selection-end-line="171" selection-end-column="60" />
                   <folding>
                     <element signature="n#style#0;n#!!top" expanded="false" />
                   </folding>
@@ -103,8 +101,8 @@
           <file leaf-file-name="answer.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/service/answer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2967">
-                  <caret line="162" column="54" selection-start-line="162" selection-start-column="54" selection-end-line="162" selection-end-column="54" />
+                <state relative-caret-position="483">
+                  <caret line="138" column="24" selection-start-line="138" selection-start-column="24" selection-end-line="138" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
@@ -570,12 +568,12 @@
       <workItem from="1495605848626" duration="1198000" />
       <workItem from="1495695519311" duration="10902000" />
       <workItem from="1495782331365" duration="2498000" />
-      <workItem from="1496203552470" duration="14114000" />
+      <workItem from="1496203552470" duration="14247000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="581962000" />
+    <option name="totallyTimeSpent" value="582095000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
@@ -996,8 +994,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/answer/answer-foot.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="172" column="56" selection-start-line="172" selection-start-column="56" selection-end-line="172" selection-end-column="56" />
+        <state relative-caret-position="213">
+          <caret line="171" column="60" selection-start-line="171" selection-start-column="60" selection-end-line="171" selection-end-column="60" />
           <folding>
             <element signature="n#style#0;n#!!top" expanded="false" />
           </folding>
@@ -1006,8 +1004,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/service/answer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2967">
-          <caret line="162" column="54" selection-start-line="162" selection-start-column="54" selection-end-line="162" selection-end-column="54" />
+        <state relative-caret-position="483">
+          <caret line="138" column="24" selection-start-line="138" selection-start-column="24" selection-end-line="138" selection-end-column="24" />
           <folding />
         </state>
       </provider>
