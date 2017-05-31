@@ -170,6 +170,17 @@ export default{
       })
         .then((response) => {
           this.list[0].title = response.data.agreeNum + '赞同'
+          console.log(response.data.attitude + '22222222')
+          if (response.data.attitude === 'agree') {
+            this.agreeIsActive = true
+            this.disagreeIsActive = false
+          } else if (response.data.attitude === 'disagree') {
+            this.agreeIsActive = false
+            this.disagreeIsActive = true
+          } else if (response.data.attitude === 'neutral') {
+            this.agreeIsActive = false
+            this.disagreeIsActive = false
+          }
         })
         .catch((err) => {
           console.log(err)
@@ -182,15 +193,45 @@ export default{
     },
     vote (params) {
       if (params === 'agree') {
-        this.agreeIsActive = true
-        this.disagreeIsActive = false
-      } else {
-        this.agreeIsActive = false
-        this.disagreeIsActive = true
+        if (this.agreeIsActive) {
+          this.agreeIsActive = false
+          this.disagreeIsActive = false
+        } else {
+          this.agreeIsActive = true
+          this.disagreeIsActive = false
+        }
+      } else if (params === 'disagree') {
+        if (this.disagreeIsActive) {
+          this.agreeIsActive = false
+          this.disagreeIsActive = false
+        } else {
+          this.agreeIsActive = false
+          this.disagreeIsActive = true
+        }
       }
+      setTimeout(() => {
+        this.voteHide()
+      }, 500)
     },
     voteHide () { // 隐藏并提交
       this.voteDiv = false
+      let vote
+      if (this.agreeIsActive) {
+        vote = 'agree'
+      } else if (this.disagreeIsActive) {
+        vote = 'disagree'
+      } else {
+        vote = 'neutral'
+      }
+      Axios.post('/answer/vote', {
+        qid: this.$route.params.qid,
+        asId: this.$route.params.asId,
+        vote: vote
+      }).then((response) => {
+        if (response.data) {
+          this.initializeVote()
+        }
+      })
     }
   }
 }

@@ -41,7 +41,6 @@ router.get('/login/checkLogin', (req, res) => { // 验证是否已经登录
         console.log(err)
       }
       if (result) {
-        console.log(result)
         req.session.account = req.cookies.AndLogin.account
         res.send({
           login: true,
@@ -49,7 +48,6 @@ router.get('/login/checkLogin', (req, res) => { // 验证是否已经登录
           session_id: req.session.id
         })
       } else {
-        console.log(result)
         res.send({
           login: false
         })
