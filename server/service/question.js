@@ -90,5 +90,27 @@ router.get('/question/getData', (req, res) => {
     res.send({status: false})
   }
 })
-
+router.get('/question/checkAnswer', (req, res) => {
+  let qid = req.body.questionId
+  let user = req.session.account || req.cookies.AndLogin.account
+  console.log('进入checkAnswer')
+  User.findOne({account: user})
+    .exec((err, user) => {
+      if (err) {
+        console.log(err)
+      } else {
+        if (user._answer) {
+          user._answer.forEach((answer) => {
+            console.log(answer.toString() + '2222' + qid)
+            if (answer.toString() === qid) {
+              console.log(answer.toString())
+              res.send({answered: true})
+            } else {
+              res.send({answered: false})
+            }
+          })
+        }
+      }
+    })
+})
 module.exports = router

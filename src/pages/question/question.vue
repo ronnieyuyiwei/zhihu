@@ -32,14 +32,17 @@
               邀请回答
             </span>
             </div>
-            <div class="add-answer" @click='addAnswer'>
+            <div class="view-answer" v-if='answered'>
+              查看我的回答
+            </div>
+            <div class="add-answer" @click='addAnswer' v-else='answered'>
             <span>
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-bianji"></use>
-              </svg>
+            <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-bianji"></use>
+            </svg>
             </span>&nbsp;
-              <span>
-              添加回答
+            <span>
+            添加回答
             </span>
             </div>
           </div>
@@ -146,7 +149,7 @@
             flex: 1;
             border-right: 1px solid $border;
           }
-          .add-answer {
+          .add-answer, .view-answer {
             height: 45px;
             flex: 1;
           }
@@ -180,7 +183,8 @@ export default {
       focus: '',
       commentNum: '',
       questionId: this.$route.params.id,
-      questionPage: true
+      questionPage: true,
+      answered: false
     }
   },
   components: {
@@ -195,6 +199,7 @@ export default {
   },
   created: function () {
     this.getData()
+    this.checkAnswer() // 查询是否回答过
   },
   computed: {
     layerPop: function () {
@@ -225,6 +230,19 @@ export default {
       .catch((err) => {
         if (err) {
           console.log(err)
+        }
+      })
+    },
+    checkAnswer () {
+      Axios.get('/question/checkAnswer', {
+        params: {
+          questionId: this.$route.params.id
+        }
+      })
+      .then((response) => {
+        console.log('x' + response.data.answered)
+        if (response.data.answered) {
+          this.answered = true
         }
       })
     },

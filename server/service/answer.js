@@ -162,7 +162,6 @@ router.get('/answer/vote/initializeVote', (req, res) => {
                     responseList.attitude = 'disagree'
                   }
                 }
-                console.log(responseList.attitude + '333333333')
                 if (!responseList.attitude) {
                   responseList.attitude = 'neutral'
                 }
