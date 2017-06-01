@@ -240,7 +240,6 @@ export default {
         }
       })
       .then((response) => {
-        console.log('x' + response.data.answered)
         if (response.data.answered) {
           this.answered = true
         }

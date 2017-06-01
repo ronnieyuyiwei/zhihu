@@ -91,7 +91,7 @@ router.get('/question/getData', (req, res) => {
   }
 })
 router.get('/question/checkAnswer', (req, res) => {
-  let qid = req.body.questionId
+  let qid = req.query.questionId
   let user = req.session.account || req.cookies.AndLogin.account
   console.log('进入checkAnswer')
   User.findOne({account: user})
@@ -100,15 +100,13 @@ router.get('/question/checkAnswer', (req, res) => {
         console.log(err)
       } else {
         if (user._answer) {
+          let answered = false
           user._answer.forEach((answer) => {
-            console.log(answer.toString() + '2222' + qid)
             if (answer.toString() === qid) {
-              console.log(answer.toString())
-              res.send({answered: true})
-            } else {
-              res.send({answered: false})
+              answered = true
             }
           })
+          res.send({answered: answered})
         }
       }
     })
