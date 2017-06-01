@@ -152,9 +152,6 @@ export default {
         }
       })
       this.getCaptcha()
-      .catch((error) => {
-        console.log(error)
-      })
     },
     getCaptcha () {              // 获取验证码
       Axios.get('/register/getCaptcha', (err, response) => {
@@ -162,6 +159,9 @@ export default {
       })
       .then((response) => {
         this.pic = response.data
+      })
+      .catch((error) => {
+        console.log(error)
       })
     }
   }

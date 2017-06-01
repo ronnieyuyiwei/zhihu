@@ -10,6 +10,7 @@ var problemSchema = new Schema({
   title: String,
   describe: String,
   invited: Array,
+  focus: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   answer: [{
     date: { type: Date, default: Date.now },
     responder: { type: Schema.Types.ObjectId, ref: 'User' },

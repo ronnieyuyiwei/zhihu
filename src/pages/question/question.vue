@@ -20,7 +20,7 @@
             <div class="add-focus" v-if='!focused'>
               <button @click='addFocus'>+&nbsp;关注</button>
             </div>
-            <div class="focus-btn" v-else='!focused'>
+            <div class="focus-btn" @click="cancelFocus" v-else='!focused'>
               <button>已关注</button>
             </div>
           </div>
@@ -263,7 +263,6 @@ export default {
         if (response.data.answered) {
           this.answered = true
           this.myAsId = response.data.asId
-          console.log(response.data.focused + 'aaaa')
           this.focused = response.data.focused
         }
       })
@@ -273,7 +272,19 @@ export default {
         questionId: this.$route.params.id
       })
       .then((response) => {
-        console.log(response)
+        if (response.data === 'ok') {
+          this.focused = true
+        }
+      })
+    },
+    cancelFocus () {
+      Axios.post('/user/cancelProblemFocus', {
+        questionId: this.$route.params.id
+      })
+      .then((response) => {
+        if (response.data === 'ok') {
+          this.focused = false
+        }
       })
     },
     showMyAnswer () {
