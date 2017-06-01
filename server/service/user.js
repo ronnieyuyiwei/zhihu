@@ -78,11 +78,11 @@ router.post('/user/addPersonFocus', (req, res) => {
     if (err) {
       console.log(err)
     } else {
-      User.findOne({account: responder}, (err, responder) => {
+      User.findOne({account: responder}, (err, resp) => {
         if (err) {
           console.log(err)
         }
-        User.update({account: account}, {$addToSet: {'_focusPeople': responder._id}}, (err) => {
+        User.update({account: account}, {$addToSet: {'_focusPeople': resp._id}}, (err) => {
           if (err) {
             console.log(err)
           } else {
@@ -90,8 +90,8 @@ router.post('/user/addPersonFocus', (req, res) => {
             User.update({account: responder}, {$addToSet: {'_follower': user._id}}, (err) => {
               if (err) {
                 console.log(err)
-                res.send('ok')
               }
+              res.send('ok')
             })
           }
         })
