@@ -15,7 +15,7 @@
          </svg>
        </div>
      </div>
-     <div class="title">
+     <div class="title" @click="goQuestion()">
        {{title}}
      </div>
      <div class="blank"></div>
@@ -28,11 +28,17 @@
            <span class="name">{{responder}}</span>
            <span class="sign">这是一个有理想的人</span>
          </div>
-         <div class="focus">
+         <div class="focus" v-if='!focused' @click="addPersonFocus">
            <div>
              <svg class="icon" aria-hidden="true">
               <use xlink:href='#icon-jia'></use>
-             </svg>&nbsp;关注</div>
+             </svg>&nbsp;关注
+           </div>
+         </div>
+         <div class="focused" v-else='!focused'>
+           <div>
+            已关注
+           </div>
          </div>
        </div>
        <div class="content">
@@ -136,6 +142,20 @@
           color: #4096FE;
         }
       }
+      .focused{
+        flex: 1.8;
+        justify-content: flex-end;
+        div {
+          width: 70px;
+          height: 30px;
+          text-align: center;
+          line-height: 30px;
+          background: $bg-color;
+          border-radius: 5px;
+          font-size: 14px;
+          color: #6D7784;
+        }
+      }
     }
     .content{
       width: 100%;
@@ -177,7 +197,8 @@ export default {
       title: '',
       responder: '',
       content: '',
-      date: ''
+      date: '',
+      focused: false // 是否关注
     }
   },
   components: {
@@ -189,6 +210,9 @@ export default {
   methods: {
     goBack () {
       this.$router.go(-1)
+    },
+    goQuestion () {
+      this.$router.replace(`/question/${this.$route.params.qid}`)
     },
     getData () {
       Axios.get('/answer/getAnswer_content', {
@@ -205,6 +229,16 @@ export default {
       })
       .catch((err) => {
         console.log(err)
+      })
+    },
+    addPersonFocus () {
+      Axios.post('/user/addPersonFocus', {
+        responder: this.responder
+      })
+      .then((response) => {
+        if (response.data === 'ok') {
+          this.focused = true
+        }
       })
     }
   }

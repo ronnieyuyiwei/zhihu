@@ -71,4 +71,32 @@ router.get('/user/getFocusProblem', (req, res) => {
 
     })
 })
+router.post('/user/addPersonFocus', (req, res) => {
+  let responder = req.body.responder
+  let account = req.session.account || req.cookies.AndLogin.account
+  User.findOne({account: account}, (err, user) => {
+    if (err) {
+      console.log(err)
+    } else {
+      User.findOne({account: responder}, (err, responder) => {
+        if (err) {
+          console.log(err)
+        }
+        User.update({account: account}, {$addToSet: {'_focusPeople': responder._id}}, (err) => {
+          if (err) {
+            console.log(err)
+          } else {
+            console.log(user._id + 'abcdefg')
+            User.update({account: responder}, {$addToSet: {'_follower': user._id}}, (err) => {
+              if (err) {
+                console.log(err)
+                res.send('ok')
+              }
+            })
+          }
+        })
+      })
+    }
+  })
+})
 module.exports = router
