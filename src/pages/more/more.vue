@@ -193,7 +193,8 @@ export default {
         {
           title: '我的关注',
           icon: '#icon-guanzhu',
-          href: `/more/my_creation/`
+          href: `/more/my_focus/`,
+          default: '/question'
         },
         {
           title: '我的收藏',

@@ -17,8 +17,11 @@
           <div class="info">
             <div class="focus">1016人关注</div>
             <router-link tag='div' :to="{name: 'comment', params: {qid: this.$route.params.id}}" class="comment">{{commentNum}}&nbsp条评论</router-link>
-            <div class="add-focus">
-              <button>+&nbsp;关注</button>
+            <div class="add-focus" v-if='!focused'>
+              <button @click='addFocus'>+&nbsp;关注</button>
+            </div>
+            <div class="focus-btn" v-else='!focused'>
+              <button>已关注</button>
             </div>
           </div>
           <div class="button-bar">
@@ -32,7 +35,7 @@
               邀请回答
             </span>
             </div>
-            <div class="view-answer" v-if='answered'>
+            <div class="view-answer" v-if='answered' @click="showMyAnswer">
               查看我的回答
             </div>
             <div class="add-answer" @click='addAnswer' v-else='answered'>
@@ -130,6 +133,20 @@
               font-size: 14px;
               color: #ffffff;
             }
+          }
+          .focus-btn {
+            flex: 2;
+            button{
+              float: right;
+              margin-right: 20px;
+              width: 80px;
+              height: 30px;
+              border: none;
+              background: $bg-color;
+              border-radius: 5px;
+              font-size: 14px;
+              color: #6D7784;
+            }
 
           }
         }
@@ -184,7 +201,9 @@ export default {
       commentNum: '',
       questionId: this.$route.params.id,
       questionPage: true,
-      answered: false
+      answered: false,
+      myAsId: null,  // 我的回答Id
+      focused: null // 是否关注过
     }
   },
   components: {
@@ -195,6 +214,7 @@ export default {
   watch: {
     $route: function () {
       this.getData()    // 路由变化重新请求数据
+      this.checkAnswer()
     }
   },
   created: function () {
@@ -242,8 +262,22 @@ export default {
       .then((response) => {
         if (response.data.answered) {
           this.answered = true
+          this.myAsId = response.data.asId
+          console.log(response.data.focused + 'aaaa')
+          this.focused = response.data.focused
         }
       })
+    },
+    addFocus () {  // 添加关注
+      Axios.post('/user/addProblemFocus', {
+        questionId: this.$route.params.id
+      })
+      .then((response) => {
+        console.log(response)
+      })
+    },
+    showMyAnswer () {
+      this.$router.push(`${this.$route.path}/answer/${this.myAsId}`)
     },
     addAnswer () {
       this.$router.push(`${this.$route.path}/add_answer`)

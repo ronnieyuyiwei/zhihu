@@ -92,21 +92,41 @@ router.get('/question/getData', (req, res) => {
 })
 router.get('/question/checkAnswer', (req, res) => {
   let qid = req.query.questionId
-  let user = req.session.account || req.cookies.AndLogin.account
-  console.log('进入checkAnswer')
-  User.findOne({account: user})
+  let account = req.session.account || req.cookies.AndLogin.account
+  User.findOne({account: account})
     .exec((err, user) => {
       if (err) {
         console.log(err)
       } else {
         if (user._answer) {
           let answered = false
+          let focused = false
+          for (let i = 0; i < user._focusProblem.length; i++) {
+            if (user._focusProblem[i].toString() === qid) {
+              focused = true
+            }
+          }
+          var asId = null
           user._answer.forEach((answer) => {
             if (answer.toString() === qid) {
               answered = true
+              Problem.findOne({_id: mongoose.Types.ObjectId(answer)})
+                .populate('answer.responder')
+                .exec((err, problem) => {
+                  if (err) {
+                    console.log(err)
+                  } else {
+                    for (let i = 0; i < problem.answer.length; i++) {
+                      if (problem.answer[i].responder.account === account) {
+                        asId = problem.answer[i]._id.toString()
+                        res.send({answered: answered, asId: asId, focused: focused})
+                        break
+                      }
+                    }
+                  }
+                })
             }
           })
-          res.send({answered: answered})
         }
       }
     })

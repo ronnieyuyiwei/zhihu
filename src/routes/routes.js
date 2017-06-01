@@ -87,6 +87,16 @@ export default [
                 component: resolve => require(['../components/more/menu-answer.vue'], resolve)
               }
             ]
+          },
+          {
+            path: 'my_focus/:id',
+            component: resolve => require(['../pages/more/children/my-focus.vue'], resolve),
+            children: [
+              {
+                path: 'question',
+                component: resolve => require(['../components/more/focus-question.vue'], resolve)
+              }
+            ]
           }
         ]
       },

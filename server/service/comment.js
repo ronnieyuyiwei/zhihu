@@ -64,27 +64,4 @@ router.post('/comment/addComment/', (req, res) => {
     })
   })
 })
-// router.post('/comment/questionCommentZan', (req, res) => {
-//   let qid = req.body.qid
-//   let commentId = req.body.cId
-//   console.log(req.session.account)
-//   Problem.findOne({_id: mongoose.Types.ObjectId(qid)})
-//     .populate('questionComment')
-//     .populate({
-//       path: 'questionComment',
-//       populate: { path: 'zan' }
-//     })
-//     .exec((err, problem) => {
-//       if (err) {
-//         console.log(err)
-//       }
-//       if (problem.questionComment) {
-//         for (let i = 0; i < problem.questionComment.length; i++) {
-//           if (problem.questionComment[i].toString() === commentId.toString()) {
-//             if ()
-//           }
-//         }
-//       }
-//     })
-// })
 module.exports = router
