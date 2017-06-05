@@ -35,7 +35,7 @@ export default [
       },
       {
         path: '/discovery',
-        component: resolve => require(['../pages/discovery.vue'], resolve)
+        component: resolve => require(['../pages/discovery/discovery.vue'], resolve)
       },
       {
         path: '/ask_question',

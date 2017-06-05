@@ -51,7 +51,6 @@ export default {
       Axios.get('/user/getFocusProblem')
         .then((response) => {
           if (response.data) {
-            console.log(response.data)
             response.data.forEach((data) => {
               this.questionList.push({
                 title: data.title,
