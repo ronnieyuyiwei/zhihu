@@ -7,11 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f5dae39-52fc-4b01-9576-3a27c0c6c479" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/service/question.js" afterPath="$PROJECT_DIR$/server/service/question.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/service/user.js" afterPath="$PROJECT_DIR$/server/service/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/discovery/problem-content.vue" afterPath="$PROJECT_DIR$/src/components/discovery/problem-content.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/answer/answer-content.vue" afterPath="$PROJECT_DIR$/src/pages/answer/answer-content.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/discovery/discovery.vue" afterPath="$PROJECT_DIR$/src/pages/discovery/discovery.vue" />
     </list>
     <ignored path="andromeda.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,7 +47,7 @@
           <file leaf-file-name="answer-content.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/pages/answer/answer-content.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="598">
+                <state relative-caret-position="190">
                   <caret line="249" column="34" selection-start-line="249" selection-start-column="34" selection-end-line="249" selection-end-column="34" />
                   <folding>
                     <element signature="e#1142#1148#0" expanded="true" />
@@ -113,7 +109,7 @@
             <entry file="file://$PROJECT_DIR$/server/service/user.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="499">
-                  <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+                  <caret line="87" column="61" selection-start-line="87" selection-start-column="61" selection-end-line="87" selection-end-column="61" />
                   <folding>
                     <element signature="e#0#38#0" expanded="false" />
                   </folding>
@@ -737,12 +733,12 @@
       <workItem from="1496332691327" duration="402000" />
       <workItem from="1496473575815" duration="10518000" />
       <workItem from="1496555088314" duration="1550000" />
-      <workItem from="1496642754142" duration="26835000" />
+      <workItem from="1496642754142" duration="26871000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="656320000" />
+    <option name="totallyTimeSpent" value="656356000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1924" height="1047" extended-state="0" />
@@ -1173,7 +1169,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/answer/answer-content.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
+        <state relative-caret-position="190">
           <caret line="249" column="34" selection-start-line="249" selection-start-column="34" selection-end-line="249" selection-end-column="34" />
           <folding>
             <element signature="e#1142#1148#0" expanded="true" />
@@ -1184,7 +1180,7 @@
     <entry file="file://$PROJECT_DIR$/server/service/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="499">
-          <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+          <caret line="87" column="61" selection-start-line="87" selection-start-column="61" selection-end-line="87" selection-end-column="61" />
           <folding>
             <element signature="e#0#38#0" expanded="false" />
           </folding>

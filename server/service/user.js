@@ -86,7 +86,6 @@ router.get('/user/checkPersonFocus', (req, res) => {
           let focused = false
           for (let i = 0; i < user._focusPeople.length; i++) {
             if (user._focusPeople[i].account === responder) {
-              console.log('检查到已关注')
               focused = true
               break
             }
