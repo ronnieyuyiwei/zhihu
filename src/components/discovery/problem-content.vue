@@ -16,9 +16,8 @@
         <p>{{item.content}}</p>
       </div>
       <div class="operate">
-        <span>30&nbsp;赞</span>·
-        <span>26&nbsp;评论</span>·
-        <span>去往专栏</span>
+        <span>{{item.agreeNum}}&nbsp;赞</span>·
+        <span>{{item.commentNum}}&nbsp;评论</span>
       </div>
     </div>
   </div>
@@ -114,22 +113,16 @@ export default{
     getData () {
       Axios.get('/question/discovery/getQuestion')
         .then((response) => {
-          if (response.data.answer) {
-            response.data.forEach((data) => {
-              this.questionList.push({
-                title: data.title,
-                content: data.content,
-                path: `/question/${data.qid}/answer/${data.asId}`
-              })
+          console.log('as' + response.data.answer)
+          response.data.forEach((data) => {
+            this.questionList.push({
+              title: data.title,
+              content: data.content,
+              agreeNum: data.agreeNum || 0,
+              commentNum: data.commentNum || 0,
+              path: data.answer ? `/question/${data.qid}/answer/${data.asId}` : `/question/${data.qid}`
             })
-          } else {
-            response.data.forEach((data) => {
-              this.questionList.push({
-                title: data.title,
-                path: `/question/${data.qid}`
-              })
-            })
-          }
+          })
         })
     },
     goQuestion (path) {

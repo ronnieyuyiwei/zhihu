@@ -28,16 +28,18 @@
            <span class="name">{{responder}}</span>
            <span class="sign">这是一个有理想的人</span>
          </div>
-         <div class="focus" v-if='!focused' @click="addPersonFocus">
-           <div>
-             <svg class="icon" aria-hidden="true">
-              <use xlink:href='#icon-jia'></use>
-             </svg>&nbsp;关注
+         <div class="focus-button" v-if='buttonRender'>
+           <div class="focus" v-if='!focused' @click="addPersonFocus">
+             <div>
+               <svg class="icon" aria-hidden="true">
+                 <use xlink:href='#icon-jia'></use>
+               </svg>&nbsp;关注
+             </div>
            </div>
-         </div>
-         <div class="focused" v-else='!focused'>
-           <div>
-            已关注
+           <div class="focused" v-else='!focused' @click='cancelPersonFocus'>
+             <div>
+               已关注
+             </div>
            </div>
          </div>
        </div>
@@ -129,31 +131,32 @@
           font-size: 12px;
         }
       }
-      .focus{
+      .focus-button {
         flex: 1.8;
-        justify-content: flex-end;
-        div {
-          width: 70px;
-          height: 30px;
-          text-align: center;
-          line-height: 30px;
-          border-radius: 5px;
-          border: 1px solid #4096FE ;
-          color: #4096FE;
+        .focus{
+          justify-content: flex-end;
+          div {
+            width: 70px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 5px;
+            border: 1px solid #4096FE ;
+            color: #4096FE;
+          }
         }
-      }
-      .focused{
-        flex: 1.8;
-        justify-content: flex-end;
-        div {
-          width: 70px;
-          height: 30px;
-          text-align: center;
-          line-height: 30px;
-          background: $bg-color;
-          border-radius: 5px;
-          font-size: 14px;
-          color: #6D7784;
+        .focused{
+          justify-content: flex-end;
+          div {
+            width: 70px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background: $bg-color;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #6D7784;
+          }
         }
       }
     }
@@ -198,6 +201,7 @@ export default {
       responder: '',
       content: '',
       date: '',
+      buttonRender: true, // 是否渲染关注按钮
       focused: false // 是否关注
     }
   },
@@ -205,7 +209,11 @@ export default {
     AnswerFoot
   },
   created: function () {
-    this.getData()
+  /* eslint-disable */
+    new Promise (this.getData).then(() => {
+      return new Promise (this.checkFocus)
+    })
+  /* eslint-enable */
   },
   methods: {
     goBack () {
@@ -214,7 +222,7 @@ export default {
     goQuestion () {
       this.$router.replace(`/question/${this.$route.params.qid}`)
     },
-    getData () {
+    getData (resolve) {
       Axios.get('/answer/getAnswer_content', {
         params: {
           questionId: this.$route.params.qid,
@@ -226,9 +234,28 @@ export default {
         this.responder = response.data[0].responder
         this.content = response.data[0].content
         this.date = response.data[0].date
+        resolve(this.responder)
       })
       .catch((err) => {
         console.log(err)
+      })
+    },
+    checkFocus () {
+      Axios.get('/user/checkPersonFocus', {
+        params: {
+          responder: this.responder
+        }
+      })
+      .then((response) => {
+        if (response.data.render) {
+          if (response.data.focused) {
+            this.focused = true
+          } else {
+            this.focused = false
+          }
+        } else {
+          this.buttonRender = false
+        }
       })
     },
     addPersonFocus () {
@@ -238,6 +265,16 @@ export default {
       .then((response) => {
         if (response.data === 'ok') {
           this.focused = true
+        }
+      })
+    },
+    cancelPersonFocus () {
+      Axios.post('/user/cancelPersonFocus', {
+        responder: this.responder
+      })
+      .then((response) => {
+        if (response.data === 'ok') {
+          this.focused = false
         }
       })
     }

@@ -71,6 +71,31 @@ router.get('/user/getFocusProblem', (req, res) => {
 
     })
 })
+router.get('/user/checkPersonFocus', (req, res) => {
+  let responder = req.query.responder
+  let account = req.session.account || req.cookies.AndLogin.account
+  if (responder === account) { // 回答者是自己
+    res.send({render:false})
+  } else {
+    User.findOne({account: account})
+      .populate('_focusPeople')
+      .exec((err, user) => {
+        if (err) {
+          console.log(err)
+        } else {
+          let focused = false
+          for (let i = 0; i < user._focusPeople.length; i++) {
+            if (user._focusPeople[i].account === responder) {
+              console.log('检查到已关注')
+              focused = true
+              break
+            }
+          }
+          res.send({render: true, focused: focused})
+        }
+      })
+  }
+})
 router.post('/user/addPersonFocus', (req, res) => {
   let responder = req.body.responder
   let account = req.session.account || req.cookies.AndLogin.account
@@ -86,8 +111,34 @@ router.post('/user/addPersonFocus', (req, res) => {
           if (err) {
             console.log(err)
           } else {
-            console.log(user._id + 'abcdefg')
             User.update({account: responder}, {$addToSet: {'_follower': user._id}}, (err) => {
+              if (err) {
+                console.log(err)
+              }
+              res.send('ok')
+            })
+          }
+        })
+      })
+    }
+  })
+})
+router.post('/user/cancelPersonFocus', (req, res) => {
+  let responder = req.body.responder
+  let account = req.session.account || req.cookies.AndLogin.account
+  User.findOne({account: account}, (err, user) => {
+    if (err) {
+      console.log(err)
+    } else {
+      User.findOne({account: responder}, (err, resp) => {
+        if (err) {
+          console.log(err)
+        }
+        User.update({account: account}, {$pull: {'_focusPeople': resp._id}}, (err) => {
+          if (err) {
+            console.log(err)
+          } else {
+            User.update({account: responder}, {$pull: {'_follower': user._id}}, (err) => {
               if (err) {
                 console.log(err)
               }

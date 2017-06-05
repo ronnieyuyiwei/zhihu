@@ -132,51 +132,56 @@ router.get('/question/checkAnswer', (req, res) => {
     })
 })
 router.get('/question/discovery/getQuestion', (req, res) => {
-  Problem.find({}, (err, doc) => {
-    if (err) {
-      console.log(err)
-    } else {
-      let questionList = []
-      let stack = {
-        title: '',
-        content: '',
-        qid: '',
-        asId: ''
-      }
-      doc.forEach((problem) => {
-        let agreeNum = 0
-        if (problem.answer.length > 0) {
-          problem.answer.forEach((answer, i) => {
-            if (answer.agree.length >= agreeNum) {
-              agreeNum = answer.agree.length
-              stack.title = problem.title
-              stack.content = answer.content
-              stack.qid = problem._id
-              stack.asId = answer._id
-            }
-            if (i === problem.answer.length-1) {
-              console.log(stack)
-              questionList.push({
-                answer: true,
-                title: stack.title,
-                content: stack.content,
-                qid: stack.qid,
-                asId: stack.asId
-              })
-            }
-          })
-          console.log('外循环')
-        } else {
-          questionList.push({
-            answer: false,
-            title: problem.title,
-            qid: problem._id
-          })
+  Problem.find({})
+    .exec((err, doc) => {
+      if (err) {
+        console.log(err)
+      } else {
+        let questionList = []
+        let stack = {
+          responder: '',
+          title: '',
+          content: '',
+          qid: '',
+          asId: '',
+          agreeNum: '',
+          commentNum: 0
         }
-      })
+        doc.forEach((problem) => {
+          let agreeNum = 0
+          if (problem.answer.length > 0) {
+            problem.answer.forEach((answer, i) => {
+              if (answer.agree.length >= agreeNum) {
+                agreeNum = answer.agree.length
+                stack.title = problem.title
+                stack.content = answer.content
+                stack.qid = problem._id
+                stack.asId = answer._id
+                stack.agreeNum = answer.agree.length
+              }
+              if (i === problem.answer.length-1) {
+                console.log(stack)
+                questionList.push({
+                  answer: true,
+                  title: stack.title,
+                  content: stack.content,
+                  qid: stack.qid,
+                  asId: stack.asId,
+                  agreeNum: stack.agreeNum
+                })
+              }
+            })
+          } else {
+            questionList.push({
+              answer: false,
+              title: problem.title,
+              qid: problem._id
+            })
+          }
+        })
 
-      res.send(questionList)
-    }
-  })
+        res.send(questionList)
+      }
+    })
 })
 module.exports = router

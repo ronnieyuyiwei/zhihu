@@ -85,9 +85,6 @@
     background: #f8f8f8;
     div {
       background: white;
-      &:last-child {
-        padding-bottom: 52px;
-      }
     }
   }
 
