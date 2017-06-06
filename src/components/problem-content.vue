@@ -24,9 +24,8 @@
     </div>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../scss/config";
-
   .content-section {
     margin-bottom: 8px;
     border-top: 1px solid #E7E7E7;

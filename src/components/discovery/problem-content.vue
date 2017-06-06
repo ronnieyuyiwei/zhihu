@@ -22,12 +22,14 @@
     </div>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../../scss/config";
   .content-section {
-    margin-bottom: 8px;
     .section {
       border-bottom: 1px solid #E7E7E7;
+      border-top: 1px solid #E7E7E7;
+      margin-bottom: 8px;
+      background: white;
     }
     .info {
       height: 40px;

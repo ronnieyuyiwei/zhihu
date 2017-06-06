@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="discovery" v-bind:style="{minHeight: backHeight + 'px'}">
     <div class="head-content">
       <search-bar></search-bar>
     </div>
@@ -53,11 +53,10 @@
     bottom: 120%;
     opacity: 0;
   }
-  .home {
+  .discovery {
     background: #f8f8f8;
   }
   .head-content {
-    background: white;
     .button-bar {
       margin-top: 55px;
       height: 35px;
@@ -82,10 +81,6 @@
   .body-content {
     margin-top: 55px;
     width: 100%;
-    background: #f8f8f8;
-    div {
-      background: white;
-    }
   }
 
 </style>
@@ -99,7 +94,19 @@ export default{
     ProblemContent,
     SearchBar,
     FootMenu
+  },
+  data () {
+    return {
+      backHeight: 1000
+    }
+  },
+  created: function () {
+    this.setBackground()
+  },
+  methods: {
+    setBackground: function () {
+      this.backHeight = document.documentElement.clientHeight - 55
+    }
   }
 }
-
 </script>

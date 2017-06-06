@@ -4,8 +4,8 @@
     <div class="operate">更多</div>
     <div v-if='login'>
       <div class="person">
-        <div class="head">
-          <img src="../../img/head.jpg">
+        <div class="head" @click="openHeadOperate">
+          <img src="../../img/head.jpg" >
         </div>
         <div class="info">
           <span class="name">{{account}}</span>
@@ -47,6 +47,17 @@
     <div class="quit" @click='quit'>
       退出我的账号
     </div>
+    <div class="head-operate" v-show='headOperate' v-bind:style="{height: operateHeight + 'px'}">
+      <div class="menu-op">
+        <div class="choose-menu">
+          <div class="label">设置头像</div>
+          <div class="btn">拍照上传</div>
+          <div class="btn">从相册中选择</div>
+        </div>
+        <div class="cancel" @click="cancelHeadOperate">取消</div>
+      </div>
+    </div>
+    <input type="file" name="pic" id="pic" accept="image/*" class="upload-input" />
     <foot-menu></foot-menu>
   </div>
 </template>
@@ -172,6 +183,57 @@
       border-top: 1px solid $border;
       border-bottom: 1px solid $border;
     }
+    .head-operate {
+      z-index: 999;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(38, 38, 38, 0.2);
+      height: 1000px;
+      display: flex;
+      justify-content: center;
+      .menu-op {
+        width: 96%;
+        position: absolute;
+        bottom: 5px;
+        .choose-menu {
+          width: 100%;
+          height: 152px;
+          border-radius: 6px;
+          background: white;
+          div {
+            text-align: center;
+          }
+          .label {
+            height: 42px;
+            line-height: 42px;
+            color: $sm-font;
+            font-size: 12px;
+          }
+          .btn {
+            height: 55px;
+            line-height: 55px;
+            font-size: 21px;
+            font-weight: 500;
+            color: $blue;
+            border-top: 1px solid $border;
+          }
+        }
+        .cancel {
+          width: 100%;
+          height: 55px;
+          line-height: 55px;
+          background: white;
+          border-radius: 5px;
+          margin-top: 10px;
+          color: $blue;
+          font-size: 21px;
+          font-weight: 500;
+          text-align: center;
+        }
+      }
+    }
   }
 </style>
 <script>
@@ -183,6 +245,8 @@ export default {
     return {
       login: false,
       account: '',
+      operateHeight: 1000,
+      headOperate: false,
       list: [
         {
           title: '我的创作',
@@ -242,6 +306,13 @@ export default {
           this.login = false
         }
       })
+    },
+    openHeadOperate () {
+      this.operateHeight = document.documentElement.clientHeight
+      this.headOperate = true
+    },
+    cancelHeadOperate () {
+      this.headOperate = false
     }
   },
   components: {
