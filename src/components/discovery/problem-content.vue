@@ -115,7 +115,6 @@ export default{
     getData () {
       Axios.get('/question/discovery/getQuestion')
         .then((response) => {
-          console.log('as' + response.data.answer)
           response.data.forEach((data) => {
             this.questionList.push({
               title: data.title,

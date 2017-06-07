@@ -1,11 +1,10 @@
 <template>
   <div class="test">
-    <form action="/test" method="get">
-      <input type="text" name="xss">
-      <input type="submit">
+    <form action="/picture/headPic" enctype="multipart/form-data" method="post">
+    <input type="text" name="title"><br>
+    <input type="file" name="upload" multiple="multiple"><br>
+    <input type="submit" value="Upload">
     </form>
-    <hr>
-    你输入的字符为: {{msg}}
   </div>
 </template>
 <script>

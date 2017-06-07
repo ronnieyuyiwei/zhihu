@@ -5,7 +5,7 @@
     <div v-if='login'>
       <div class="person">
         <div class="head" @click="openHeadOperate">
-          <img src="../../img/head.jpg" >
+          <img src="../../img/head.jpg">
         </div>
         <div class="info">
           <span class="name">{{account}}</span>
@@ -51,24 +51,28 @@
       <div class="menu-op">
         <div class="choose-menu">
           <div class="label">设置头像</div>
-          <div class="btn">拍照上传</div>
-          <div class="btn">从相册中选择</div>
+          <div class="btn" @click='chooseFile'>上传头像</div>
         </div>
         <div class="cancel" @click="cancelHeadOperate">取消</div>
       </div>
+      <div >
+        <input type="file" id="poster" name="img" accept="image/*" @change='uploadImage'>
+      </div>
     </div>
-    <input type="file" name="pic" id="pic" accept="image/*" class="upload-input" />
     <foot-menu></foot-menu>
   </div>
 </template>
 <style lang="scss" scoped>
   @import "../../scss/config";
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s
   }
+
   .fade-enter, .fade-leave-active {
     opacity: 0
   }
+
   .more {
     background: #EEEEF3;
     .operate {
@@ -147,7 +151,7 @@
         display: flex;
         text-align: center;
         line-height: 43px;
-        a{
+        a {
           display: inline-flex;
           width: 100%;
         }
@@ -156,19 +160,19 @@
           font-size: 22px;
           color: $icon;
         }
-         .title{
-           flex: 4;
-           text-align: left;
-           color: $c-font;
-           font-size: 14px;
-           border-bottom: 1px solid $border;
-         }
-         .right-icon {
-           flex: 1;
-           color: $sm-font;
-           font-size: 15px;
-           border-bottom: 1px solid $border;
-         }
+        .title {
+          flex: 4;
+          text-align: left;
+          color: $c-font;
+          font-size: 14px;
+          border-bottom: 1px solid $border;
+        }
+        .right-icon {
+          flex: 1;
+          color: $sm-font;
+          font-size: 15px;
+          border-bottom: 1px solid $border;
+        }
 
       }
     }
@@ -177,11 +181,20 @@
       height: 45px;
       margin-top: 15px;
       background: #ffffff;
-      color: rgba(243,58,3,0.9);
+      color: rgba(243, 58, 3, 0.9);
       text-align: center;
       line-height: 45px;
       border-top: 1px solid $border;
       border-bottom: 1px solid $border;
+    }
+    #poster {
+      height: 30px;
+      margin: 0;
+      padding: 0;
+      opacity: 2;
+      position: absolute;
+      bottom: 100px;
+      left: 100px;
     }
     .head-operate {
       z-index: 999;
@@ -192,14 +205,17 @@
       background: rgba(38, 38, 38, 0.2);
       height: 1000px;
       display: flex;
+      flex-wrap: nowrap;
       justify-content: center;
+      align-items: flex-end;
       .menu-op {
+        z-index: 999;
         width: 96%;
-        position: absolute;
-        bottom: 5px;
+        height: 177px;
+        margin-bottom: 10px;
         .choose-menu {
           width: 100%;
-          height: 152px;
+          height: 97px;
           border-radius: 6px;
           background: white;
           div {
@@ -247,6 +263,7 @@ export default {
       account: '',
       operateHeight: 1000,
       headOperate: false,
+      pic: null,
       list: [
         {
           title: '我的创作',
@@ -313,6 +330,19 @@ export default {
     },
     cancelHeadOperate () {
       this.headOperate = false
+    },
+    chooseFile () {
+      document.getElementById('poster').click()
+    },
+    uploadImage () {
+      var file = document.getElementById('poster')
+      console.log('event File ' + file)
+      Axios.post('/picture/headPic', {
+        file: file
+      })
+      .then((response) => {
+        console.log(response.data.fields + response.data.files)
+      })
     }
   },
   components: {
@@ -320,4 +350,5 @@ export default {
     FootMenu
   }
 }
+
 </script>
