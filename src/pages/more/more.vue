@@ -263,6 +263,7 @@ export default {
       account: '',
       operateHeight: 1000,
       headOperate: false,
+      images: [],
       pic: null,
       list: [
         {
@@ -334,15 +335,29 @@ export default {
     chooseFile () {
       document.getElementById('poster').click()
     },
-    uploadImage () {
-      var file = document.getElementById('poster')
-      console.log('event File ' + file)
-      Axios.post('/picture/headPic', {
-        file: file
-      })
-      .then((response) => {
-        console.log(response.data.fields + response.data.files)
-      })
+    uploadImage (e) {
+      var files = e.target.files || e.dataTransfer.files
+      if (!files.length) return
+      this.createImage(files)
+    },
+    createImage (file) {
+      if (typeof FileReader === 'undefined') {
+        alert('您的浏览器不支持图片上传，请升级您的浏览器')
+        return false
+      }
+      var vm = this
+      var reader = new FileReader()
+      reader.readAsDataURL(file[0])
+      reader.onload = function (e) {
+        vm.images.push(e.target.result)
+        vm.pic = e.target.result
+        Axios.post('/picture/headPic', {
+          pic: vm.pic
+        })
+        .then((response) => {
+          console.log(response)
+        })
+      }
     }
   },
   components: {
@@ -350,5 +365,4 @@ export default {
     FootMenu
   }
 }
-
 </script>

@@ -9,7 +9,6 @@ const fs = require('fs')
 const path = require('path')
 const bodyParser = require('body-parser')
 // 引入处理post数据的模块
-
 // 引入Express
 const express = require('express')
 // 引入connect-history-api-fallback
@@ -17,7 +16,8 @@ var history = require('connect-history-api-fallback')
 const app = express()
 app.use(history())
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json({limit: "50000kb"}))
+app.use(bodyParser.urlencoded({limit: "50000kb", extended: true, parameterLimit:50000}))
 app.use(api)
 // 访问静态资源文件 这里是访问所有dist目录下的静态资源文件
 app.use(express.static(path.resolve(__dirname, '../dist')))
