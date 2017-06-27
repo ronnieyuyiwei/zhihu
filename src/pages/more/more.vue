@@ -314,6 +314,9 @@ export default {
         }
       })
     },
+    getHeadImage () {
+      Axios.get('/picture/')
+    },
     goRegister () {
       this.$router.push('register')
     },
@@ -355,7 +358,7 @@ export default {
           pic: vm.pic
         })
         .then((response) => {
-          console.log(response)
+          console.log(response.data)
         })
       }
     }

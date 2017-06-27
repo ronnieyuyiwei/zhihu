@@ -11,7 +11,8 @@ var userSchema = new Schema({
   _answer: [{type: Schema.Types.ObjectId, ref: 'Problem'}],
   _focusProblem: [{type: Schema.Types.ObjectId, ref: 'Problem'}],
   _focusPeople: [{type: Schema.Types.ObjectId, ref: 'User'}],
-  _follower: [{type: Schema.Types.ObjectId, ref: 'User'}]
+  _follower: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  _headImage: {type: Schema.Types.ObjectId, ref: 'Image'}
 })
 var User = mongoose.model('User', userSchema)
 module.exports = User

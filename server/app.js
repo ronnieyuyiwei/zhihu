@@ -15,9 +15,15 @@ const express = require('express')
 var history = require('connect-history-api-fallback')
 const app = express()
 app.use(history())
-app.use(bodyParser.json())
-app.use(bodyParser.json({limit: "50000kb"}))
-app.use(bodyParser.urlencoded({limit: "50000kb", extended: true, parameterLimit:50000}))
+// 扩展上传文件的大小
+app.use(bodyParser.json({
+  limit: '50mb'
+}))
+app.use(bodyParser.urlencoded({
+  parameterLimit: 100000,
+  limit: '50mb',
+  extended: true
+}))
 app.use(api)
 // 访问静态资源文件 这里是访问所有dist目录下的静态资源文件
 app.use(express.static(path.resolve(__dirname, '../dist')))
