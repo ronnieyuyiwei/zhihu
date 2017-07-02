@@ -14,18 +14,44 @@ router.post('/picture/headPic', (req, res) => {
   var pic = {
     img: req.body.pic
   }
-  Image.create(pic, (err, image) => {
+  User.findOne({account: account}, (err, doc) => {
     if (err) {
       console.log(err)
-    } else {
-      User.update({account: account}, {$set: {'_headImage': image._id}}, (err) => {
-        if (err) {
-          console.log(err)
-        } else {
-          res.send('头像上传成功')
-        }
-      })
     }
+    Image.create(pic, (err, image) => {
+      if (err) {
+        console.log(err)
+      } else {
+        User.update({account: account}, {$set: {'_headImage': image._id}}, (err) => {
+          if (err) {
+            console.log(err)
+          } else {
+            Image.remove({_id: doc._headImage}, (err) => {
+              if (err) {
+                console.log(err)
+              }
+              res.send('success')
+            })
+          }
+        })
+      }
+    })
   })
+})
+router.get('/picture/getHeadPicture', (req, res) => {
+  const account = req.cookies.AndLogin.account
+  User.findOne({account: account})
+    .populate('_headImage')
+    .exec((err, user) => {
+      if(err) {
+        console.log(err)
+      }
+      if(user._headImage) {
+        let imgSrc = user._headImage.img
+        res.send({imgExist: true, imgSrc: imgSrc})
+      } else {
+        res.send({imgExist: false})
+      }
+    })
 })
 module.exports = router

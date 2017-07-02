@@ -4,8 +4,9 @@
     <div class="operate">更多</div>
     <div v-if='login'>
       <div class="person">
-        <div class="head" @click="openHeadOperate">
-          <img src="../../img/head.jpg">
+        <div class="head"  @click="openHeadOperate">
+          <img v-if="imgExist" :src="imgSrc" alt="头像载入失败">
+          <img src='../../img/head.jpg' v-else>
         </div>
         <div class="info">
           <span class="name">{{account}}</span>
@@ -99,6 +100,7 @@
         img {
           margin-left: 15px;
           width: 50px;
+          height: 50px;
           border-radius: 1000px;
         }
       }
@@ -265,6 +267,8 @@ export default {
       headOperate: false,
       images: [],
       pic: null,
+      imgExist: false,
+      imgSrc: null,
       list: [
         {
           title: '我的创作',
@@ -298,6 +302,7 @@ export default {
   },
   created: function () {
     this.checkLogin()
+    this.getHeadImage()
   },
   methods: {
     checkLogin () {
@@ -315,7 +320,14 @@ export default {
       })
     },
     getHeadImage () {
-      Axios.get('/picture/')
+      Axios.get('/picture/getHeadPicture')
+        .then((response) => {
+          if (response.data.imgExist) {
+            this.imgExist = true
+            this.imgSrc = response.data.imgSrc
+            console.log('enter' + this.imgSrc)
+          }
+        })
     },
     goRegister () {
       this.$router.push('register')
@@ -328,14 +340,14 @@ export default {
         }
       })
     },
-    openHeadOperate () {
+    openHeadOperate () {  // 打开头像操作框
       this.operateHeight = document.documentElement.clientHeight
       this.headOperate = true
     },
-    cancelHeadOperate () {
+    cancelHeadOperate () { // 取消头像操作框
       this.headOperate = false
     },
-    chooseFile () {
+    chooseFile () {      // 模拟点击
       document.getElementById('poster').click()
     },
     uploadImage (e) {
@@ -358,7 +370,10 @@ export default {
           pic: vm.pic
         })
         .then((response) => {
-          console.log(response.data)
+          if (response.data === 'success') {
+            vm.headOperate = false  // 关闭头像框
+            vm.getHeadImage() // 重新获取头像
+          }
         })
       }
     }
