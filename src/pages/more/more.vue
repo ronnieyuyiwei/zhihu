@@ -325,7 +325,6 @@ export default {
           if (response.data.imgExist) {
             this.imgExist = true
             this.imgSrc = response.data.imgSrc
-            console.log('enter' + this.imgSrc)
           }
         })
     },

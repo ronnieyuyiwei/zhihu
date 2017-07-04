@@ -54,4 +54,19 @@ router.get('/picture/getHeadPicture', (req, res) => {
       }
     })
 })
+router.post('/picture/test/updatePic', (req, res) => {
+  console.log('——————————————————————————————————————')
+  console.log('content-type' + req.get('Content-Type'))
+  console.log('content-length' + req.get('content-length'))
+  console.log('——————————————————————————————————————')
+  let form = new formidable.IncomingForm()
+  form.encoding = 'utf-8'
+  form.uploadDir = 'images'
+  form.keepExtensions = true
+  form.maxFieldsSize = 10 * 1024 * 1024
+  form.parse(req, function(err, fields, files) {
+    console.log('进入form parse')
+    res.send(util.inspect({fields: fields, files: files}))
+  })
+})
 module.exports = router
