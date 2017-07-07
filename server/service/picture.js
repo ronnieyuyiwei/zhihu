@@ -59,14 +59,22 @@ router.post('/picture/test/updatePic', (req, res) => {
   console.log('content-type' + req.get('Content-Type'))
   console.log('content-length' + req.get('content-length'))
   console.log('——————————————————————————————————————')
+  let user = req.session.account || req.cookies.AndLogin.account
+  let targetPath
   let form = new formidable.IncomingForm()
   form.encoding = 'utf-8'
   form.uploadDir = 'images'
   form.keepExtensions = true
   form.maxFieldsSize = 10 * 1024 * 1024
+  let headImgPath = `images/headImg/`
+  if (!fs.existsSync(headImgPath)) {
+    fs.mkdirSync(headImgPath)
+  }
   form.parse(req, function(err, fields, files) {
-    console.log('进入form parse')
-    res.send(util.inspect({fields: fields, files: files}))
+    targetPath = path.join(headImgPath, `${user}_${files.file.name}`)
+    fs.renameSync(files.file.path, targetPath)
+    res.send('success')
   })
+
 })
 module.exports = router
