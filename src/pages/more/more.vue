@@ -323,8 +323,11 @@ export default {
       Axios.get('/picture/getHeadPicture')
         .then((response) => {
           if (response.data.imgExist) {
-            this.imgExist = true
-            this.imgSrc = response.data.imgSrc
+            let vm = this
+            vm.imgExist = true
+            vm.$nextTick(function () {
+              vm.imgSrc = require('images/headImg/' + response.data.imgSrc)
+            })
           }
         })
     },
@@ -350,31 +353,18 @@ export default {
       document.getElementById('poster').click()
     },
     uploadImage (e) {
-      var files = e.target.files || e.dataTransfer.files
-      if (!files.length) return
-      this.createImage(files)
-    },
-    createImage (file) {
-      if (typeof FileReader === 'undefined') {
-        alert('您的浏览器不支持图片上传，请升级您的浏览器')
-        return false
-      }
-      var vm = this
-      var reader = new FileReader()
-      reader.readAsDataURL(file[0])
-      reader.onload = function (e) {
-        vm.images.push(e.target.result)
-        vm.pic = e.target.result
-        Axios.post('/picture/headPic', {
-          pic: vm.pic
-        })
-        .then((response) => {
-          if (response.data === 'success') {
-            vm.headOperate = false  // 关闭头像框
-            vm.getHeadImage() // 重新获取头像
-          }
-        })
-      }
+      let formData = new FormData()
+      formData.append('file', e.target.files[0])
+      Axios({
+        url: '/picture/uploadHeadPic',
+        method: 'post',
+        data: formData,
+        headers: {'Content-Type': 'multipart/form-data'}
+      }).then((res) => {
+        if (res.data === 'success') {
+          this.headOperate = false
+        }
+      })
     }
   },
   components: {
