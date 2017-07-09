@@ -35,7 +35,8 @@
           </svg>
           </span>
         <div class="title">{{topicNotice}}</div>
-        <a class="next-step" @click="commit">发布</a>
+        <a v-if='permitSubmit' class="next-step" @click="commit">发布</a>
+        <a class="next-step fake" v-else>发布</a>
       </div>
       <div class="search">
         <svg class="icon" aria-hidden="true">
@@ -97,6 +98,13 @@
         }
       }
     },
+    computed: {
+      permitSubmit: function () {
+        if (this.title && this.topicList.length > 0 && this.topicList.length <= 5) {
+          return true
+        }
+      }
+    },
     methods: {
       goStep2 () {
         this.step1 = false
@@ -117,7 +125,8 @@
       commit () {
         Axios.post('/question/addQuestion', {
           title: this.title,
-          describe: this.describe
+          describe: this.describe,
+          topic: this.topicList
         })
         .then((response) => {
           console.log(response.data)

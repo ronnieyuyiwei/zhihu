@@ -19,7 +19,8 @@ router.post('/question/addQuestion', (req, res) => {
     let question = {
       questioner: result._id,
       title: req.body.title,
-      describe: req.body.describe
+      describe: req.body.describe,
+      topic: req.body.topic
     }
     var newProblem = new Problem(question)
     newProblem.save((err, doc) => {
@@ -30,7 +31,23 @@ router.post('/question/addQuestion', (req, res) => {
           if (err) {
             console.log(err)
           } else {
-            res.send('保存成功')
+            Topic.find({'name': {$in: question.topic}}, (err, topic) => {
+              if (err) {
+                console.log(err)
+              } else {
+                for (let i = 0; i < topic.length; i++) {
+                  topic[i]._question = doc._id
+                  topic[i].save((err) => {
+                    if (err) {
+                      console.log(err)
+                    }
+                  })
+                  if (i === topic.length -1) {
+                    res.send('ok')
+                  }
+                }
+              }
+            })
           }
         })
       }
@@ -193,7 +210,6 @@ router.post('/question/searchTopic', (req, res) => {
         console.log(err)
       } else {
         let result = []
-        console.log('查询结果' + topic)
         topic.forEach((topic) => {
           result.push({
             name: topic.name
