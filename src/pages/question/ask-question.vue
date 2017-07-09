@@ -41,10 +41,15 @@
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-sou"></use>
         </svg>
-        <input v-model="topic" type="text" placeholder="搜索话题" autofocus @input="topicSearch">
+        <div class="topic-label">
+          <label v-for='item in topicList' @click="deleteTopic(item)">{{item}}</label>
+        </div>
+        <div>
+          <input v-model="topic" type="text" placeholder="搜索话题" autofocus @input="topicSearch">
+        </div>
       </div>
       <div class="topic-preview">
-        <div class="topic-list" v-for="topic in topicList">
+        <div class="topic-list" v-for="topic in topicPreviewList" @click="addTopic(topic.name)">
           <div class="img"><img src="../../img/3.jpg" alt=""></div>
           <div class="content">
             <div class="topic-name">{{topic.name}}</div>
@@ -74,11 +79,23 @@
         describe: '',
         topic: '',
         topicNotice: '至少添加一个话题', // 话题页面提示
-        topicList: []
+        topicPreviewList: [], // 话题展示列表
+        topicList: [] // 待提交的问题列表
       }
     },
     mounted: function () {
       AutoSize(document.querySelectorAll('textarea'))
+    },
+    watch: {
+      topicList: function () {
+        if (this.topicList.length === 0) {
+          this.topicNotice = '至少添加一个话题'
+        } else if (this.topicList.length === 5) {
+          this.topicNotice = '已经到达话题上限制'
+        } else {
+          this.topicNotice = '已添加话题可点选删除'
+        }
+      }
     },
     methods: {
       goStep2 () {
@@ -138,22 +155,44 @@
       topicSearch () {
         let count = this.topic.length
         if (count > 4) {
-          this.topicNotice = '话题长度不能超过4个字'
+          this.topicNotice = '话题长度不能超过6个字'
         } else {
-          this.topicNotice = '至少选择一个话题'
-          console.log('输入为' + this.topic)
+          if (this.topicList.length === 0) {
+            this.topicNotice = '至少添加一个话题'
+          }
           if (count !== 0) {
             Axios.post('/question/searchTopic', {
               topic: this.topic
             })
             .then((response) => {
-              this.topicList = []
+              this.topicPreviewList = []
               response.data.forEach((result) => {
-                this.topicList.push({
+                this.topicPreviewList.push({
                   name: result.name
                 })
               })
             })
+          }
+        }
+      },
+      addTopic (topicName) {
+        if (this.topicList.length > 0 && this.topicList.length <= 5) { // 防止重复添加，超额添加
+          for (let i = 0; i < this.topicList.length; i++) {
+            if (this.topicList[i] === topicName) {
+              break
+            }
+            if (i === this.topicList.length - 1) {
+              this.topicList.push(topicName)
+            }
+          }
+        } else if (this.topicList.length === 0) {
+          this.topicList.push(topicName)
+        }
+      },
+      deleteTopic (topicName) {
+        for (let i = 0; i < this.topicList.length; i++) {
+          if (this.topicList[i] === topicName) {
+            this.topicList.splice(i, 1)
           }
         }
       }
@@ -234,6 +273,18 @@
       }
       .search {
         border-top: 1px solid $border;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .topic-label {
+          label {
+            background: #E8F0FD;
+            padding: 3px 8px 3px 8px;
+            font-size: 12px;
+            color: $font;
+            margin-left: 6px;
+          }
+        }
         .icon {
         }
         input {
