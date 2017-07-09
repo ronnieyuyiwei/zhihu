@@ -5,6 +5,7 @@ const express = require('express')
 const router = express.Router()
 const Problem = require('../db/files/problem')
 const User = require('../db/files/user')
+const Topic = require('../db/files/topic')
 const mongoose = require('mongoose')
 const moment = require('moment')
 moment.locale('zh-cn')
@@ -184,4 +185,23 @@ router.get('/question/discovery/getQuestion', (req, res) => {
       }
     })
 })
+router.post('/question/searchTopic', (req, res) => {
+  let topic = req.body.topic
+  Topic.find({name: {$regex: `${topic}`, $options: ''}})
+    .exec((err, topic) => {
+      if (err) {
+        console.log(err)
+      } else {
+        let result = []
+        console.log('查询结果' + topic)
+        topic.forEach((topic) => {
+          result.push({
+            name: topic.name
+          })
+        })
+        res.send(result)
+      }
+    })
+})
+
 module.exports = router

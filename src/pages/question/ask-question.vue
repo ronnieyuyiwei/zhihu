@@ -34,14 +34,23 @@
             <use xlink:href="#icon-fanhui"></use>
           </svg>
           </span>
-        <div class="title">至少添加一个话题</div>
+        <div class="title">{{topicNotice}}</div>
         <a class="next-step" @click="commit">发布</a>
       </div>
       <div class="search">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-sou"></use>
         </svg>
-        <input v-model="topic" type="text" placeholder="搜索话题" autofocus>
+        <input v-model="topic" type="text" placeholder="搜索话题" autofocus @input="topicSearch">
+      </div>
+      <div class="topic-preview">
+        <div class="topic-list" v-for="topic in topicList">
+          <div class="img"><img src="../../img/3.jpg" alt=""></div>
+          <div class="content">
+            <div class="topic-name">{{topic.name}}</div>
+            <div class="description">测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -63,7 +72,9 @@
         titleCount: '',
         titleExceed: '',
         describe: '',
-        topic: ''
+        topic: '',
+        topicNotice: '至少添加一个话题', // 话题页面提示
+        topicList: []
       }
     },
     mounted: function () {
@@ -122,6 +133,28 @@
           this.titleLimit1 = false
           this.titleLimit2 = true
           this.titleExceed = count - 50
+        }
+      },
+      topicSearch () {
+        let count = this.topic.length
+        if (count > 4) {
+          this.topicNotice = '话题长度不能超过4个字'
+        } else {
+          this.topicNotice = '至少选择一个话题'
+          console.log('输入为' + this.topic)
+          if (count !== 0) {
+            Axios.post('/question/searchTopic', {
+              topic: this.topic
+            })
+            .then((response) => {
+              this.topicList = []
+              response.data.forEach((result) => {
+                this.topicList.push({
+                  name: result.name
+                })
+              })
+            })
+          }
         }
       }
     }
@@ -200,14 +233,56 @@
         margin-right: 3px;
       }
       .search {
-        display: flex;
+        border-top: 1px solid $border;
         .icon {
-          flex: 1;
         }
         input {
-          flex: 10;
+          height: 48px;
+          font-size: 14px;
           padding-left: 5px;
           border: none;
+        }
+      }
+      .topic-preview {
+        width: 100%;
+        height: 60px;
+
+        .topic-list {
+          display: flex;
+          padding: 7px 0 7px 0;
+          border-top: 1px solid $border;
+          .img {
+            flex: 1;
+            text-align: center;
+            img {
+              height: 50px;
+              width: 50px;
+              border-radius: 2000px;
+            }
+          }
+          .content {
+            flex: 4;
+            .topic-name {
+              height: 20px;
+              font-size: 14px;
+              color: $pr-font;
+              font-weight: 600;
+            }
+            .description {
+              height: 35px;
+              width: 95%;
+              font-size: 12px;
+              color: $sp-font;
+              margin-top: 3px;
+              display: -webkit-box;
+              display: -moz-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              -moz-box-orient: vertical;
+              -moz-line-clamp: 2;
+              overflow: hidden;
+            }
+          }
         }
       }
     }
