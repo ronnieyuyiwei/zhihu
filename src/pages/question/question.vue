@@ -6,7 +6,9 @@
     <div v-show='questionPage'>
       <div class="question-body">
         <div class="topic">
-          <span>话题内容</span>
+          <div>
+            <span v-for="item in topicList">{{item}}</span>
+          </div>
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-jiantou"></use>
           </svg>
@@ -75,8 +77,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        span{
+        div{
           flex: 7;
+          span {
+            background: #E8F0FD;
+            padding: 3px 10px 3px 10px;
+            font-size: 12px;
+            color: $font;
+            margin-left: 6px;
+          }
         }
         svg {
           flex:1;
@@ -198,6 +207,7 @@ export default {
       title: '',
       describe: '',
       focus: '',
+      topicList: [],
       commentNum: '',
       questionId: this.$route.params.id,
       questionPage: true,
@@ -226,8 +236,6 @@ export default {
       let reg = /add_answer$/                 // 匹配路由后缀 控制隐藏
       if (reg.test(this.$route.path)) {
         return true
-      } else {
-        return false
       }
     }
   },
@@ -243,6 +251,7 @@ export default {
           this.title = response.data.title
           this.describe = response.data.describe
           this.commentNum = response.data.commentNum
+          this.topicList = [].concat(response.data.topic)
         } else {
           // this.$router.replace('/error')  // 404
         }

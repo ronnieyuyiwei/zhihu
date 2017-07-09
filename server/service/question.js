@@ -91,7 +91,8 @@ router.get('/question/getData', (req, res) => {
         let question = {
           status: true,
           title: result.title,
-          describe: result.describe
+          describe: result.describe,
+          topic: result.topic
         }
         if (result.questionComment.length) {
           question.commentNum = result.questionComment.length

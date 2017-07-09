@@ -58,12 +58,20 @@
           </div>
         </div>
       </div>
+      <div class="loading" v-show='loading_gif'>
+        <!--载入动画-->
+        <loading v-show='loading'></loading>
+        <!--完成动画-->
+        <status v-show='status' :status='axStatus'></status>
+      </div>
     </div>
   </div>
 </template>
 <script>
   import Axios from 'axios'
   import AutoSize from '../../js/autosize.js'
+  import Loading from '../../components/loading/loading.vue'
+  import Status from '../../components/loading/status.vue'
   export default {
     name: 'question',
     data () {
@@ -81,11 +89,19 @@
         topic: '',
         topicNotice: '至少添加一个话题', // 话题页面提示
         topicPreviewList: [], // 话题展示列表
-        topicList: [] // 待提交的问题列表
+        topicList: [], // 待提交的问题列表
+        loading: false, // 载入动画
+        loading_gif: false, // 载入动画主体
+        axStatus: false, // 完成信息
+        status: false
       }
     },
     mounted: function () {
       AutoSize(document.querySelectorAll('textarea'))
+    },
+    components: {
+      Loading,
+      Status
     },
     watch: {
       topicList: function () {
@@ -123,14 +139,39 @@
         this.step2 = true
       },
       commit () {
+        this.loading_gif = true
+        this.loading = true
         Axios.post('/question/addQuestion', {
           title: this.title,
           describe: this.describe,
           topic: this.topicList
         })
         .then((response) => {
-          console.log(response.data)
+          if (response.data) {
+            this.loading = false
+            this.axStatus = true
+            this.status = true
+            setTimeout(() => {            // 显示成功动画1秒
+              this.$router.go(-1)
+            }, 1000)
+          } else {
+            this.loading = false
+            this.axStatus = false
+            this.status = true
+            setTimeout(() => {            // 显示失败动画1秒
+              this.$router.go(-1)
+            }, 1000)
+          }
         })
+          .catch((err) => {
+            console.log(err.msg)
+            this.loading = false
+            this.axStatus = false
+            this.status = true
+            setTimeout(() => {            // 显示失败动画1秒
+              this.$router.go(-1)
+            }, 1500)
+          })
       },
       checkTitle () {
       /*
@@ -345,6 +386,11 @@
           }
         }
       }
+    }
+    .loading {
+      position: absolute;
+      width: 100%;
+      top: 200px;
     }
   }
 
