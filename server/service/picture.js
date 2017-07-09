@@ -6,7 +6,6 @@ const router = express.Router()
 const util = require('util')
 const path = require('path')
 const fs = require('fs')
-const Image = require('../db/files/picture.js')
 const User = require('../db/files/user.js')
 const formidable = require('formidable')
 router.post('/picture/uploadHeadPic', (req, res) => {
@@ -40,8 +39,8 @@ router.post('/picture/uploadHeadPic', (req, res) => {
             if (err) {
               console.log(err)
             } else {
-              if (fs.existsSync(oldPic)) {
-                fs.unlink(oldPic, (err) => {
+              if (fs.existsSync(path.join('images/headImg/', oldPic))) {
+                fs.unlink(path.join('images/headImg/', oldPic), (err) => {
                   if (err) {
                     console.log(err)
                   } else {
@@ -79,24 +78,24 @@ router.get('/picture/getHeadPicture', (req, res) => {
       }
     })
 })
-router.post('/picture/test/updatePic', (req, res) => {
-
-  let user = req.session.account || req.cookies.AndLogin.account
-  let targetPath
-  let form = new formidable.IncomingForm()
-  form.encoding = 'utf-8'
-  form.uploadDir = 'images'
-  form.keepExtensions = true
-  form.maxFieldsSize = 10 * 1024 * 1024
-  let headImgPath = `images/headImg/`
-  if (!fs.existsSync(headImgPath)) {
-    fs.mkdirSync(headImgPath)
-  }
-  form.parse(req, function(err, fields, files) {
-    targetPath = path.join(headImgPath, `${user}_${files.file.name}`)
-    fs.renameSync(files.file.path, targetPath)
-    res.send('success')
-  })
-
-})
+// router.post('/picture/test/updatePic', (req, res) => {
+//
+//   let user = req.session.account || req.cookies.AndLogin.account
+//   let targetPath
+//   let form = new formidable.IncomingForm()
+//   form.encoding = 'utf-8'
+//   form.uploadDir = 'images'
+//   form.keepExtensions = true
+//   form.maxFieldsSize = 10 * 1024 * 1024
+//   let headImgPath = `images/headImg/`
+//   if (!fs.existsSync(headImgPath)) {
+//     fs.mkdirSync(headImgPath)
+//   }
+//   form.parse(req, function(err, fields, files) {
+//     targetPath = path.join(headImgPath, `${user}_${files.file.name}`)
+//     fs.renameSync(files.file.path, targetPath)
+//     res.send('success')
+//   })
+//
+// })
 module.exports = router

@@ -323,11 +323,8 @@ export default {
       Axios.get('/picture/getHeadPicture')
         .then((response) => {
           if (response.data.imgExist) {
-            let vm = this
-            vm.imgExist = true
-            vm.$nextTick(function () {
-              vm.imgSrc = require('images/headImg/' + response.data.imgSrc)
-            })
+            this.imgExist = true
+            this.imgSrc = require('images/headImg/' + response.data.imgSrc)
           }
         })
     },

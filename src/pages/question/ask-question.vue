@@ -105,7 +105,6 @@
         }
         */
         let count = this.title.length
-        console.log(count)
         if (count === 0) {
           this.titleNext = false
         }
