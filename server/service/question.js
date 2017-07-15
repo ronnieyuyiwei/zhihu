@@ -178,8 +178,7 @@ router.get('/question/discovery/getQuestion', (req, res) => {
                 stack.asId = answer._id
                 stack.agreeNum = answer.agree.length
               }
-              if (i === problem.answer.length-1) {
-                console.log(stack)
+              if (i === problem.answer.length - 1) {
                 questionList.push({
                   answer: true,
                   title: stack.title,

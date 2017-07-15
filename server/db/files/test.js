@@ -65,3 +65,10 @@ for (let i = 0; i < jinrong.length; i++) {
     'name': jinrong[i]
   })
 }
+
+for (let i = 0; i < 50; i++) {
+  db.problems.insert({
+    'title': `测试实例 ${i}`,
+    'describle': '7.15转用测试描述'
+  })
+}

@@ -25,6 +25,7 @@
     text-align: center;
     font-size: 23px;
     border-top: 1px solid #E7E7E7;
+    z-index: 999;
     a {
       display: block;
       flex: 1;
