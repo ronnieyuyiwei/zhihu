@@ -6,68 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f5dae39-52fc-4b01-9576-3a27c0c6c479" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/scss/swiper.scss" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.d0af735c09e775e71e0b97fbed9ceac7.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.d0af735c09e775e71e0b97fbed9ceac7.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/yuyiwei_songhuiqiao.3190acf.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/0.fddde27ffd8189c7a4d3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/0.fddde27ffd8189c7a4d3.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/1.9aebacaa8c6d3d2792e8.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/1.9aebacaa8c6d3d2792e8.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/10.b100c1e5b6a15342ef8a.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/10.b100c1e5b6a15342ef8a.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/11.0ea1f570cfc7be10f32b.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/11.0ea1f570cfc7be10f32b.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/12.a8547aa4d0aafb0240bd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/12.a8547aa4d0aafb0240bd.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/13.872eb2169d5b6c8945a6.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/13.872eb2169d5b6c8945a6.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/14.93fb706a7d5690053e81.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/14.93fb706a7d5690053e81.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/15.59a297f0cac78a535ccb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/15.59a297f0cac78a535ccb.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/16.cb0fa6733bf5e105d9c4.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/16.cb0fa6733bf5e105d9c4.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/2.65eeb87ed8ae41f43777.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/2.65eeb87ed8ae41f43777.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/3.22ade0d7a1adcb5f83a3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/3.22ade0d7a1adcb5f83a3.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/4.02428b04eed5a806ac97.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/4.02428b04eed5a806ac97.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/5.873f58b17eda4cd0c342.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/5.873f58b17eda4cd0c342.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/6.fde3f875334672e03217.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/6.fde3f875334672e03217.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/7.92c96966d461a1011b2f.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/7.92c96966d461a1011b2f.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/8.43f7a4238e1bf8163f27.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/8.43f7a4238e1bf8163f27.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/9.a6d54f04196ef87874cf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/9.a6d54f04196ef87874cf.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.7fef79ebf666a293ff6b.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.7fef79ebf666a293ff6b.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.772592ff02fa61f5562c.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.772592ff02fa61f5562c.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.2a90d299ab1ae58d5ebf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.2a90d299ab1ae58d5ebf.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/bpp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/images/headImg/yuyiwei_乔儿.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/assets/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/assets/songhuiqiao.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/6.5c4b04343f89dcd0d832.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/6.5c4b04343f89dcd0d832.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.edf862a57bf5e4662b25.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.edf862a57bf5e4662b25.js.map" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/webpack.base.conf.js" afterPath="$PROJECT_DIR$/build/webpack.base.conf.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/db/files/test.js" afterPath="$PROJECT_DIR$/server/db/files/test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/service/picture.js" afterPath="$PROJECT_DIR$/server/service/picture.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/service/question.js" afterPath="$PROJECT_DIR$/server/service/question.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/service/user.js" afterPath="$PROJECT_DIR$/server/service/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/discovery/problem-content.vue" afterPath="$PROJECT_DIR$/src/components/discovery/problem-content.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/foot-menu.vue" afterPath="$PROJECT_DIR$/src/components/foot-menu.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/header.vue" afterPath="$PROJECT_DIR$/src/components/header.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/search-bar.vue" afterPath="$PROJECT_DIR$/src/components/search-bar.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/more/more.vue" afterPath="$PROJECT_DIR$/src/pages/more/more.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/parents.vue" afterPath="$PROJECT_DIR$/src/pages/parents.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/test.vue" afterPath="$PROJECT_DIR$/src/pages/test.vue" />
     </list>
     <ignored path="andromeda.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,19 +35,9 @@
     <favorites_list name="andromeda" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6441526">
+    <splitter split-orientation="horizontal" split-proportion="0.57223266">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/package.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-43">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="question.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/server/service/question.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -116,7 +52,7 @@
             <entry file="file://$PROJECT_DIR$/src/components/header.vue">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="234">
-                  <caret line="13" column="7" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+                  <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
                   <folding />
                 </state>
               </provider>
@@ -125,7 +61,7 @@
           <file leaf-file-name="discovery.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/pages/discovery/discovery.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="401">
+                <state relative-caret-position="295">
                   <caret line="87" column="7" lean-forward="false" selection-start-line="87" selection-start-column="7" selection-end-line="87" selection-end-column="7" />
                   <folding>
                     <element signature="e#1828#1903#0" expanded="true" />
@@ -147,11 +83,56 @@
           <file leaf-file-name="problem-content.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/discovery/problem-content.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-128">
-                  <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+                <state relative-caret-position="474">
+                  <caret line="162" column="15" lean-forward="true" selection-start-line="162" selection-start-column="15" selection-end-line="162" selection-end-column="15" />
                   <folding>
-                    <element signature="e#2686#2711#0" expanded="true" />
+                    <element signature="e#1231#1386#0" expanded="false" />
+                    <element signature="e#1401#1842#0" expanded="false" />
+                    <element signature="e#1858#2164#0" expanded="false" />
+                    <element signature="e#2182#2637#0" expanded="false" />
+                    <element signature="e#2655#2985#0" expanded="false" />
+                    <element signature="e#3022#3047#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="swiper.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/node_modules/_swiper@3.4.2@swiper/dist/js/swiper.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="280">
+                  <caret line="359" column="23" lean-forward="false" selection-start-line="359" selection-start-column="14" selection-end-line="359" selection-end-column="23" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="swiper.jquery.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/node_modules/_swiper@3.4.2@swiper/dist/js/swiper.jquery.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-83626">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="problem-content.vue" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/problem-content.vue">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-1177">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ask-question.vue" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/pages/question/ask-question.vue">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-4377">
+                  <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -159,7 +140,7 @@
           <file leaf-file-name="question.vue" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/pages/question/question.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1752">
+                <state relative-caret-position="-3152">
                   <caret line="83" column="39" lean-forward="false" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
                   <folding />
                 </state>
@@ -173,7 +154,7 @@
           <file leaf-file-name="index的副本.html" pinned="false" current-in-tab="true">
             <entry file="file://$USER_HOME$/Downloads/pulltorefresh-tab/index的副本.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
+                <state relative-caret-position="2007">
                   <caret line="144" column="19" lean-forward="false" selection-start-line="144" selection-start-column="19" selection-end-line="144" selection-end-column="19" />
                   <folding />
                 </state>
@@ -213,6 +194,7 @@
       <find>v-if</find>
       <find>33</find>
       <find>loadFlag</find>
+      <find>container</find>
     </findStrings>
     <replaceStrings>
       <replace>headImg</replace>
@@ -272,9 +254,9 @@
         <option value="$PROJECT_DIR$/server/db/files/test.js" />
         <option value="$PROJECT_DIR$/src/components/foot-menu.vue" />
         <option value="$PROJECT_DIR$/server/service/question.js" />
-        <option value="$PROJECT_DIR$/src/components/header.vue" />
         <option value="$PROJECT_DIR$/src/components/search-bar.vue" />
         <option value="$PROJECT_DIR$/src/pages/test.vue" />
+        <option value="$PROJECT_DIR$/src/components/header.vue" />
         <option value="$PROJECT_DIR$/src/components/discovery/problem-content.vue" />
       </list>
     </option>
@@ -601,7 +583,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="js.eslint.nodeInterpreter" value="project" />
     <property name="js.eslint.eslintPackage" value="C:\Users\septsaber\AppData\Roaming\npm\node_modules\eslint" />
-    <property name="SearchEverywhereHistoryKey" value="test&#9;FILE&#9;file:///Users/swallow/develop/Andromeda/server/db/files/test.js&#10;v-html&#9;null&#9;null&#10;api.&#9;FILE&#9;file:///Users/swallow/develop/Andromeda/server/service/api.js&#10;/tmp&#9;FILE&#9;file:///Users/swallow/develop/Andromeda/node_modules/webpack/lib/EvalDevToolModulePlugin.js&#10;console.log&#9;null&#9;null&#10;body-c&#9;null&#9;null&#10;content-section&#9;null&#9;null&#10;answer-foot&#9;FILE&#9;file://F:/andromeda/src/components/answer/answer-foot.vue&#10;answer&#9;FILE&#9;file://F:/andromeda/src/pages/answer/answer-content.vue&#10;promise&#9;null&#9;null&#10;my&#9;FILE&#9;file://F:/andromeda/src/pages/more/children/my-focus.vue&#10;f&#9;FILE&#9;file://F:/andromeda/src/pages/more/children/my-focus.vue&#10;router&#9;null&#9;null&#10;focus&#9;FILE&#9;file://F:/andromeda/src/pages/more/children/my-focus.vue&#10;router-link-active&#9;null&#9;null&#10;foot&#9;FILE&#9;file://F:/andromeda/src/components/answer/answer-foot.vue" />
+    <property name="SearchEverywhereHistoryKey" value="Promise&#9;null&#9;null&#10;test&#9;FILE&#9;file:///Users/swallow/develop/Andromeda/server/db/files/test.js&#10;v-html&#9;null&#9;null&#10;api.&#9;FILE&#9;file:///Users/swallow/develop/Andromeda/server/service/api.js&#10;/tmp&#9;FILE&#9;file:///Users/swallow/develop/Andromeda/node_modules/webpack/lib/EvalDevToolModulePlugin.js&#10;console.log&#9;null&#9;null&#10;body-c&#9;null&#9;null&#10;content-section&#9;null&#9;null&#10;answer-foot&#9;FILE&#9;file://F:/andromeda/src/components/answer/answer-foot.vue&#10;answer&#9;FILE&#9;file://F:/andromeda/src/pages/answer/answer-content.vue&#10;promise&#9;null&#9;null&#10;my&#9;FILE&#9;file://F:/andromeda/src/pages/more/children/my-focus.vue&#10;f&#9;FILE&#9;file://F:/andromeda/src/pages/more/children/my-focus.vue&#10;router&#9;null&#9;null&#10;focus&#9;FILE&#9;file://F:/andromeda/src/pages/more/children/my-focus.vue&#10;router-link-active&#9;null&#9;null&#10;foot&#9;FILE&#9;file://F:/andromeda/src/components/answer/answer-foot.vue" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="editor.config.accepted" value="true" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="F:\andromeda\node_modules\mocha" />
@@ -826,15 +808,15 @@
       <workItem from="1499859717207" duration="441000" />
       <workItem from="1499962395175" duration="660000" />
       <workItem from="1500013925107" duration="3383000" />
-      <workItem from="1500022442803" duration="15396000" />
+      <workItem from="1500022442803" duration="22076000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="837366000" />
+    <option name="totallyTimeSpent" value="844046000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="977" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1671875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -903,39 +885,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/scss/config.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="19" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/db/files/picture.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-110">
-          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/static/img/1.3851a58.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/.gitkeep">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/images/headImg/yuyiwei_harry.jpg" />
     <entry file="file://$PROJECT_DIR$/server/db/files/problem.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1021,13 +970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="326" column="41" lean-forward="false" selection-start-line="326" selection-start-column="41" selection-end-line="326" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/question/ask-question.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4393">
-          <caret line="334" column="29" lean-forward="false" selection-start-line="330" selection-start-column="11" selection-end-line="334" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1117,14 +1059,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/service/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="722">
@@ -1161,7 +1095,7 @@
     </entry>
     <entry file="file://$USER_HOME$/Downloads/pulltorefresh-tab/index的副本.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="2007">
           <caret line="144" column="19" lean-forward="false" selection-start-line="144" selection-start-column="19" selection-end-line="144" selection-end-column="19" />
           <folding />
         </state>
@@ -1183,14 +1117,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/question/question.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1752">
-          <caret line="83" column="39" lean-forward="false" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/parents.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1207,10 +1133,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/service/question.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/test.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="859">
-          <caret line="180" column="52" lean-forward="false" selection-start-line="180" selection-start-column="52" selection-end-line="180" selection-end-column="52" />
+        <state relative-caret-position="705">
+          <caret line="48" column="37" lean-forward="true" selection-start-line="45" selection-start-column="12" selection-end-line="48" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1223,25 +1157,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/test.vue">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="48" column="37" lean-forward="true" selection-start-line="45" selection-start-column="12" selection-end-line="48" selection-end-column="37" />
+        <state relative-caret-position="-43">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/header.vue">
+    <entry file="file://$PROJECT_DIR$/server/service/question.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="7" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+        <state relative-caret-position="859">
+          <caret line="180" column="52" lean-forward="false" selection-start-line="180" selection-start-column="52" selection-end-line="180" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/problem-content.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1177">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/question/question.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3152">
+          <caret line="83" column="39" lean-forward="false" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/static/js/0.399d557b8e55b6ebde1b.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="18647" lean-forward="false" selection-start-line="0" selection-start-column="18647" selection-end-line="0" selection-end-column="18647" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/_swiper@3.4.2@swiper/dist/css/swiper.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8892">
+          <caret line="494" column="24" lean-forward="false" selection-start-line="494" selection-start-column="24" selection-end-line="494" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/question/ask-question.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4377">
+          <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/_swiper@3.4.2@swiper/dist/js/swiper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="359" column="23" lean-forward="false" selection-start-line="359" selection-start-column="14" selection-end-line="359" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/_swiper@3.4.2@swiper/dist/js/swiper.jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-83626">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/discovery/discovery.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
+        <state relative-caret-position="295">
           <caret line="87" column="7" lean-forward="false" selection-start-line="87" selection-start-column="7" selection-end-line="87" selection-end-column="7" />
           <folding>
             <element signature="e#1828#1903#0" expanded="true" />
@@ -1251,10 +1241,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/discovery/problem-content.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128">
-          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        <state relative-caret-position="474">
+          <caret line="162" column="15" lean-forward="true" selection-start-line="162" selection-start-column="15" selection-end-line="162" selection-end-column="15" />
           <folding>
-            <element signature="e#2686#2711#0" expanded="true" />
+            <element signature="e#1231#1386#0" expanded="false" />
+            <element signature="e#1401#1842#0" expanded="false" />
+            <element signature="e#1858#2164#0" expanded="false" />
+            <element signature="e#2182#2637#0" expanded="false" />
+            <element signature="e#2655#2985#0" expanded="false" />
+            <element signature="e#3022#3047#0" expanded="true" />
           </folding>
         </state>
       </provider>

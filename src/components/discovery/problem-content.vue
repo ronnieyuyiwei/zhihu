@@ -37,77 +37,80 @@
   .content-section {
     .swiper-container {
       overflow: visible;
-    }
-    .section {
-      border-bottom: 1px solid #E7E7E7;
-      border-top: 1px solid #E7E7E7;
-      margin-bottom: 8px;
-      background: white;
-    }
-    .info {
-      height: 40px;
-      width: 100%;
-      display: inline-flex;
-      align-items: center;
-      font-size: 14px;
-      color: $sm-font;
-      .topic {
-        flex: 1;
-        text-align: center;
-
-        img {
-          width: 20px;
-          height: 20px;
-          border-radius: 100px;
+      .swiper-slide {
+        height: auto;
+        .section {
+          border-bottom: 1px solid #E7E7E7;
+          border-top: 1px solid #E7E7E7;
+          margin-bottom: 8px;
+          background: white;
         }
-      }
-      .brief-intro {
-        flex: 9;
-      }
-    }
-    .title {
-      width: 100%;
-      max-height: 65px;
-      font-family: Hei;
-      font-size: 16px;
-      font-weight: 800;
-      color: #2F2F2F;
-      p {
-        -webkit-margin-before: 0;
-        -webkit-margin-after: 0;
-        padding: 0 8px 0 8px;
-      }
-    }
-    .content {
-      width: 100%;
-      color: #464646;
-      display: -webkit-box;
-      display: -moz-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-      -moz-box-orient: vertical;
-      -moz-line-clamp: 3;
-      overflow: hidden;
-      p {
-        -webkit-margin-before: 7px;
-        -webkit-margin-after: 0;
-        padding: 0 8px 0 8px;
-        font-size: 15px;
-      }
-    }
-    .operate {
-      background: white;
-      width: 100%;
-      height: 30px;
-      padding-top: 8px;
-      color: $sm-font;
-      font-size: 15px;
-      span {
-        margin-left: 5px;
-        margin-right: 7px;
-      }
-      span:first-child {
-        margin-left: 8px;
+        .info {
+          height: 40px;
+          width: 100%;
+          display: inline-flex;
+          align-items: center;
+          font-size: 14px;
+          color: $sm-font;
+          .topic {
+            flex: 1;
+            text-align: center;
+
+            img {
+              width: 20px;
+              height: 20px;
+              border-radius: 100px;
+            }
+          }
+          .brief-intro {
+            flex: 9;
+          }
+        }
+        .title {
+          width: 100%;
+          max-height: 65px;
+          font-family: Hei;
+          font-size: 16px;
+          font-weight: 800;
+          color: #2F2F2F;
+          p {
+            -webkit-margin-before: 0;
+            -webkit-margin-after: 0;
+            padding: 0 8px 0 8px;
+          }
+        }
+        .content {
+          width: 100%;
+          color: #464646;
+          display: -webkit-box;
+          display: -moz-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          -moz-box-orient: vertical;
+          -moz-line-clamp: 3;
+          overflow: hidden;
+          p {
+            -webkit-margin-before: 7px;
+            -webkit-margin-after: 0;
+            padding: 0 8px 0 8px;
+            font-size: 15px;
+          }
+        }
+        .operate {
+          background: white;
+          width: 100%;
+          height: 30px;
+          padding-top: 8px;
+          color: $sm-font;
+          font-size: 15px;
+          span {
+            margin-left: 5px;
+            margin-right: 7px;
+          }
+          span:first-child {
+            margin-left: 8px;
+          }
+        }
       }
     }
   }
@@ -142,10 +145,11 @@ export default{
           var _contentHeight = document.getElementsByClassName('swiper-slide')[0].offsetHeight
           console.log('__________')
           console.log('mySwiper.translate' + mySwiper.translate)
-          console.log('value' + (_viewHeight - _contentHeight))
+          console.log('vh' + _viewHeight)
+          console.log('ch' + _contentHeight)
           console.log('__________')
           if (mySwiper.translate <= _viewHeight - _contentHeight - 50 && mySwiper.translate < 0) {
-            alert('触发上拉加载')
+            console.log('触发上拉加载')
           }
         }
       })
