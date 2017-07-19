@@ -79,7 +79,7 @@
     }
   }
   .body-content {
-    margin-top: 55px;
+    padding-top: 55px;
     width: 100%;
   }
 

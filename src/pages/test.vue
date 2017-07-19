@@ -65,7 +65,7 @@
   }
 </script>
 <style lang="scss" scoped>
-  @import "../scss/swiper";
+  @import "../scss/swiper.css";
   .refresh-tip {
     position: absolute;
     left: 0;
