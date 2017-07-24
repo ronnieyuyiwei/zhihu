@@ -34,14 +34,35 @@
             <use xlink:href="#icon-fanhui"></use>
           </svg>
           </span>
-        <div class="title">至少添加一个话题</div>
-        <a class="next-step" @click="commit">发布</a>
+        <div class="title">{{topicNotice}}</div>
+        <a v-if='permitSubmit' class="next-step" @click="commit">发布</a>
+        <a class="next-step fake" v-else>发布</a>
       </div>
       <div class="search">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-sou"></use>
         </svg>
-        <input v-model="topic" type="text" placeholder="搜索话题" autofocus>
+        <div class="topic-label">
+          <label v-for='item in topicList' @click="deleteTopic(item)">{{item}}</label>
+        </div>
+        <div>
+          <input v-model="topic" type="text" placeholder="搜索话题" autofocus @input="topicSearch">
+        </div>
+      </div>
+      <div class="topic-preview">
+        <div class="topic-list" v-for="topic in topicPreviewList" @click="addTopic(topic.name)">
+          <div class="img"><img src="../../img/3.jpg" alt=""></div>
+          <div class="content">
+            <div class="topic-name">{{topic.name}}</div>
+            <div class="description">测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述</div>
+          </div>
+        </div>
+      </div>
+      <div class="loading" v-show='loading_gif'>
+        <!--载入动画-->
+        <loading v-show='loading'></loading>
+        <!--完成动画-->
+        <status v-show='status' :status='axStatus'></status>
       </div>
     </div>
   </div>
@@ -49,6 +70,8 @@
 <script>
   import Axios from 'axios'
   import AutoSize from '../../js/autosize.js'
+  import Loading from '../../components/loading/loading.vue'
+  import Status from '../../components/loading/status.vue'
   export default {
     name: 'question',
     data () {
@@ -63,11 +86,40 @@
         titleCount: '',
         titleExceed: '',
         describe: '',
-        topic: ''
+        topic: '',
+        topicNotice: '至少添加一个话题', // 话题页面提示
+        topicPreviewList: [], // 话题展示列表
+        topicList: [], // 待提交的问题列表
+        loading: false, // 载入动画
+        loading_gif: false, // 载入动画主体
+        axStatus: false, // 完成信息
+        status: false
       }
     },
     mounted: function () {
       AutoSize(document.querySelectorAll('textarea'))
+    },
+    components: {
+      Loading,
+      Status
+    },
+    watch: {
+      topicList: function () {
+        if (this.topicList.length === 0) {
+          this.topicNotice = '至少添加一个话题'
+        } else if (this.topicList.length === 5) {
+          this.topicNotice = '已经到达话题上限制'
+        } else {
+          this.topicNotice = '已添加话题可点选删除'
+        }
+      }
+    },
+    computed: {
+      permitSubmit: function () {
+        if (this.title && this.topicList.length > 0 && this.topicList.length <= 5) {
+          return true
+        }
+      }
     },
     methods: {
       goStep2 () {
@@ -87,13 +139,39 @@
         this.step2 = true
       },
       commit () {
+        this.loading_gif = true
+        this.loading = true
         Axios.post('/question/addQuestion', {
           title: this.title,
-          describe: this.describe
+          describe: this.describe,
+          topic: this.topicList
         })
         .then((response) => {
-          console.log(response.data)
+          if (response.data) {
+            this.loading = false
+            this.axStatus = true
+            this.status = true
+            setTimeout(() => {            // 显示成功动画1秒
+              this.$router.go(-1)
+            }, 1000)
+          } else {
+            this.loading = false
+            this.axStatus = false
+            this.status = true
+            setTimeout(() => {            // 显示失败动画1秒
+              this.$router.go(-1)
+            }, 1000)
+          }
         })
+          .catch((err) => {
+            console.log(err.msg)
+            this.loading = false
+            this.axStatus = false
+            this.status = true
+            setTimeout(() => {            // 显示失败动画1秒
+              this.$router.go(-1)
+            }, 1500)
+          })
       },
       checkTitle () {
       /*
@@ -105,7 +183,6 @@
         }
         */
         let count = this.title.length
-        console.log(count)
         if (count === 0) {
           this.titleNext = false
         }
@@ -123,6 +200,50 @@
           this.titleLimit1 = false
           this.titleLimit2 = true
           this.titleExceed = count - 50
+        }
+      },
+      topicSearch () {
+        let count = this.topic.length
+        if (count > 4) {
+          this.topicNotice = '话题长度不能超过6个字'
+        } else {
+          if (this.topicList.length === 0) {
+            this.topicNotice = '至少添加一个话题'
+          }
+          if (count !== 0) {
+            Axios.post('/question/searchTopic', {
+              topic: this.topic
+            })
+            .then((response) => {
+              this.topicPreviewList = []
+              response.data.forEach((result) => {
+                this.topicPreviewList.push({
+                  name: result.name
+                })
+              })
+            })
+          }
+        }
+      },
+      addTopic (topicName) {
+        if (this.topicList.length > 0 && this.topicList.length <= 5) { // 防止重复添加，超额添加
+          for (let i = 0; i < this.topicList.length; i++) {
+            if (this.topicList[i] === topicName) {
+              break
+            }
+            if (i === this.topicList.length - 1) {
+              this.topicList.push(topicName)
+            }
+          }
+        } else if (this.topicList.length === 0) {
+          this.topicList.push(topicName)
+        }
+      },
+      deleteTopic (topicName) {
+        for (let i = 0; i < this.topicList.length; i++) {
+          if (this.topicList[i] === topicName) {
+            this.topicList.splice(i, 1)
+          }
         }
       }
     }
@@ -201,16 +322,75 @@
         margin-right: 3px;
       }
       .search {
+        border-top: 1px solid $border;
         display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .topic-label {
+          label {
+            background: #E8F0FD;
+            padding: 3px 8px 3px 8px;
+            font-size: 12px;
+            color: $font;
+            margin-left: 6px;
+          }
+        }
         .icon {
-          flex: 1;
         }
         input {
-          flex: 10;
+          height: 48px;
+          font-size: 14px;
           padding-left: 5px;
           border: none;
         }
       }
+      .topic-preview {
+        width: 100%;
+        height: 60px;
+
+        .topic-list {
+          display: flex;
+          padding: 7px 0 7px 0;
+          border-top: 1px solid $border;
+          .img {
+            flex: 1;
+            text-align: center;
+            img {
+              height: 50px;
+              width: 50px;
+              border-radius: 2000px;
+            }
+          }
+          .content {
+            flex: 4;
+            .topic-name {
+              height: 20px;
+              font-size: 14px;
+              color: $pr-font;
+              font-weight: 600;
+            }
+            .description {
+              height: 35px;
+              width: 95%;
+              font-size: 12px;
+              color: $sp-font;
+              margin-top: 3px;
+              display: -webkit-box;
+              display: -moz-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              -moz-box-orient: vertical;
+              -moz-line-clamp: 2;
+              overflow: hidden;
+            }
+          }
+        }
+      }
+    }
+    .loading {
+      position: absolute;
+      width: 100%;
+      top: 200px;
     }
   }
 

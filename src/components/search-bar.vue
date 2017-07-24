@@ -26,6 +26,7 @@ export default {
       display: inline-flex;
       align-items: center;
       justify-content: space-between;
+      z-index: 999;
       .search {
         flex: 9;
         text-align: center;

@@ -5,8 +5,8 @@
     <div v-if='login'>
       <div class="person">
         <div class="head"  @click="openHeadOperate">
-          <img v-if="imgExist" :src="imgSrc" alt="头像载入失败">
-          <img src='../../img/head.jpg' v-else>
+          <img v-if="imgExist" :src='imgSrc' alt="头像载入失败">
+          <img src='../../img/head.jpg' class="default" v-else>
         </div>
         <div class="info">
           <span class="name">{{account}}</span>
@@ -300,7 +300,7 @@ export default {
       ]
     }
   },
-  created: function () {
+  mounted: function () {
     this.checkLogin()
     this.getHeadImage()
   },
@@ -323,11 +323,8 @@ export default {
       Axios.get('/picture/getHeadPicture')
         .then((response) => {
           if (response.data.imgExist) {
-            let vm = this
-            vm.imgExist = true
-            vm.$nextTick(function () {
-              vm.imgSrc = require('images/headImg/' + response.data.imgSrc)
-            })
+            this.imgExist = true
+            this.imgSrc = require('images/headImg/' + response.data.imgSrc)
           }
         })
     },
@@ -362,6 +359,7 @@ export default {
         headers: {'Content-Type': 'multipart/form-data'}
       }).then((res) => {
         if (res.data === 'success') {
+          console.log(res.data + 'ddd')
           this.headOperate = false
         }
       })

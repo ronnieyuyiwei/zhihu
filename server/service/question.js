@@ -5,6 +5,7 @@ const express = require('express')
 const router = express.Router()
 const Problem = require('../db/files/problem')
 const User = require('../db/files/user')
+const Topic = require('../db/files/topic')
 const mongoose = require('mongoose')
 const moment = require('moment')
 moment.locale('zh-cn')
@@ -18,7 +19,8 @@ router.post('/question/addQuestion', (req, res) => {
     let question = {
       questioner: result._id,
       title: req.body.title,
-      describe: req.body.describe
+      describe: req.body.describe,
+      topic: req.body.topic
     }
     var newProblem = new Problem(question)
     newProblem.save((err, doc) => {
@@ -29,7 +31,23 @@ router.post('/question/addQuestion', (req, res) => {
           if (err) {
             console.log(err)
           } else {
-            res.send('保存成功')
+            Topic.find({'name': {$in: question.topic}}, (err, topic) => {
+              if (err) {
+                console.log(err)
+              } else {
+                for (let i = 0; i < topic.length; i++) {
+                  topic[i]._question = doc._id
+                  topic[i].save((err) => {
+                    if (err) {
+                      console.log(err)
+                    }
+                  })
+                  if (i === topic.length -1) {
+                    res.send('ok')
+                  }
+                }
+              }
+            })
           }
         })
       }
@@ -73,7 +91,8 @@ router.get('/question/getData', (req, res) => {
         let question = {
           status: true,
           title: result.title,
-          describe: result.describe
+          describe: result.describe,
+          topic: result.topic
         }
         if (result.questionComment.length) {
           question.commentNum = result.questionComment.length
@@ -159,8 +178,7 @@ router.get('/question/discovery/getQuestion', (req, res) => {
                 stack.asId = answer._id
                 stack.agreeNum = answer.agree.length
               }
-              if (i === problem.answer.length-1) {
-                console.log(stack)
+              if (i === problem.answer.length - 1) {
                 questionList.push({
                   answer: true,
                   title: stack.title,
@@ -184,4 +202,22 @@ router.get('/question/discovery/getQuestion', (req, res) => {
       }
     })
 })
+router.post('/question/searchTopic', (req, res) => {
+  let topic = req.body.topic
+  Topic.find({name: {$regex: `${topic}`, $options: ''}})
+    .exec((err, topic) => {
+      if (err) {
+        console.log(err)
+      } else {
+        let result = []
+        topic.forEach((topic) => {
+          result.push({
+            name: topic.name
+          })
+        })
+        res.send(result)
+      }
+    })
+})
+
 module.exports = router

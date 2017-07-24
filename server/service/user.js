@@ -58,7 +58,6 @@ router.get('/user/getFocusProblem', (req, res) => {
         console.log(err)
       } else {
         for (let i = 0; i < doc._focusProblem.length; i++) {
-          console.log('x' +　doc._focusProblem[i].focus.length)
           questionList.push({
             title: doc._focusProblem[i].title,
             answerNum: doc._focusProblem[i].answer.length,
@@ -75,7 +74,7 @@ router.get('/user/checkPersonFocus', (req, res) => {
   let responder = req.query.responder
   let account = req.session.account || req.cookies.AndLogin.account
   if (responder === account) { // 回答者是自己
-    res.send({render:false})
+    res.send({render: false})
   } else {
     User.findOne({account: account})
       .populate('_focusPeople')
